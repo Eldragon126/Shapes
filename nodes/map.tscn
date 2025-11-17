@@ -9,7 +9,7 @@ script = ExtResource("1_5ibb1")
 
 [node name="player_cube" parent="." instance=ExtResource("2_sknwi")]
 z_index = 1
-position = Vector2(589, 188)
+position = Vector2(533, 317)
 
 [node name="map_creator" parent="." instance=ExtResource("3_sknwi")]
 position = Vector2(507, 160)
