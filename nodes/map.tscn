@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_5ibb1"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_gk0av"]
-[ext_resource type="PackedScene" uid="uid://cj1ki34wavwkd" path="res://nodes/player_cube.tscn" id="2_sknwi"]
+[ext_resource type="PackedScene" uid="uid://bk781fvgq4456" path="res://nodes/player_triangle.tscn" id="2_sknwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7unc"]
 size = Vector2(126.53549, 125.81572)
