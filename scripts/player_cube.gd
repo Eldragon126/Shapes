@@ -1,7 +1,7 @@
 extends CharacterBody2D
-var speed = 150
-var acceleration = 5
-var slow_acceleration = 20
+var speed = 400
+var acceleration = 20
+var slow_acceleration = 80
 var jump_speed = -speed*2
 var gravity = speed * 5
 var max_grav_speed = 100
@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	handle_input()
 	move_and_slide()
 	update_movement(delta)
+	
 	
 
 func update_movement(delta: float) -> void:
