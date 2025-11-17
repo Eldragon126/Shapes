@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj1ki34wavwkd"]
+[gd_scene load_steps=4 format=3 uid="uid://cj1ki34wavwkd"]
 
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_j5x2s"]
+[ext_resource type="Script" uid="uid://5x8i2mm7ec40" path="res://scripts/player_cube.gd" id="1_je2q3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je2q3"]
 size = Vector2(124, 124)
 
 [node name="player_cube" type="CharacterBody2D"]
+script = ExtResource("1_je2q3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_j5x2s")
