@@ -1,25 +1,32 @@
 extends RigidBody2D
 var player = load("res://nodes/player_triangle.tscn")
 var player_triangle = player.instantiate()
-var projectile_speed = 500
+var projectile_speed = 700
+var player_ref: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position = player_triangle.position
 	var x = Input.get_axis("ui_left", "ui_right")
 	var y = Input.get_axis("ui_up", "ui_down")
 	var direction: Vector2 = Vector2(x, y).normalized()
-	print(direction)
-	print("Direction:", direction, " Type:", typeof(direction))
+	var pos = player_triangle.global_position
+	position = pos
 	#linear_velocity = direction.normalized() * projectile_speed
-	linear_velocity = Vector2(x,-1) * projectile_speed
+	linear_velocity = Vector2(x,-0.7) * projectile_speed
+	if player_ref:
+		position = player_ref.global_position
+	else:
+		push_error("didn't work")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(player_triangle.position)
 	pass
 	
 func _physics_process(delta: float) -> void:
 	pass
 	
+
+
+func _on_kill_timer_timeout() -> void:
+	queue_free()

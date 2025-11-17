@@ -7,7 +7,7 @@
 [node name="Map" type="Node2D"]
 script = ExtResource("1_5ibb1")
 
-[node name="player_cube" parent="." instance=ExtResource("2_sknwi")]
+[node name="player_triangle" parent="." instance=ExtResource("2_sknwi")]
 z_index = 1
 position = Vector2(533, 317)
 
