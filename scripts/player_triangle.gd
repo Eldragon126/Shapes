@@ -7,10 +7,12 @@ var gravity = speed * 5
 var max_grav_speed = 100
 var extra_jump = true
 var jump_count = 0
+var projectile_speed: float = 1000
+@onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,13 +23,7 @@ func _physics_process(delta: float) -> void:
 	handle_input()
 	move_and_slide()
 	update_movement(delta)
-	if !is_on_floor():
-		rotation += 0.083
-	else:
-		rotation = 0
-		extra_jump = true
-	
-	
+	#handle_attack()
 
 func update_movement(delta: float) -> void:
 	velocity.y += gravity*delta
@@ -36,7 +32,6 @@ func handle_input() -> void:
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
 		jump_count += 1
-		print(jump_count)
 		if jump_count > 1:
 			extra_jump = false
 			jump_count = 0
@@ -46,3 +41,14 @@ func handle_input() -> void:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
 		velocity.x = move_toward(velocity.x,speed* direction, acceleration)
+	
+	if !is_on_floor():
+		rotation += (0.083 * direction)
+	else:
+		rotation = 0
+		extra_jump = true
+
+#func handle_attack():
+#	if Input.is_action_just_pressed("attack"):
+#		var lobber_projectile_inst = lobber_projectile.instantiate()
+#		add_child(lobber_projectile_inst)
