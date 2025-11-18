@@ -44,4 +44,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_collision_detection_body_entered(body: Node2D) -> void:
 	emit_signal("enemy_hit")
-	print("hit")
+	print("hit by something")
