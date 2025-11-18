@@ -8,7 +8,7 @@ var enemy_jump_speed = -speed/2
 var can_jump = true
 
 signal enemy_hit
-
+#Hello?
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	triangle_player = PlayerManager.triangle_player
