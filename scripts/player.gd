@@ -82,15 +82,23 @@ func handle_input() -> void:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
 		velocity.x = move_toward(velocity.x,speed* direction, acceleration)
-	
-	if !is_on_floor() and Input.is_action_just_pressed("jump"):
+	var has_triggered = false
+	if !is_on_floor() and has_triggered == false:
 		var tween = get_tree().create_tween()
-		tween.tween_property($".", "rotation", 360, 0.5).set_trans(Tween.TRANS_SINE)
-		tween.tween_callback($".".queue_free)
-		var tweenSides = get_tree().create_tween()
-		tweenSides.tween_property($Sides, "rotation", -360, 0.5).set_trans(Tween.TRANS_SINE)
-		tweenSides.tween_callback($Sides.queue_free)
+		if current_sides == 4: tween.tween_property($".", "rotation_degrees", 360 * direction, 0.5).set_trans(Tween.TRANS_LINEAR)
+		else: tween.tween_property($".", "rotation_degrees", -360 * direction, 0.5).set_trans(Tween.TRANS_LINEAR)
+		#var tweenSides = get_tree().create_tween()
+		#if current_sides == 4: tweenSides.tween_property($Sides, "rotation_degrees", -360 * direction, 0.5).set_trans(Tween.TRANS_LINEAR)
+		#aelse: tweenSides.tween_property($Sides, "rotation_degrees", 360 * direction, 0.5).set_trans(Tween.TRANS_LINEAR)
 		print("I'm jumping??")
+		has_triggered = true
+	else:
+		rotation = 0
+		$Sides.rotation = 0
+		if current_sides == 3: extra_jump = true
+		else: pass
+	if !is_on_floor():
+		print("Yay I'm on the floor!")
 	else:
 		rotation = 0
 		$Sides.rotation = 0
