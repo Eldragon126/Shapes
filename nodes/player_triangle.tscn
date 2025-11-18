@@ -20,12 +20,3 @@ shape = SubResource("CircleShape2D_je2q3")
 
 [node name="player_cam" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-
-[node name="side1" type="Marker2D" parent="."]
-position = Vector2(33, -16)
-
-[node name="side2" type="Marker2D" parent="."]
-position = Vector2(0, 37)
-
-[node name="side3" type="Marker2D" parent="."]
-position = Vector2(-34, -16)
