@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://fyhpkdyutybd"]
+
+[ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_5ibb1"]
+[ext_resource type="PackedScene" uid="uid://d4iytq6xejm5w" path="res://nodes/player.tscn" id="3_o7unc"]
+[ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="3_sknwi"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_5ibb1")
+
+<<<<<<< HEAD
+[node name="map_creator" parent="." instance=ExtResource("3_sknwi")]
+position = Vector2(507, 160)
+
+[node name="player" parent="." instance=ExtResource("3_o7unc")]
+position = Vector2(544, 12)
+=======
+[node name="player_triangle" parent="." instance=ExtResource("2_sknwi")]
+z_index = 1
+position = Vector2(533, 317)
+
+[node name="map_creator" parent="." instance=ExtResource("3_sknwi")]
+position = Vector2(507, 160)
+<<<<<<< HEAD
+
+[node name="enemy_triangle" parent="." instance=ExtResource("4_o7unc")]
+position = Vector2(227, 413)
+>>>>>>> 37301480c908418f8dd948963db410ce342b7dfa
+=======
+>>>>>>> parent of 3730148 (changes)
