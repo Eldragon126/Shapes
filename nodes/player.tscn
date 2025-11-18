@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4iytq6xejm5w"]
+
+[ext_resource type="Script" uid="uid://bqyul54cf5fhe" path="res://scripts/player.gd" id="1_2wrp4"]
+[ext_resource type="Texture2D" uid="uid://dq14utau70tll" path="res://assets/Player/Sphere.png" id="2_46y3y"]
+[ext_resource type="Texture2D" uid="uid://dqh0ngk68weq5" path="res://assets/Player/Hexagon.png" id="3_ejohg"]
+[ext_resource type="Texture2D" uid="uid://bcabanvt1t2h" path="res://assets/Player/Pentagon.png" id="4_qbdof"]
+[ext_resource type="Texture2D" uid="uid://iasj3sn4lm3h" path="res://assets/Player/Square.png" id="5_hg0js"]
+[ext_resource type="Texture2D" uid="uid://bbljlgvam47q" path="res://assets/Player/Triangle.png" id="6_4n5g4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8srp"]
+size = Vector2(144, 144)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wrp4"]
+radius = 72.06247
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gleio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_46y3y")
+}],
+"loop": true,
+"name": &"Circle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ejohg")
+}],
+"loop": true,
+"name": &"Hexagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qbdof")
+}],
+"loop": true,
+"name": &"Pentagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hg0js")
+}],
+"loop": true,
+"name": &"Square",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4n5g4")
+}],
+"loop": true,
+"name": &"Triangle",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_2wrp4")
+
+[node name="Sides" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -114.0
+offset_right = 95.0
+offset_bottom = -91.0
+theme_override_colors/font_color = Color(1.2032688e-06, 0, 0.47234696, 1)
+text = "Your Current Sides"
+
+[node name="player_cam" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="TriangleMask" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-72, 63, 0, -60, 71, 63)
+disabled = true
+
+[node name="PentagonMask" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-72, -17, 0, -72, 71, -17, 44, 72, -44, 72)
+disabled = true
+
+[node name="HexagonMask" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(61, -36, 61, 35, 0, 71, -61, 35, -61, -36, 0, -72)
+disabled = true
+
+[node name="SquareMask" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m8srp")
+disabled = true
+
+[node name="CircleMask" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2wrp4")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_gleio")
+animation = &"Pentagon"

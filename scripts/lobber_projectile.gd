@@ -1,5 +1,5 @@
 extends RigidBody2D
-var player = load("res://nodes/player_triangle.tscn")
+var player = load("res://nodes/player.tscn")
 var player_triangle = player.instantiate()
 var projectile_speed = 700
 var player_ref: Node2D

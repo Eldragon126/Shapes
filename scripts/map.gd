@@ -1,6 +1,6 @@
 extends Node2D
 const lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
-@onready var player_ref = $player_triangle
+@onready var player_ref = $player
 
 
 func _ready() -> void:
