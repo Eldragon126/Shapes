@@ -1,5 +1,5 @@
 extends CharacterBody2D
-#var player = load("res://nodes/player_triangle.tscn")
+#var player = load("res://nodes/player.tscn")
 #var player_triangle = player.instantiate()
 var triangle_player: Node2D
 var gravity = -1000
