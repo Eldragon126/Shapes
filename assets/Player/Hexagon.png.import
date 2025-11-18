@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r7bmjta2fl87"
-path="res://.godot/imported/TrianglePlayer.png-33cac526c8a36f1996692aebfdcab55c.ctex"
+uid="uid://dqh0ngk68weq5"
+path="res://.godot/imported/Hexagon.png-b9b618893e0a9c2a5f4b4205481305d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TrianglePlayer.png"
-dest_files=["res://.godot/imported/TrianglePlayer.png-33cac526c8a36f1996692aebfdcab55c.ctex"]
+source_file="res://assets/Player/Hexagon.png"
+dest_files=["res://.godot/imported/Hexagon.png-b9b618893e0a9c2a5f4b4205481305d6.ctex"]
 
 [params]
 
