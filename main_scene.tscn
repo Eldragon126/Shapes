@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_2c62f"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_d5x1h"]
-[ext_resource type="PackedScene" uid="uid://mi06u0dr7c0q" path="res://nodes/enemy_triangle.tscn" id="1_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="1_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://d4iytq6xejm5w" path="res://nodes/player.tscn" id="2_gyfs4"]
 
 [node name="MainScene" type="Node2D"]
