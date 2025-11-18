@@ -11,7 +11,7 @@ var extra_jump = true
 var jump_count = 0
 var projectile_speed: float = 1000
 @onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
-
+#lobber is so cool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

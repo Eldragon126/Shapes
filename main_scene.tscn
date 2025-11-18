@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqndh7c57b4by"]
+
+[ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_2c62f"]
+[ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_d5x1h"]
+[ext_resource type="PackedScene" uid="uid://mi06u0dr7c0q" path="res://nodes/enemy_triangle.tscn" id="1_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://d4iytq6xejm5w" path="res://nodes/player.tscn" id="2_gyfs4"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_d5x1h")
+
+[node name="enemy_triangle" parent="." instance=ExtResource("1_gyfs4")]
+z_index = 100
+
+[node name="map_creator" parent="." instance=ExtResource("1_2c62f")]
+
+[node name="player" parent="." instance=ExtResource("2_gyfs4")]
+position = Vector2(280, -262)
