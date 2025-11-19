@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var max_sides: int = 7
-var current_sides: int = 4
+var current_sides: int = 3
 var speed = 400
 var acceleration = 80
 var slow_acceleration = 80
