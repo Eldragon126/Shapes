@@ -1,7 +1,7 @@
 extends CharacterBody2D
 #var player = load("res://nodes/player.tscn")
 #var player_triangle = player.instantiate()
-var triangle_player: Node2D
+var player: Node2D
 var gravity = -1000
 var speed = 1000
 var enemy_jump_speed = -speed/2
@@ -11,8 +11,7 @@ signal enemy_hit
 #Hello?
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#triangle_player = PlayerManager.triangle_player
-	pass
+	player = PlayerManager.player
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,14 +25,15 @@ func _physics_process(delta: float) -> void:
 		can_jump = true
 	else:
 		can_jump = false
+	print(player)
 	
-	if triangle_player and global_position.distance_to(triangle_player.global_position) < 500 and (triangle_player.position.y + 300) > position.y:
-		if triangle_player.position.x < position.x:
+	if player and global_position.distance_to(player.global_position) < 500 and (player.position.y + 300) > position.y:
+		if player.position.x < position.x:
 			velocity.x += -speed * delta
-		if triangle_player.position.x > position.x:
+		if player.position.x > position.x:
 			velocity.x += speed * delta
 		
-		if (triangle_player.position.y + 50) < position.y and can_jump:
+		if (player.position.y + 50) < position.y and can_jump:
 			velocity.y = enemy_jump_speed
 	else:
 		velocity.x = 0

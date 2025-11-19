@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4ijy1a5pi2r4"]
+[gd_scene load_steps=5 format=3 uid="uid://cy6f0r4vcphqa"]
 
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_aioyi"]
-[ext_resource type="PackedScene" uid="uid://d4iytq6xejm5w" path="res://nodes/player.tscn" id="2_fyi8m"]
+[ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_fyi8m"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="3_oxncn"]
-[ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="4_od018"]
+[ext_resource type="PackedScene" uid="uid://c3a07owawct4m" path="res://nodes/enemy_triangle.tscn" id="4_od018"]
 
 [node name="MainMap" type="Node2D"]
 script = ExtResource("1_aioyi")
 
 [node name="player" parent="." instance=ExtResource("2_fyi8m")]
+z_index = 1
+position = Vector2(-7, -163)
 
 [node name="map_creator" parent="." instance=ExtResource("3_oxncn")]
 
 [node name="enemy_triangle" parent="." instance=ExtResource("4_od018")]
 z_index = 545
+position = Vector2(-220, 273)
