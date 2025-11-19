@@ -14,7 +14,7 @@ var projectile_speed: float = 1000
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	PlayerManager.player = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
