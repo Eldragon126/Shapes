@@ -13,12 +13,19 @@ config_version=5
 config/name="Shapes Metroidvania Game Jam Entry"
 run/main_scene="uid://bptb2bnr0r4t8"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/image="uid://l2m61hxhpvr1"
+boot_splash/bg_color=Color(8.1822276e-07, 0.28495723, 0.2447922, 1)
+boot_splash/image="uid://thwp3iatqkq1"
 config/icon="res://icon.svg"
 
 [autoload]
 
 PlayerManager="*res://PlayerManager.gd"
+
+[display]
+
+window/size/mode=2
+window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://ra1vqg04b8ax"
 
 [global_group]
 
