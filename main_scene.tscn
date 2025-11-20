@@ -9,16 +9,16 @@
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_d5x1h")
 
-[node name="enemy_triangle" parent="." instance=ExtResource("1_gyfs4")]
-z_index = 100
-position = Vector2(0, 200)
-
 [node name="map_creator" parent="." instance=ExtResource("1_2c62f")]
+position = Vector2(49, 829)
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
 z_index = 0
 position = Vector2(280, -262)
 
+[node name="enemy_triangle2" parent="." instance=ExtResource("1_gyfs4")]
+position = Vector2(203, 192)
+
 [node name="Turret" parent="." instance=ExtResource("5_8mm7a")]
-z_index = 20
-position = Vector2(-27, -131)
+z_index = 5
+position = Vector2(759, -136)

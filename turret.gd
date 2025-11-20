@@ -15,26 +15,27 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if target != null:
 		var angle_to_target: float = global_position.direction_to(target.global_position).angle()
+		$GunSprite.rotation = angle_to_target
 		raycast.global_rotation = angle_to_target
 		
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
 			if collider and collider.is_in_group("Player"):
-				$GunSprite.rotation = angle_to_target
+				reloadTimer.stop()
 				if reloadTimer.is_stopped():
 					shoot()
 		
 func shoot():
 	print("PEW")
 	raycast.enabled = false
+	reloadTimer.start()
 	if Bullet:
 		var bullet: Node2D = Bullet.instantiate()
-		get_parent().add_child(bullet)
+		$".".add_child(bullet)
 		print($GunSprite/ShootTheBulletHere)
-		bullet.global_position = $GunSprite/ShootTheBulletHere.global_position
+		bullet.global_position = $GunSprite/ShootTheBulletHere.position
 		bullet.rotation = $GunSprite.global_rotation
 		
-	reloadTimer.start()
 	
 	
 func find_target():

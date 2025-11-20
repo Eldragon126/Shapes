@@ -1,7 +1,7 @@
 extends AnimatableBody2D
 
 const RIGHT = Vector2.RIGHT
-@export var SPEED: int = 200
+@export var SPEED: int = 1000
 
 func _physics_process(delta: float) -> void:
 	var movement = RIGHT.rotated(rotation) * SPEED * delta
