@@ -10,6 +10,7 @@
 [node name="BulletEnemyTurret" type="AnimatableBody2D"]
 input_pickable = true
 script = ExtResource("1_gp58h")
+SPEED = 1300
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

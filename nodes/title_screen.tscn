@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bptb2bnr0r4t8"]
+[gd_scene load_steps=11 format=3 uid="uid://bptb2bnr0r4t8"]
 
 [ext_resource type="FontFile" uid="uid://ye10sod4od46" path="res://assets/Fonts/LOT.otf" id="1_ej4rx"]
 [ext_resource type="Script" uid="uid://bht3kfsug165p" path="res://scripts/title_screen.gd" id="1_k2p5a"]
 [ext_resource type="FontFile" uid="uid://cye53no5kwfb5" path="res://assets/Fonts/Fragile Bombers Down.otf" id="2_0ewjg"]
 [ext_resource type="Texture2D" uid="uid://bbljlgvam47q" path="res://assets/Player/Triangle.png" id="2_yykhi"]
 [ext_resource type="AudioStream" uid="uid://dc4ei57m10v54" path="res://assets/Soundtrack/TitleScreen.mp3" id="4_yykhi"]
+[ext_resource type="Texture2D" uid="uid://c1hypu6c0u4ml" path="res://assets/ButtonOn.png" id="6_20teu"]
 
 [sub_resource type="Theme" id="Theme_yykhi"]
 default_font = ExtResource("1_ej4rx")
@@ -150,8 +151,8 @@ libraries = {
 autoplay = "ColorChangeTitle"
 
 [node name="Triangle" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(102.00012, 544.00006)
-scale = Vector2(0.25, 0.25)
+position = Vector2(131, 574)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_yykhi")
 offset = Vector2(8, -68)
 
@@ -193,5 +194,10 @@ text = "POLY-GONE"
 stream = ExtResource("4_yykhi")
 autoplay = true
 parameters/looping = true
+
+[node name="Button" type="Sprite2D" parent="."]
+position = Vector2(168, 635)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_20teu")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
