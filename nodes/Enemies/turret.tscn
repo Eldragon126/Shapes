@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2dv7w1x3qsk0"]
+
+[ext_resource type="Script" uid="uid://bdr3h12ik0px" path="res://turret.gd" id="1_4tajm"]
+[ext_resource type="PackedScene" uid="uid://j823057f2b0b" path="res://nodes/Enemies/bullet_enemy_turret.tscn" id="2_50ubm"]
+[ext_resource type="Texture2D" uid="uid://b5va6g5it7tp0" path="res://assets/Enemy4.png" id="2_gcscs"]
+[ext_resource type="Texture2D" uid="uid://buums030ikp80" path="res://assets/GunEnemy4.png" id="3_50ubm"]
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_4tajm")
+Bullet = ExtResource("2_50ubm")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_gcscs")
+
+[node name="GunSprite" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_50ubm")
+offset = Vector2(383.3333, -6.6666665)
+
+[node name="ShootTheBulletHere" type="Node2D" parent="GunSprite"]
+position = Vector2(499.99997, -10)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(1000, 0)
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+wait_time = 0.008
+
+[connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]

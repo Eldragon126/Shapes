@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://j823057f2b0b"]
+
+[ext_resource type="Script" uid="uid://b2tiq1fk81pgv" path="res://scripts/bullet_enemy_turret.gd" id="1_gp58h"]
+[ext_resource type="Texture2D" uid="uid://cmi2ngdjpbulj" path="res://assets/Enemy4Bullet.png" id="2_io5gk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xuqx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i01r2"]
+
+[node name="BulletEnemyTurret" type="AnimatableBody2D"]
+input_pickable = true
+script = ExtResource("1_gp58h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_io5gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5xuqx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i01r2")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
