@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://l7imaa4b53ls"]
+
+[ext_resource type="Texture2D" uid="uid://c1hypu6c0u4ml" path="res://assets/ButtonOn.png" id="1_acnqp"]
+[ext_resource type="Texture2D" uid="uid://jvjwmdsuperm" path="res://assets/ButtonOff.png" id="2_lrrsu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elefm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_acnqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lrrsu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v485"]
+size = Vector2(408, 158)
+
+[node name="Button" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 24)
+sprite_frames = SubResource("SpriteFrames_elefm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 83)
+shape = SubResource("RectangleShape2D_0v485")

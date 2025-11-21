@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bbljlgvam47q" path="res://assets/Player/Triangle.png" id="2_yykhi"]
 [ext_resource type="AudioStream" uid="uid://dc4ei57m10v54" path="res://assets/Soundtrack/TitleScreen.mp3" id="4_yykhi"]
 [ext_resource type="Texture2D" uid="uid://c1hypu6c0u4ml" path="res://assets/ButtonOn.png" id="6_20teu"]
-[ext_resource type="Texture2D" path="res://assets/Player/POLYTHEPOLYGONE.png" id="7_4kdia"]
+[ext_resource type="Texture2D" uid="uid://c7byajltyphor" path="res://assets/Player/POLYTHEPOLYGON.png" id="7_4kdia"]
 
 [sub_resource type="Theme" id="Theme_yykhi"]
 default_font = ExtResource("1_ej4rx")
