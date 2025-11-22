@@ -33,7 +33,7 @@ func shoot():
 		var bullet: Node2D = Bullet.instantiate()
 		$".".add_child(bullet)
 		print($GunSprite/ShootTheBulletHere)
-		bullet.global_position = $GunSprite/ShootTheBulletHere.position
+		bullet.global_position = $GunSprite/ShootTheBulletHere.global_position
 		bullet.rotation = $GunSprite.global_rotation
 		
 	
