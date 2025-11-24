@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var max_sides: int = 7
-var current_sides: int = 4
+var current_sides: int = 7
 var speed = 400
 var acceleration = 80
 var slow_acceleration = 80
@@ -12,6 +12,7 @@ var jump_count = 0
 var projectile_speed: float = 1000
 var dash_speed = 1000
 var can_dash
+var max_speed = 1000
 @onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
@@ -63,19 +64,21 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		$TriangleMask.disabled = false
 		current_sides = 3
 func _physics_process(delta: float) -> void:
-	handle_input()
+	handle_input(delta)
 	move_and_slide()
 	update_movement(delta)
-	#handle_attack()
 
 func update_movement(delta: float) -> void:
 	velocity.y += gravity*delta
+	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 
-func handle_input() -> void:
+
+func handle_input(delta) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
 	var dir = Vector2(direction, direction_y)
-	dir = dir.normalized()
+	if dir.length() > 0:
+		dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
 		var tween = get_tree().create_tween()
@@ -89,7 +92,10 @@ func handle_input() -> void:
 	if direction == 0:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
-		velocity.x = move_toward(velocity.x,speed* direction, acceleration)
+		if !current_sides == 7:
+			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
+		else:
+			velocity.x = move_toward(velocity.x,speed * direction, acceleration*10 * delta)
 	if is_on_floor():
 		if current_sides == 3: extra_jump = true
 	if current_sides == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
@@ -103,6 +109,11 @@ func handle_input() -> void:
 			velocity.y += direction_y * dash_speed
 		can_dash = false
 		$dash_downtime.start()
+	if current_sides == 7:
+		max_speed = 10000
+	else:
+		max_speed = 250
+	
 
 
 func _on_dash_downtime_timeout() -> void:
