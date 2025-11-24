@@ -25,7 +25,11 @@ func _physics_process(delta: float) -> void:
 		can_jump = true
 	else:
 		can_jump = false
+<<<<<<< HEAD
 	#print(player)
+=======
+	
+>>>>>>> d9e8c472b67272ebc139be513c6e0eca2e1f9e8c
 	
 	if player and global_position.distance_to(player.global_position) < 500 and (player.position.y + 300) > position.y:
 		if player.position.x < position.x:

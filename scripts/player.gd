@@ -1,4 +1,5 @@
 extends CharacterBody2D
+<<<<<<< HEAD
 var max_sides: int = PlayerManager.max_sides_player
 var current_sides: int = PlayerManager.sides_player
 @export var speed = 400
@@ -10,6 +11,22 @@ var current_sides: int = PlayerManager.sides_player
 @export var extra_jump = true
 @export var jump_count = 0
 @export var projectile_speed: float = 1000
+=======
+var max_sides: int = 7
+var current_sides: int = 7
+var speed = 400
+var acceleration = 80
+var slow_acceleration = 80
+var jump_speed = -speed*2
+var gravity = speed * 5
+var max_grav_speed = 100
+var extra_jump = true
+var jump_count = 0
+var projectile_speed: float = 1000
+var dash_speed = 1000
+var can_dash
+var max_speed = 1000
+>>>>>>> d9e8c472b67272ebc139be513c6e0eca2e1f9e8c
 @onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
@@ -69,16 +86,21 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		print("Error, The side variable is either less than 3 or greater than 7")
 		$TriangleMask.disabled = false
 func _physics_process(delta: float) -> void:
-	handle_input()
+	handle_input(delta)
 	move_and_slide()
 	update_movement(delta)
-	#handle_attack()
 
 func update_movement(delta: float) -> void:
 	velocity.y += gravity*delta
+	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 
-func handle_input() -> void:
+
+func handle_input(delta) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction_y = Input.get_axis("ui_up", "ui_down")
+	var dir = Vector2(direction, direction_y)
+	if dir.length() > 0:
+		dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
 		var tween = get_tree().create_tween()
@@ -88,12 +110,16 @@ func handle_input() -> void:
 		if jump_count > 1:
 			extra_jump = false
 			jump_count = 0
-	
+
 	if direction == 0:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
-		velocity.x = move_toward(velocity.x,speed* direction, acceleration)
+		if !current_sides == 7:
+			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
+		else:
+			velocity.x = move_toward(velocity.x,speed * direction, acceleration*10 * delta)
 	if is_on_floor():
+<<<<<<< HEAD
 		if PlayerManager.sides_player == 3: extra_jump = true
 		else: pass
 
@@ -102,3 +128,33 @@ func handle_input() -> void:
 #	if Input.is_action_just_pressed("attack"):
 #		var lobber_projectile_inst = lobber_projectile.instantiate()
 #		add_child(lobber_projectile_inst)
+=======
+		if current_sides == 3: extra_jump = true
+	if current_sides == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
+		velocity.x = 0
+		velocity.y = 0
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+			velocity.x += 2*(direction * dash_speed)
+		if Input.is_action_pressed("ui_up"):
+			velocity.y += direction_y * dash_speed
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += direction_y * dash_speed
+		can_dash = false
+		$dash_downtime.start()
+	if current_sides == 7:
+		max_speed = 10000
+	else:
+		max_speed = 250
+	
+
+
+func _on_dash_downtime_timeout() -> void:
+	if is_on_floor():
+		can_dash = true
+	else:
+		$dash_downtime.start()
+	
+	
+	
+	
+>>>>>>> d9e8c472b67272ebc139be513c6e0eca2e1f9e8c
