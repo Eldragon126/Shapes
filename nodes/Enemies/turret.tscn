@@ -15,7 +15,6 @@ texture = ExtResource("2_gcscs")
 
 [node name="GunSprite" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(0, 3)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_50ubm")
 offset = Vector2(383.3333, -6.6666665)

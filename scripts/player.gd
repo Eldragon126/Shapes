@@ -75,8 +75,6 @@ func handle_input() -> void:
 		velocity.y = jump_speed
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
-		var tweenSides = get_tree().create_tween()
-		tweenSides.tween_property($Sides, "rotation_degrees", -360, 0.6).set_trans(Tween.TRANS_LINEAR)
 		print("I'm jumping??")
 		jump_count += 1
 		if jump_count > 1:

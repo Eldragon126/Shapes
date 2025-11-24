@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqndh7c57b4by"]
+[gd_scene load_steps=7 format=3 uid="uid://cqndh7c57b4by"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_2c62f"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_d5x1h"]
 [ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="1_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://d2dv7w1x3qsk0" path="res://nodes/Enemies/turret.tscn" id="5_8mm7a"]
+[ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="6_hq1ik"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_d5x1h")
 
 [node name="map_creator" parent="." instance=ExtResource("1_2c62f")]
+z_index = -100
 position = Vector2(49, 829)
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
@@ -22,3 +24,7 @@ position = Vector2(44, 715)
 [node name="Turret" parent="." instance=ExtResource("5_8mm7a")]
 z_index = 5
 position = Vector2(869, 357)
+
+[node name="TransformationTomb" parent="." instance=ExtResource("6_hq1ik")]
+z_index = -1
+position = Vector2(12, 970)
