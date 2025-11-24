@@ -113,8 +113,7 @@ func handle_input(delta) -> void:
 #	if Input.is_action_just_pressed("attack"):
 #		var lobber_projectile_inst = lobber_projectile.instantiate()
 #		add_child(lobber_projectile_inst)
-		if current_sides == 3: extra_jump = true
-	if current_sides == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
+	if PlayerManager.sides_player == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
 		velocity.x = 0
 		velocity.y = 0
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
