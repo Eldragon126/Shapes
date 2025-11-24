@@ -93,8 +93,10 @@ func handle_input() -> void:
 	if is_on_floor():
 		if current_sides == 3: extra_jump = true
 	if current_sides == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
+		velocity.x = 0
+		velocity.y = 0
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-			velocity.x += direction * dash_speed
+			velocity.x += 2*(direction * dash_speed)
 		if Input.is_action_pressed("ui_up"):
 			velocity.y += direction_y * dash_speed
 		if Input.is_action_pressed("ui_down"):
