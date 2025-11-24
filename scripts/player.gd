@@ -1,5 +1,4 @@
 extends CharacterBody2D
-<<<<<<< HEAD
 var max_sides: int = PlayerManager.max_sides_player
 var current_sides: int = PlayerManager.sides_player
 @export var speed = 400
@@ -11,22 +10,9 @@ var current_sides: int = PlayerManager.sides_player
 @export var extra_jump = true
 @export var jump_count = 0
 @export var projectile_speed: float = 1000
-=======
-var max_sides: int = 7
-var current_sides: int = 7
-var speed = 400
-var acceleration = 80
-var slow_acceleration = 80
-var jump_speed = -speed*2
-var gravity = speed * 5
-var max_grav_speed = 100
-var extra_jump = true
-var jump_count = 0
-var projectile_speed: float = 1000
 var dash_speed = 1000
 var can_dash
 var max_speed = 1000
->>>>>>> d9e8c472b67272ebc139be513c6e0eca2e1f9e8c
 @onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
@@ -119,7 +105,6 @@ func handle_input(delta) -> void:
 		else:
 			velocity.x = move_toward(velocity.x,speed * direction, acceleration*10 * delta)
 	if is_on_floor():
-<<<<<<< HEAD
 		if PlayerManager.sides_player == 3: extra_jump = true
 		else: pass
 
@@ -128,7 +113,6 @@ func handle_input(delta) -> void:
 #	if Input.is_action_just_pressed("attack"):
 #		var lobber_projectile_inst = lobber_projectile.instantiate()
 #		add_child(lobber_projectile_inst)
-=======
 		if current_sides == 3: extra_jump = true
 	if current_sides == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
 		velocity.x = 0
@@ -154,7 +138,3 @@ func _on_dash_downtime_timeout() -> void:
 	else:
 		$dash_downtime.start()
 	
-	
-	
-	
->>>>>>> d9e8c472b67272ebc139be513c6e0eca2e1f9e8c
