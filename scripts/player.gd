@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var max_sides: int = 7
-var current_sides: int = 6
+var current_sides: int = 4
 var speed = 400
 var acceleration = 80
 var slow_acceleration = 80
@@ -10,6 +10,8 @@ var max_grav_speed = 100
 var extra_jump = true
 var jump_count = 0
 var projectile_speed: float = 1000
+var dash_speed = 1000
+var can_dash
 @onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
@@ -71,6 +73,9 @@ func update_movement(delta: float) -> void:
 
 func handle_input() -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction_y = Input.get_axis("ui_up", "ui_down")
+	var dir = Vector2(direction, direction_y)
+	dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
 		var tween = get_tree().create_tween()
@@ -80,16 +85,30 @@ func handle_input() -> void:
 		if jump_count > 1:
 			extra_jump = false
 			jump_count = 0
-	
+
 	if direction == 0:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
 		velocity.x = move_toward(velocity.x,speed* direction, acceleration)
 	if is_on_floor():
 		if current_sides == 3: extra_jump = true
-		else: pass
+	if current_sides == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+			velocity.x += direction * dash_speed
+		if Input.is_action_pressed("ui_up"):
+			velocity.y += direction_y * dash_speed
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += direction_y * dash_speed
+		can_dash = false
+		$dash_downtime.start()
 
-#func handle_attack():
-#	if Input.is_action_just_pressed("attack"):
-#		var lobber_projectile_inst = lobber_projectile.instantiate()
-#		add_child(lobber_projectile_inst)
+
+func _on_dash_downtime_timeout() -> void:
+	if is_on_floor():
+		can_dash = true
+	else:
+		$dash_downtime.start()
+	
+	
+	
+	
