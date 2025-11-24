@@ -12,6 +12,7 @@ func _notification(what):
 		update_layout()
 		
 func update_layout():
+	
 	var n = get_child_count()
 	var angle_step = 2.0 * PI / float(n)
 	for i in n:

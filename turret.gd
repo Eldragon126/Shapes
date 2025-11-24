@@ -26,13 +26,13 @@ func _physics_process(delta: float) -> void:
 					shoot()
 		
 func shoot():
-	print("PEW")
+	#print("PEW")
 	raycast.enabled = false
 	reloadTimer.start()
 	if Bullet:
 		var bullet: Node2D = Bullet.instantiate()
 		$".".add_child(bullet)
-		print($GunSprite/ShootTheBulletHere)
+		#print($GunSprite/ShootTheBulletHere)
 		bullet.global_position = $GunSprite/ShootTheBulletHere.global_position
 		bullet.rotation = $GunSprite.global_rotation
 		
