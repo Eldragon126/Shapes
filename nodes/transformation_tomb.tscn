@@ -1,24 +1,330 @@
-[gd_scene load_steps=7 format=3 uid="uid://c46pjj1kuownp"]
+[gd_scene load_steps=20 format=3 uid="uid://c46pjj1kuownp"]
 
 [ext_resource type="Texture2D" uid="uid://blpr7q3ryhtev" path="res://assets/TransformationTomb.png" id="1_gujny"]
+[ext_resource type="Script" uid="uid://rrpxgmo2pg5a" path="res://scripts/transformation_tomb.gd" id="1_tftpx"]
 [ext_resource type="Texture2D" uid="uid://sf0t55xhxbbw" path="res://assets/TombStone.png" id="2_ra0r0"]
 [ext_resource type="Script" uid="uid://bip81hcrhxdml" path="res://scripts/TransformationTombcontainer.gd" id="3_bjaox"]
-[ext_resource type="Texture2D" uid="uid://busri3vhw1tit" path="res://assets/TransformationTombPart.png" id="8_i4sqh"]
+[ext_resource type="Texture2D" uid="uid://b4ywnenf22ylx" path="res://assets/Player/TransformationButtons/TriangleButtonNormal.png" id="5_tftpx"]
+[ext_resource type="Texture2D" uid="uid://bpunxlpl5efm1" path="res://assets/Player/TransformationButtons/SquareButtonNormal.png" id="6_ax18g"]
+[ext_resource type="Texture2D" uid="uid://cveac45b6lhdt" path="res://assets/Player/TransformationButtons/PentagonButtonNormal.png" id="7_jsqa6"]
+[ext_resource type="Texture2D" uid="uid://c6kobau01kv2n" path="res://assets/Player/TransformationButtons/HexagonButtonNormal.png" id="8_8d0ia"]
+[ext_resource type="Texture2D" uid="uid://dvqtf8a8p0tgb" path="res://assets/Player/TransformationButtons/CircleButtonNormal.png" id="9_i4sqh"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmju3"]
-radius = 320.0
-height = 726.0
+[sub_resource type="Animation" id="Animation_tftpx"]
+resource_name = "Pulse"
+length = 12.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CircleShapes:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.9666667),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [250.0, 280.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShapes:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 11.966666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.17453292, 0.2617993877991494]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CircleShapes/Triangle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.01, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.3764706, 0.5411765, 1, 1), Color(0.92156863, 0.84313726, 0.4862745, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CircleShapes/Square:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5.02, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.3764706, 0.5411765, 1, 1), Color(0.6087703, 0.5710554, 0.81840885, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CircleShapes/Pentagon:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5.02, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.3764706, 0.5411765, 1, 1), Color(0.14034265, 0.5636704, 0.45248866, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CircleShapes/Hexagon:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.02, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.3764706, 0.5411765, 1, 1), Color(0.048963696, 0.47709572, 0.6504436, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CircleShapes/Circle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5.03, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.3764706, 0.5411765, 1, 1), Color(0.66949064, 0.00037763387, 0.67971635, 1)]
+}
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_32qtg"]
-radius = 167.29913
+[sub_resource type="Animation" id="Animation_ax18g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CircleShapes:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [250.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShapes:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CircleShapes/Triangle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CircleShapes/Square:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.06666667, 0.5882353, 0.5294118, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CircleShapes/Pentagon:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CircleShapes/Hexagon:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.06666667, 0.5882353, 0.5294118, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CircleShapes/Circle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsqa6"]
+_data = {
+&"Pulse": SubResource("Animation_tftpx"),
+&"RESET": SubResource("Animation_ax18g")
+}
+
+[sub_resource type="Animation" id="Animation_jsqa6"]
+resource_name = "Stone"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShapes:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8d0ia"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShapes:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4sqh"]
+_data = {
+&"RESET": SubResource("Animation_8d0ia"),
+&"Stone": SubResource("Animation_jsqa6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tftpx"]
+radius = 169.07394
+
+[sub_resource type="Animation" id="Animation_i4sqh"]
+resource_name = "Stone"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShapes:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_av37h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShapes:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_deyf2"]
+_data = {
+&"RESET": SubResource("Animation_av37h"),
+&"Stone": SubResource("Animation_i4sqh")
+}
 
 [node name="TransformationTomb" type="Node2D"]
+script = ExtResource("1_tftpx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_gujny")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-273, 220, -273, 158, -235, 156, -235, 130, -203, 128, -201, 93, 202, 93, 204, 128, 233, 129, 234, 157, 271, 158, 272, 219)
@@ -30,42 +336,65 @@ position = Vector2(1, -34)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ra0r0")
 
-[node name="HoveringBall" type="Sprite2D" parent="."]
-position = Vector2(0, -269)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_i4sqh")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Container" type="Container" parent="."]
-custom_minimum_size = Vector2(1000, 1000)
-anchors_preset = -1
-offset_left = -3249.0002
-offset_top = -3279.0002
-offset_right = 3440.9988
-offset_bottom = 3300.9988
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(3249.9993, 3279.9993)
+[node name="CircleShapes" type="Container" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 3.9999995
+offset_top = -27.0
+offset_right = 42.0
+offset_bottom = 10.0
 script = ExtResource("3_bjaox")
-radius = 100.0
-counter_clockwise = true
+radius = 250.0
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -379.0
-offset_top = -384.0
-offset_right = 374.0
-offset_bottom = 369.0
+[node name="Triangle" type="TextureButton" parent="CircleShapes"]
+layout_mode = 2
+texture_normal = ExtResource("5_tftpx")
+stretch_mode = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 3)
-shape = SubResource("CapsuleShape2D_mmju3")
+[node name="Square" type="TextureButton" parent="CircleShapes"]
+modulate = Color(0.06666667, 0.5882353, 0.5294118, 1)
+layout_mode = 2
+texture_normal = ExtResource("6_ax18g")
+stretch_mode = 4
 
-[node name="PlayerEnteredTomb" type="StaticBody2D" parent="."]
+[node name="Pentagon" type="TextureButton" parent="CircleShapes"]
+layout_mode = 2
+texture_normal = ExtResource("7_jsqa6")
+stretch_mode = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnteredTomb"]
-position = Vector2(3, -31)
-shape = SubResource("CircleShape2D_32qtg")
+[node name="Hexagon" type="TextureButton" parent="CircleShapes"]
+modulate = Color(0.06666667, 0.5882353, 0.5294118, 1)
+layout_mode = 2
+texture_normal = ExtResource("8_8d0ia")
+stretch_mode = 4
+
+[node name="Circle" type="TextureButton" parent="CircleShapes"]
+layout_mode = 2
+texture_normal = ExtResource("9_i4sqh")
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jsqa6")
+}
+autoplay = "Pulse"
+
+[node name="PlayerEnter" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i4sqh")
+}
+
+[node name="PlayerEnteredTransformer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnteredTransformer"]
+position = Vector2(2, -32)
+shape = SubResource("CircleShape2D_tftpx")
+
+[node name="PlayerExited" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_deyf2")
+}
+
+[connection signal="body_entered" from="PlayerEnteredTransformer" to="." method="_on_player_entered_transformer_body_entered"]
+[connection signal="body_exited" from="PlayerEnteredTransformer" to="." method="_on_player_entered_transformer_body_exited"]

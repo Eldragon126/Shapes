@@ -20,7 +20,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
-	$Sides.text = "Your sides: " + str(current_sides)
+	$UI/Sides.text = "Your sides: " + str(current_sides)
 	if current_sides == 3 && max_sides >= 3:
 		$AnimatedSprite2D.animation = "Triangle"
 		$TriangleMask.disabled = false
