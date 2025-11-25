@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqndh7c57b4by"]
+[gd_scene load_steps=11 format=3 uid="uid://cqndh7c57b4by"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_2c62f"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_d5x1h"]
@@ -11,6 +11,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr18j"]
 radius = 62.514
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66tet"]
+size = Vector2(8145, 200)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_d5x1h")
@@ -45,6 +48,19 @@ shape = SubResource("CircleShape2D_wr18j")
 [node name="Sprite2D" type="Sprite2D" parent="GetSides"]
 modulate = Color(0.46224582, 1.92523e-06, 0.29211983, 1)
 position = Vector2(994, 91)
+texture = ExtResource("8_7ycvg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5159.5, 383)
+shape = SubResource("RectangleShape2D_66tet")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(5142.5, 343)
+scale = Vector2(63.460934, 1)
 texture = ExtResource("8_7ycvg")
 
 [connection signal="body_entered" from="GetSides" to="GetSides" method="_on_body_entered"]
