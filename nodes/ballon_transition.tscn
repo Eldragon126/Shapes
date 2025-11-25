@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6dyik6epnkt0"]
+
+[ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_a6050"]
+[ext_resource type="Script" uid="uid://tqd11lmjw3l2" path="res://scripts/ballon_transition.gd" id="1_j6q8f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6050"]
+size = Vector2(284, 84)
+
+[node name="ballon_transition" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 255
+script = ExtResource("1_j6q8f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -488.00003)
+scale = Vector2(4.1757813, 3.3047588)
+texture = ExtResource("1_a6050")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-121.776215, -143.72513)
+rotation = 0.24434611
+scale = Vector2(0.19921869, 2.3146565)
+texture = ExtResource("1_a6050")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-3, 58.999996)
+scale = Vector2(2.7382808, 1.2988279)
+texture = ExtResource("1_a6050")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(117.85243, -142.41936)
+rotation = -0.24434611
+scale = Vector2(0.19921869, 2.3097334)
+texture = ExtResource("1_a6050")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-175, -22, -174, 142, 168, 142, 168, -22, 137, -22, 138, 118, -147, 118, -147, -23)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4, 75)
+shape = SubResource("RectangleShape2D_a6050")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
