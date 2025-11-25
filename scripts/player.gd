@@ -28,7 +28,10 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		PlayerManager.max_sides_player = 7
 	if PlayerManager.max_sides_player < 3:
 		PlayerManager.max_sides_player = 3
-	$UI/Sides.text = "Your sides: " + str(PlayerManager.sides_player)
+	if PlayerManager.sides_player != 7:
+		$UI/Sides.text = "Your sides: " + str(PlayerManager.sides_player)
+	else: $UI/Sides.text = "Your sides: are infinite!"
+		
 	if PlayerManager.sides_player == 3 && PlayerManager.max_sides_player >= 3:
 		$AnimatedSprite2D.animation = "Triangle"
 		$TriangleMask.disabled = false
