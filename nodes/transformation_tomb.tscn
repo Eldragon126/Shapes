@@ -194,45 +194,6 @@ _data = {
 &"RESET": SubResource("Animation_ax18g")
 }
 
-[sub_resource type="Animation" id="Animation_jsqa6"]
-resource_name = "Stone"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Stone:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CircleShapes:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CircleShapes:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [150.0, 250.0]
-}
-
 [sub_resource type="Animation" id="Animation_8d0ia"]
 length = 0.001
 tracks/0/type = "value"
@@ -272,16 +233,7 @@ tracks/2/keys = {
 "values": [150.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4sqh"]
-_data = {
-&"RESET": SubResource("Animation_8d0ia"),
-&"Stone": SubResource("Animation_jsqa6")
-}
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tftpx"]
-radius = 169.07394
-
-[sub_resource type="Animation" id="Animation_i4sqh"]
+[sub_resource type="Animation" id="Animation_jsqa6"]
 resource_name = "Stone"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -293,7 +245,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -305,8 +257,29 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CircleShapes:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [150.0, 250.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4sqh"]
+_data = {
+&"RESET": SubResource("Animation_8d0ia"),
+&"Stone": SubResource("Animation_jsqa6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tftpx"]
+radius = 169.07394
 
 [sub_resource type="Animation" id="Animation_av37h"]
 length = 0.001
@@ -333,6 +306,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i4sqh"]
+resource_name = "Stone"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShapes:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_deyf2"]
