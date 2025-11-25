@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3woq6il4omex"
+path="res://.godot/imported/Balloon Elevator.mp3-85e5db3690fbde100c9155cea1db9397.mp3str"
+
+[deps]
+
+source_file="res://assets/Soundtrack/Balloon Elevator.mp3"
+dest_files=["res://.godot/imported/Balloon Elevator.mp3-85e5db3690fbde100c9155cea1db9397.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

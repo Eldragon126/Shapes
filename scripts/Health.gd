@@ -5,10 +5,11 @@ signal max_health_changed(diff: int)
 signal health_changed(diff: int)
 signal health_depleted
 
-
 @export var max_health: int = 7
 @export var immortality: bool = false
 var immortality_timer: Timer = null
+@export var sound: AudioStreamPlayer = null
+
 @export var health: int = 6
 
 
@@ -49,7 +50,7 @@ func set_health(value: int):
 		var difference = clamp_value - health
 		health = value
 		health_changed.emit(difference)
-		if health == 0:
+	if health == 0:
 			health_depleted.emit()
 
 func get_health():

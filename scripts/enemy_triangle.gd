@@ -12,11 +12,12 @@ signal enemy_hit
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = PlayerManager.player
-
+	$ProgressBar.FILL_BEGIN_TO_END
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$ProgressBar.value = $Health.health
+	
 
 func _physics_process(delta: float) -> void:
 	#gravity
@@ -45,3 +46,8 @@ func _physics_process(delta: float) -> void:
 func _on_collision_detection_body_entered(body: Node2D) -> void:
 	emit_signal("enemy_hit")
 	print("hit")
+
+
+func _on_health_health_depleted() -> void:
+	queue_free()
+	print("enemy triangle died!")
