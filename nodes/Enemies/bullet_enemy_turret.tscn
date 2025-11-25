@@ -42,7 +42,7 @@ metadata/_custom_type_script = "uid://cv0kocsb7np4x"
 shape = SubResource("CircleShape2D_5xuqx")
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 24
 collision_mask = 0
 script = ExtResource("5_i01r2")
 metadata/_custom_type_script = "uid://bdy16u4km4bt6"

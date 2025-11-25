@@ -160,3 +160,4 @@ volume_db = -1.0
 [connection signal="timeout" from="dash_downtime" to="." method="_on_dash_downtime_timeout"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="recieved_damage" from="HurtBox" to="HurtBox" method="_on_recieved_damage"]
+[connection signal="finished" from="Hurt" to="." method="_on_hurt_finished"]
