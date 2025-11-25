@@ -110,9 +110,9 @@ func handle_input(delta: float) -> void:
 			print("velocity is " + str(velocity.x))
 			print("velocity is moving toward " + str(speed * direction + 1000))
 		else:
-			velocity.x = move_toward(velocity.x, speed * direction + 1000, acceleration)
+			velocity.x = move_toward(velocity.x, speed * direction * 10, acceleration / 60)
 			print("velocity is " + str(velocity.x))
-			print("velocity is moving toward " + str(speed * direction + 1000))
+			print("velocity is moving toward " + str(speed * direction * 10))
 			print("It should be a circle")
 	if is_on_floor():
 		if PlayerManager.sides_player == 3: extra_jump = true
