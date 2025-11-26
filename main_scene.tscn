@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="6_hq1ik"]
 [ext_resource type="Script" uid="uid://dtom4070tah2l" path="res://scripts/get_sides.gd" id="7_66tet"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="8_7ycvg"]
-[ext_resource type="PackedScene" path="res://nodes/ballon_transition.tscn" id="9_7ycvg"]
-[ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_wr18j"]
-[ext_resource type="PackedScene" uid="uid://rrp2e23hdmel" path="res://nodes/Enemies/67_enemy.tscn" id="11_qwutr"]
-[ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="12_671wp"]
+[ext_resource type="PackedScene" uid="uid://c6dyik6epnkt0" path="res://nodes/ballon_transition.tscn" id="9_7ycvg"]
+[ext_resource type="PackedScene" path="res://nodes/Enemies/enemy_5.tscn" id="10_wr18j"]
+[ext_resource type="PackedScene" path="res://nodes/Enemies/67_enemy.tscn" id="11_qwutr"]
+[ext_resource type="PackedScene" path="res://nodes/Enemies/spike.tscn" id="12_671wp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr18j"]
 radius = 62.514
@@ -28,7 +28,7 @@ position = Vector2(49, 829)
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
 z_index = 0
-position = Vector2(628, 399)
+position = Vector2(633, 98)
 
 [node name="enemy_triangle2" parent="." instance=ExtResource("1_gyfs4")]
 position = Vector2(44, 715)
