@@ -8,11 +8,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if $Area2D.get_overlapping_bodies().has(player):
+		if player and Input.is_action_just_pressed("interact_button"):
+			$TextureButton.show()
+			
+			Engine.time_scale = 0
+	else:
+		$TextureButton.hide()
 
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == player:
-		print("player entered")
+		pass
+	
