@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="5_c32mt"]
 
 [node name="enemy_triangle" type="CharacterBody2D"]
+modulate = Color(1, 0.59091085, 0.70677173, 1)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_xykmb")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxfruhe34d20q"]
+
+[ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="1_7omej"]
+[ext_resource type="Texture2D" uid="uid://pmgenl5vexj8" path="res://assets/SpikesSmall.png" id="2_oninr"]
+
+[node name="Spike" type="StaticBody2D"]
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("1_7omej")
+damage = 10
+metadata/_custom_type_script = "uid://bdy16u4km4bt6"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
+polygon = PackedVector2Array(121, 79, 33, -80, 3, -19, -32, -82, -121, 79)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_oninr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(121, 79, 33, -80, 3, -19, -32, -82, -121, 79)

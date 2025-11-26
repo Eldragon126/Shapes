@@ -24,6 +24,7 @@ PlayerManager="*res://PlayerManager.gd"
 
 window/size/mode=2
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://ra1vqg04b8ax"
 
 [global_group]
 
