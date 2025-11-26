@@ -23,7 +23,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
-	
+	$TemporaryHealthBar.value = $Health.health
 	if PlayerManager.max_sides_player > 7:
 		PlayerManager.max_sides_player = 7
 	if PlayerManager.max_sides_player < 3:
@@ -39,6 +39,11 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		$PentagonMask.disabled = true
 		$HexagonMask.disabled = true
 		$CircleMask.disabled = true
+		$HurtBox/TriangleMask.disabled = false
+		$HurtBox/PentagonMask.disabled = true
+		$HurtBox/HexagonMask.disabled = true
+		$HurtBox/SquareMask.disabled = true
+		$HurtBox/CircleMask.disabled =true
 	elif PlayerManager.sides_player == 4 && PlayerManager.max_sides_player >= 4:
 		$AnimatedSprite2D.animation = "Square"
 		$SquareMask.disabled = false
@@ -46,6 +51,11 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		$HexagonMask.disabled = true
 		$CircleMask.disabled = true
 		$TriangleMask.disabled = true
+		$HurtBox/TriangleMask.disabled = true
+		$HurtBox/PentagonMask.disabled = true
+		$HurtBox/HexagonMask.disabled = true
+		$HurtBox/SquareMask.disabled = false
+		$HurtBox/CircleMask.disabled = true
 	elif PlayerManager.sides_player == 5 && PlayerManager.max_sides_player >= 5:
 		$AnimatedSprite2D.animation = "Pentagon"
 		$PentagonMask.disabled = false
@@ -53,6 +63,11 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		$CircleMask.disabled = true
 		$TriangleMask.disabled = true
 		$SquareMask.disabled = true
+		$HurtBox/TriangleMask.disabled = true
+		$HurtBox/PentagonMask.disabled = false
+		$HurtBox/HexagonMask.disabled = true
+		$HurtBox/SquareMask.disabled =true
+		$HurtBox/CircleMask.disabled =true
 	elif PlayerManager.sides_player == 6 && PlayerManager.max_sides_player >= 6:
 		$AnimatedSprite2D.animation = "Hexagon"
 		$HexagonMask.disabled = false
@@ -60,6 +75,11 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		$TriangleMask.disabled = true
 		$SquareMask.disabled = true
 		$PentagonMask.disabled = true
+		$HurtBox/TriangleMask.disabled =true
+		$HurtBox/PentagonMask.disabled =true
+		$HurtBox/HexagonMask.disabled = false
+		$HurtBox/SquareMask.disabled =true
+		$HurtBox/CircleMask.disabled =true
 	elif PlayerManager.sides_player == 7 && PlayerManager.max_sides_player >= 7:
 		$AnimatedSprite2D.animation = "Circle"
 		$CircleMask.disabled = false
@@ -67,6 +87,11 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		$SquareMask.disabled = true
 		$PentagonMask.disabled = true
 		$HexagonMask.disabled = true
+		$HurtBox/TriangleMask.disabled =true
+		$HurtBox/PentagonMask.disabled =true
+		$HurtBox/HexagonMask.disabled =true
+		$HurtBox/SquareMask.disabled =true
+		$HurtBox/CircleMask.disabled = false
 	else:
 		if PlayerManager.sides_player < 3:
 			PlayerManager.sides_player = 3
@@ -149,3 +174,9 @@ func _on_dash_downtime_timeout() -> void:
 	else:
 		$dash_downtime.start()
 	
+
+
+func _on_health_health_depleted() -> void:
+	$".".modulate = "fb003c"
+	get_tree().change_scene_to_file("res://nodes/title_screen.tscn")
+	print("The timer timed-out and is now changing the scene to the title screen.")

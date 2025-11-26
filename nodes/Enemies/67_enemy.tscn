@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://rrp2e23hdmel"]
+
+[ext_resource type="Script" uid="uid://cotnplev4gcol" path="res://scripts/67_enemy.gd" id="1_073ch"]
+[ext_resource type="Texture2D" uid="uid://s3aq7o174y73" path="res://assets/67Enemy.png" id="2_0d7wo"]
+[ext_resource type="Script" uid="uid://dmc7bossv8q17" path="res://scripts/Health.gd" id="3_0vfu2"]
+[ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="4_tivn1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_073ch"]
+friction = 0.5
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wgyl"]
+radius = 260.3248
+
+[node name="67Enemy" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_073ch")
+inertia = 1.0
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("1_073ch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5wgyl")
+debug_color = Color(0.9485412, 4.6205523e-06, 0.580177, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0d7wo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_0vfu2")
+metadata/_custom_type_script = "uid://dmc7bossv8q17"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("4_tivn1")
+metadata/_custom_type_script = "uid://bdy16u4km4bt6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_5wgyl")
+debug_color = Color(0.9485412, 4.6205523e-06, 0.580177, 0.41960785)

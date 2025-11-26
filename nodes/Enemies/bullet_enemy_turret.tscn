@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://j823057f2b0b"]
+[gd_scene load_steps=8 format=3 uid="uid://j823057f2b0b"]
 
 [ext_resource type="Script" uid="uid://b2tiq1fk81pgv" path="res://scripts/bullet_enemy_turret.gd" id="1_gp58h"]
 [ext_resource type="Texture2D" uid="uid://cmi2ngdjpbulj" path="res://assets/Enemy4Bullet.png" id="2_io5gk"]
+[ext_resource type="Script" uid="uid://dmc7bossv8q17" path="res://scripts/Health.gd" id="3_5xuqx"]
+[ext_resource type="Script" uid="uid://cv0kocsb7np4x" path="res://scripts/hurtbox.gd" id="4_i01r2"]
+[ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="5_i01r2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xuqx"]
 
@@ -23,6 +26,29 @@ shape = SubResource("CircleShape2D_5xuqx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_i01r2")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_5xuqx")
+metadata/_custom_type_script = "uid://dmc7bossv8q17"
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_i01r2")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://cv0kocsb7np4x"
+
+[node name="GetsHurt" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_5xuqx")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 24
+collision_mask = 0
+script = ExtResource("5_i01r2")
+metadata/_custom_type_script = "uid://bdy16u4km4bt6"
+
+[node name="GetsHit" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_5xuqx")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
