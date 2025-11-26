@@ -30,6 +30,10 @@ mouse_cursor/custom_image="uid://ra1vqg04b8ax"
 
 Player=""
 
+[gui]
+
+theme/custom_font="uid://cye53no5kwfb5"
+
 [input]
 
 ui_accept={
