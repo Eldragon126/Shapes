@@ -182,5 +182,8 @@ func _on_dash_downtime_timeout() -> void:
 
 func _on_health_health_depleted() -> void:
 	$".".modulate = "fb003c"
-	get_tree().change_scene_to_file("res://nodes/title_screen.tscn")
+	call_deferred("_go_to_title")
 	print("The timer timed-out and is now changing the scene to the title screen.")
+
+func _go_to_title() -> void:
+	get_tree().change_scene_to_file("res://nodes/title_screen.tscn")
