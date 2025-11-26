@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://ky3pen28m07e"]
+[gd_scene load_steps=8 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
+[ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="2_137k3"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="3_137k3"]
-[ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
+[ext_resource type="PackedScene" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
 [ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="6_d13pl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
 size = Vector2(7382, 112)
 
 [node name="DebugScene" type="Node2D"]
+script = ExtResource("1_wpvxr")
 
 [node name="TransformationTomb" parent="." instance=ExtResource("1_5qlkd")]
 position = Vector2(460, -229)
