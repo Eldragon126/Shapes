@@ -35,7 +35,7 @@ position = Vector2(44, 715)
 
 [node name="Turret" parent="." instance=ExtResource("5_8mm7a")]
 z_index = 5
-position = Vector2(869, 357)
+position = Vector2(173, 1061)
 
 [node name="TransformationTomb" parent="." instance=ExtResource("6_hq1ik")]
 z_index = -1

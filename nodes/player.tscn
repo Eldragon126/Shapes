@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://iasj3sn4lm3h" path="res://assets/Player/Square.png" id="5_hg0js"]
 [ext_resource type="Texture2D" uid="uid://bbljlgvam47q" path="res://assets/Player/Triangle.png" id="6_4n5g4"]
 [ext_resource type="Script" uid="uid://dmc7bossv8q17" path="res://scripts/Health.gd" id="7_46y3y"]
-[ext_resource type="Script" uid="uid://cv0kocsb7np4x" path="res://scripts/hurtbox.gd" id="8_ejohg"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="8_ejohg"]
 [ext_resource type="AudioStream" uid="uid://cpl0fquigtjel" path="res://assets/Soundtrack/SoundEffects/HurtPlayerTemp.wav" id="9_qbdof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8srp"]
@@ -122,7 +122,6 @@ collision_mask = 16
 script = ExtResource("8_ejohg")
 sound = NodePath("../Hurt")
 health = NodePath("../Health")
-metadata/_custom_type_script = "uid://cv0kocsb7np4x"
 
 [node name="TriangleMask" type="CollisionPolygon2D" parent="HurtBox"]
 polygon = PackedVector2Array(-72, 63, 0, -60, 71, 63)

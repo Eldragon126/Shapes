@@ -12,12 +12,44 @@ func _ready() -> void:
 	var pos = player_triangle.global_position
 	position = pos
 	#linear_velocity = direction.normalized() * projectile_speed
-	linear_velocity = Vector2(x,-0.7) * projectile_speed
-	if player_ref:
-		position = player_ref.global_position
-	else:
-		push_error("didn't work")
-
+	if PlayerManager.sides_player == 3:
+		linear_velocity = Vector2(x,-0.7) * projectile_speed
+		if player_ref:
+			position = player_ref.global_position
+		else:
+			push_error("didn't work")
+	
+	if PlayerManager.sides_player == 4:
+		gravity_scale = 0
+		linear_velocity = Vector2(x,y) * projectile_speed
+		if player_ref:
+			position = player_ref.global_position
+		else:
+			push_error("didn't work")
+	
+	if PlayerManager.sides_player == 5:
+		gravity_scale = 0
+		linear_velocity = Vector2(x,y) * projectile_speed
+		if player_ref:
+			position = player_ref.global_position
+		else:
+			push_error("didn't work")
+	
+	if PlayerManager.sides_player == 6:
+		gravity_scale = 0
+		linear_velocity = Vector2(x,y) * projectile_speed
+		if player_ref:
+			position = player_ref.global_position
+		else:
+			push_error("didn't work")
+	
+	if PlayerManager.sides_player == 7:
+		gravity_scale = 0
+		linear_velocity = Vector2(x,y) * projectile_speed
+		if player_ref:
+			position = player_ref.global_position
+		else:
+			push_error("didn't work")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

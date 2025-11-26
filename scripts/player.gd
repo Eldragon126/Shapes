@@ -139,6 +139,10 @@ func handle_input(delta: float) -> void:
 			print("velocity is moving toward " + str(speed * direction + 1000))
 		else:
 			velocity.x = move_toward(velocity.x, speed * direction * 10, acceleration)
+			if velocity.length() > 100:
+				rotation += direction *0.03
+			elif velocity.length() > 300:
+				rotation += direction * 0.1
 			print("velocity is " + str(velocity.x))
 			print("velocity is moving toward " + str(speed * direction * 10))
 			print("It should be a circle")
