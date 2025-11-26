@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqndh7c57b4by"]
+[gd_scene load_steps=17 format=3 uid="uid://cqndh7c57b4by"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_2c62f"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_d5x1h"]
@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_wr18j"]
 [ext_resource type="PackedScene" uid="uid://rrp2e23hdmel" path="res://nodes/Enemies/67_enemy.tscn" id="11_qwutr"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="12_671wp"]
-[ext_resource type="PackedScene" uid="uid://2qhj3bil8n5v" path="res://nodes/lever.tscn" id="13_mo76n"]
+[ext_resource type="PackedScene" uid="uid://d0bjm8fb2mn6" path="res://nodes/lever.tscn" id="13_mo76n"]
+[ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="14_42l1d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr18j"]
 radius = 62.514
@@ -29,7 +30,7 @@ position = Vector2(49, 829)
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
 z_index = 0
-position = Vector2(851, 464)
+position = Vector2(4755, -104)
 
 [node name="enemy_triangle2" parent="." instance=ExtResource("1_gyfs4")]
 position = Vector2(44, 715)
@@ -85,5 +86,8 @@ position = Vector2(8791, 213)
 
 [node name="Lever" parent="." instance=ExtResource("13_mo76n")]
 position = Vector2(432, 615)
+
+[node name="PhysicalShop" parent="." instance=ExtResource("14_42l1d")]
+position = Vector2(5261, 146)
 
 [connection signal="body_entered" from="GetSides" to="GetSides" method="_on_body_entered"]

@@ -1,56 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbi2d1aoe4v3h"]
+[gd_scene load_steps=8 format=3 uid="uid://bbi2d1aoe4v3h"]
 
+[ext_resource type="Script" uid="uid://bl25h8bk4t15f" path="res://scripts/shop.gd" id="1_kjls5"]
 [ext_resource type="FontFile" uid="uid://cye53no5kwfb5" path="res://assets/Fonts/Fragile Bombers Down.otf" id="1_kvjff"]
 [ext_resource type="FontFile" uid="uid://crw1meh1mb7d1" path="res://assets/Fonts/propaganda.ttf" id="2_wldo4"]
 [ext_resource type="Script" uid="uid://dcrvi885ko2lf" path="res://scripts/shape_shenanigans.gd" id="3_fxcnm"]
 [ext_resource type="Texture2D" uid="uid://thwp3iatqkq1" path="res://assets/MustacheTriangle.png" id="4_wldo4"]
 [ext_resource type="FontFile" uid="uid://ye10sod4od46" path="res://assets/Fonts/LOT.otf" id="5_fxcnm"]
-
-[sub_resource type="Animation" id="Animation_kvjff"]
-resource_name = "ColorRectFade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(2.8878452e-07, 0.33059484, 0.24605325, 1), Color(0, 0.39215687, 0.29411766, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wldo4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0.39215687, 0.29411766, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxcnm"]
-_data = {
-&"ColorRectFade": SubResource("Animation_kvjff"),
-&"RESET": SubResource("Animation_wldo4")
-}
+[ext_resource type="Texture2D" uid="uid://bvcncq2uittnn" path="res://assets/CuteEye.png" id="7_7muav"]
 
 [node name="Shop" type="Control"]
+process_mode = 3
+z_index = 20
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_kjls5")
 
 [node name="Welcome" type="RichTextLabel" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 18.0
 offset_top = 8.0
@@ -62,6 +32,7 @@ theme_override_font_sizes/normal_font_size = 80
 text = "Welcome to"
 
 [node name="ShapeShenanigans" type="RichTextLabel" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 18.0
 offset_top = 108.0
@@ -73,6 +44,7 @@ text = "Shape
 Shenanigans"
 
 [node name="Saying" type="RichTextLabel" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 18.0
 offset_top = 306.0
@@ -85,19 +57,12 @@ text = "You're pretty acute to me. I'm 40!"
 script = ExtResource("3_fxcnm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = 1
 layout_mode = 0
-offset_left = -62.0
-offset_top = -48.0
-offset_right = 1243.0
-offset_bottom = 715.0
-color = Color(0, 0.39215687, 0.29411766, 1)
-
-[node name="Start" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_fxcnm")
-}
-autoplay = "ColorRectFade"
+offset_left = -27.0
+offset_top = -28.0
+offset_right = 1182.0
+offset_bottom = 1417.0
+color = Color(0, 0.32941177, 0.24705882, 1)
 
 [node name="ShopAnimations" type="AnimationPlayer" parent="."]
 
@@ -105,10 +70,6 @@ autoplay = "ColorRectFade"
 position = Vector2(777, 128)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_wldo4")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-position_smoothing_enabled = true
 
 [node name="Buy" type="Button" parent="."]
 layout_mode = 0
@@ -120,24 +81,90 @@ theme_override_fonts/font = ExtResource("5_fxcnm")
 theme_override_font_sizes/font_size = 50
 text = "Buy Fun Things"
 
-[node name="BuyThingsVBox" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 735.0
-offset_right = 1116.0
-offset_bottom = 1229.0
+offset_left = -1.0
+offset_top = 650.0
+offset_right = 1152.0
+offset_bottom = 1299.0
 
-[node name="TextureButton" type="TextureButton" parent="BuyThingsVBox"]
+[node name="BuyThingsVBox" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="TextureButton2" type="TextureButton" parent="BuyThingsVBox"]
+[node name="Button" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
 
-[node name="TextureButton3" type="TextureButton" parent="BuyThingsVBox"]
+[node name="Button2" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
 
-[node name="TextureButton4" type="TextureButton" parent="BuyThingsVBox"]
+[node name="Button3" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
 
-[node name="TextureButton5" type="TextureButton" parent="BuyThingsVBox"]
+[node name="Button4" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
+
+[node name="Button5" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
+
+[node name="Button6" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
+
+[node name="Button7" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
+
+[node name="Button8" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "This Thing"
+
+[node name="Quit" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="OldMan" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(199, 571)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_wldo4")
+
+[node name="YouGotThis" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 678.0
+offset_right = 772.0
+offset_bottom = 756.0
+theme_override_fonts/normal_font = ExtResource("5_fxcnm")
+theme_override_font_sizes/normal_font_size = 70
+text = "For Poly"
+
+[node name="YouGotThis2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1062.0
+offset_top = 1186.0
+offset_right = 1123.0
+offset_bottom = 1264.0
+theme_override_fonts/normal_font = ExtResource("5_fxcnm")
+theme_override_font_sizes/normal_font_size = 70
+text = "(:"
+
+[node name="Eye" type="Sprite2D" parent="."]
+position = Vector2(237, 1193)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_7muav")
+
+[connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="CenterContainer/BuyThingsVBox/Quit" to="." method="_on_quit_pressed"]
