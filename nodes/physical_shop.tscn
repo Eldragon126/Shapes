@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://cut8uhqnbh0o4"]
+
+[ext_resource type="Script" uid="uid://d3feu8xvwd0ba" path="res://scripts/physical_shop.gd" id="1_gp4tu"]
+[ext_resource type="Texture2D" uid="uid://thwp3iatqkq1" path="res://assets/MustacheTriangle.png" id="1_j1qb6"]
+[ext_resource type="Texture2D" uid="uid://sbf8hq3jl66e" path="res://assets/HoleInGround.png" id="1_rli6e"]
+[ext_resource type="Texture2D" uid="uid://d386u86sbiyp8" path="res://assets/BUY.png" id="3_gp4tu"]
+
+[sub_resource type="Animation" id="Animation_8v76l"]
+resource_name = "WholeAnimation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.6666667, 1, 1), Color(0, 0, 1, 1), Color(0.8782685, 2.9263496e-05, 0.6276947, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u2akj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.6666667, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_667wd"]
+_data = {
+&"RESET": SubResource("Animation_u2akj"),
+&"WholeAnimation": SubResource("Animation_8v76l")
+}
+
+[node name="PhysicalShop" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_gp4tu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_667wd")
+}
+autoplay = "WholeAnimation"
+
+[node name="Shop" type="Sprite2D" parent="."]
+position = Vector2(4, 174)
+scale = Vector2(0.25446278, 0.16043603)
+texture = ExtResource("1_rli6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_j1qb6")
+
+[node name="BuySign" type="Sprite2D" parent="."]
+position = Vector2(304, 70)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_gp4tu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -114.0
+offset_top = 230.0
+offset_right = 116.0
+offset_bottom = 269.0
+theme_override_colors/font_color = Color(0, 0.6666667, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Press e"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
