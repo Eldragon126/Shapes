@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_8x05p"]
 [ext_resource type="Script" uid="uid://gkobx3oxpsg4" path="res://scripts/lobber_projectile.gd" id="1_wr4q7"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_p4cdx"]
+[ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="3_p4cdx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wr4q7"]
 bounce = 0.6

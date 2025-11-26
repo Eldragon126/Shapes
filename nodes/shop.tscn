@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0.39215687, 0.29411766, 1), Color(0, 0.39215687, 0.29411766, 0)]
+"values": [Color(2.8878452e-07, 0.33059484, 0.24605325, 1), Color(0, 0.39215687, 0.29411766, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_wldo4"]
@@ -85,11 +85,12 @@ text = "You're pretty acute to me. I'm 40!"
 script = ExtResource("3_fxcnm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
 layout_mode = 0
-offset_left = -1437.0
-offset_top = -442.0
-offset_right = -132.0
-offset_bottom = 321.0
+offset_left = -62.0
+offset_top = -48.0
+offset_right = 1243.0
+offset_bottom = 715.0
 color = Color(0, 0.39215687, 0.29411766, 1)
 
 [node name="Start" type="AnimationPlayer" parent="."]
@@ -101,7 +102,7 @@ autoplay = "ColorRectFade"
 [node name="ShopAnimations" type="AnimationPlayer" parent="."]
 
 [node name="OldMan" type="Sprite2D" parent="."]
-position = Vector2(761, 129)
+position = Vector2(777, 128)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_wldo4")
 
@@ -118,3 +119,25 @@ offset_bottom = 557.0
 theme_override_fonts/font = ExtResource("5_fxcnm")
 theme_override_font_sizes/font_size = 50
 text = "Buy Fun Things"
+
+[node name="BuyThingsVBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 735.0
+offset_right = 1116.0
+offset_bottom = 1229.0
+
+[node name="TextureButton" type="TextureButton" parent="BuyThingsVBox"]
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="BuyThingsVBox"]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="BuyThingsVBox"]
+layout_mode = 2
+
+[node name="TextureButton4" type="TextureButton" parent="BuyThingsVBox"]
+layout_mode = 2
+
+[node name="TextureButton5" type="TextureButton" parent="BuyThingsVBox"]
+layout_mode = 2
