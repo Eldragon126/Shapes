@@ -28,7 +28,7 @@ position = Vector2(49, 829)
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
 z_index = 0
-position = Vector2(665, 114)
+position = Vector2(628, 399)
 
 [node name="enemy_triangle2" parent="." instance=ExtResource("1_gyfs4")]
 position = Vector2(44, 715)
@@ -77,7 +77,7 @@ position = Vector2(1934, 177)
 position = Vector2(3372, 49)
 
 [node name="67Enemy" parent="." instance=ExtResource("11_qwutr")]
-position = Vector2(2310, -268)
+position = Vector2(2272, -347)
 
 [node name="Spike" parent="." instance=ExtResource("12_671wp")]
 position = Vector2(8791, 213)
