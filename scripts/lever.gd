@@ -9,6 +9,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if player and global_position.distance_to(player.global_position) < 200:
+		$CenterContainer/Label.show()
+	else:
+		$CenterContainer/Label.hide()
+	
 	if player and global_position.distance_to(player.global_position) < 200 and Input.is_action_just_pressed("interact_button") and off == false:
 		$AnimationPlayer.play("LeverOff")
 		await $AnimationPlayer.animation_finished
@@ -17,7 +22,10 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("LeverPull")
 		await $AnimationPlayer.animation_finished
 		off = false
-
+	if off == true:
+		$CenterContainer/Label.text ="E to Activate"
+	else:
+		$CenterContainer/Label.text ="Activated"
 
 
 
