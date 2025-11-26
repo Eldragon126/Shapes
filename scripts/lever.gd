@@ -17,3 +17,17 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("LeverPull")
 		await $AnimationPlayer.animation_finished
 		off = false
+
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("touched Lever")
+	if off == false:
+		$AnimationPlayer.play("LeverOff")
+		await $AnimationPlayer.animation_finished
+		off = true
+	else:
+		$AnimationPlayer.play("LeverPull")
+		await $AnimationPlayer.animation_finished
+		off = false

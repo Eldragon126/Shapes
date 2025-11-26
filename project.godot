@@ -103,6 +103,7 @@ interact_button={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Map Walls"
 2d_physics/layer_3="Projectiles"
+2d_physics/layer_8="interactibales"
 
 [rendering]
 
