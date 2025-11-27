@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://c6dyik6epnkt0"]
 
-[ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_a6050"]
 [ext_resource type="Script" uid="uid://tqd11lmjw3l2" path="res://scripts/ballon_transition.gd" id="1_j6q8f"]
-[ext_resource type="Texture2D" uid="uid://c1cicq1yoi212" path="res://assets/elevator_UI.png (1).png" id="3_7lrrq"]
-[ext_resource type="FontFile" uid="uid://cye53no5kwfb5" path="res://assets/Fonts/Fragile Bombers Down.otf" id="4_6ln5i"]
+[ext_resource type="Texture2D" uid="uid://dbspgbk4mb4f5" path="res://assets/ElevatorBalloon.png" id="4_w7fkg"]
+[ext_resource type="Texture2D" uid="uid://bnu87areb1ypv" path="res://assets/ElevatorBase.png" id="5_drvee"]
+[ext_resource type="Texture2D" uid="uid://d06yrm7dicaom" path="res://assets/ElevatorButtons.png" id="6_yew37"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6050"]
-size = Vector2(284, 84)
+size = Vector2(284, 119)
 
 [sub_resource type="Animation" id="Animation_6ln5i"]
 length = 0.001
@@ -26,18 +26,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(4, 0), Vector2(4, 2324.754)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(4.1757813, 3.3047588), Vector2(3, 2.374)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8glji"]
 _data = {
@@ -52,74 +40,16 @@ collision_layer = 16
 collision_mask = 255
 script = ExtResource("1_j6q8f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-process_mode = 3
-position = Vector2(0, -310)
-scale = Vector2(4.1757813, 3.3047588)
-texture = ExtResource("1_a6050")
-offset = Vector2(0.23947616, -34.96608)
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-121.776215, -143.72513)
-rotation = 0.24434611
-scale = Vector2(0.19921869, 2.3146565)
-texture = ExtResource("1_a6050")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-3, 58.999996)
-scale = Vector2(2.7382808, 1.2988279)
-texture = ExtResource("1_a6050")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(117.85243, -142.41936)
-rotation = -0.24434611
-scale = Vector2(0.19921869, 2.3097334)
-texture = ExtResource("1_a6050")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-175, -22, -174, 142, 168, 142, 168, -22, 137, -22, 138, 118, -147, 118, -147, -23)
+position = Vector2(7.75, 186.47852)
+polygon = PackedVector2Array(-170, -82, -170, 140, 157, 140, 157, -81, 133, -81, 133, 113, -147, 113, -147, -82)
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(6.75, -1.5214844)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-4, 75)
+position = Vector2(-6, 241.5)
 shape = SubResource("RectangleShape2D_a6050")
-
-[node name="TextureButton" type="TextureButton" parent="."]
-process_mode = 3
-offset_left = -265.0
-offset_top = -264.0
-offset_right = 247.0
-offset_bottom = 248.0
-texture_normal = ExtResource("3_7lrrq")
-metadata/_edit_use_anchors_ = true
-
-[node name="floor1" type="Button" parent="TextureButton"]
-layout_mode = 0
-offset_left = 192.0
-offset_right = 336.0
-offset_bottom = 112.0
-theme_override_colors/font_color = Color(0.2556082, 0.99999994, 0.9076157, 1)
-theme_override_fonts/font = ExtResource("4_6ln5i")
-theme_override_font_sizes/font_size = 100
-text = "1"
-metadata/_edit_use_anchors_ = true
-
-[node name="floor2" type="Button" parent="TextureButton"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 200.0
-offset_right = 336.0
-offset_bottom = 312.0
-metadata/_edit_use_anchors_ = true
-
-[node name="floor3" type="Button" parent="TextureButton"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 400.0
-offset_right = 336.0
-offset_bottom = 512.0
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -127,7 +57,58 @@ libraries = {
 &"": SubResource("AnimationLibrary_8glji")
 }
 
+[node name="ElevatorBalloon" type="Sprite2D" parent="."]
+position = Vector2(0, -55)
+scale = Vector2(0.45625547, 0.45625544)
+texture = ExtResource("4_w7fkg")
+offset = Vector2(-15.890239, -483.32898)
+
+[node name="ElevatorBase" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(0.74993896, 73.478516)
+scale = Vector2(0.53262645, 0.53262645)
+texture = ExtResource("5_drvee")
+
+[node name="ElevatorButtons" type="Sprite2D" parent="."]
+position = Vector2(1.1920929e-07, 206)
+scale = Vector2(0.753406, 0.753406)
+texture = ExtResource("6_yew37")
+
+[node name="floor1" type="Button" parent="ElevatorButtons"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = -0.0027247956
+anchor_right = 0.027247956
+anchor_bottom = 0.027166883
+offset_left = -77.0
+offset_top = -298.0
+offset_right = 67.0
+offset_bottom = -169.0
+metadata/_edit_use_anchors_ = true
+
+[node name="floor2" type="Button" parent="ElevatorButtons"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_right = 0.029972753
+anchor_bottom = 0.047865458
+offset_left = -78.0
+offset_top = -75.0
+offset_right = 66.0
+offset_bottom = 37.0
+metadata/_edit_use_anchors_ = true
+
+[node name="floor3" type="Button" parent="ElevatorButtons"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_right = 0.029972753
+anchor_bottom = 0.047865458
+offset_left = -78.0
+offset_top = 148.0
+offset_right = 66.0
+offset_bottom = 260.0
+metadata/_edit_use_anchors_ = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="TextureButton/floor1" to="." method="_on_floor_1_pressed"]
-[connection signal="pressed" from="TextureButton/floor2" to="." method="_on_floor_2_pressed"]
-[connection signal="pressed" from="TextureButton/floor3" to="." method="_on_floor_3_pressed"]
+[connection signal="pressed" from="ElevatorButtons/floor1" to="." method="_on_floor_1_pressed"]
+[connection signal="pressed" from="ElevatorButtons/floor2" to="." method="_on_floor_2_pressed"]
+[connection signal="pressed" from="ElevatorButtons/floor3" to="." method="_on_floor_3_pressed"]

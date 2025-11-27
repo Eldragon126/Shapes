@@ -84,7 +84,7 @@ rendering_quadrant_size = 128
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
 z_index = 0
-position = Vector2(95, 1116)
+position = Vector2(639, 297)
 
 [node name="enemy_triangle2" parent="." instance=ExtResource("1_gyfs4")]
 position = Vector2(44, 715)
