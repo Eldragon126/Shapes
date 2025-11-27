@@ -17,6 +17,9 @@ func _process(delta: float) -> void:
 			Engine.time_scale = 0
 	else:
 			$ElevatorButtons.hide()
+	if PlayerManager.game_paused == true and Input.is_action_just_pressed("escape_interact") and $Area2D.get_overlapping_bodies().has(player):
+		Engine.time_scale = 1
+		PlayerManager.game_paused = false
 
 
 func _on_floor_3_pressed() -> void:
