@@ -28,7 +28,7 @@
 radius = 62.514
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66tet"]
-size = Vector2(8145, 200)
+size = Vector2(7608, 200)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_d5x1h")
@@ -81,16 +81,13 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(5159.5, 383)
+position = Vector2(5428, 383)
 shape = SubResource("RectangleShape2D_66tet")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(5142.5, 343)
-scale = Vector2(63.460934, 1)
+position = Vector2(5413.5, 343)
+scale = Vector2(59.226563, 1)
 texture = ExtResource("8_7ycvg")
-
-[node name="ballon_transition" parent="." instance=ExtResource("9_7ycvg")]
-position = Vector2(1391, 32)
 
 [node name="enemy_triangle" parent="." instance=ExtResource("1_gyfs4")]
 position = Vector2(837, 501)
@@ -105,7 +102,9 @@ position = Vector2(2318, 785)
 position = Vector2(8791, 213)
 
 [node name="Lever" parent="." instance=ExtResource("13_mo76n")]
-position = Vector2(432, 615)
+position = Vector2(2007, 188)
+
+[node name="ballon_transition" parent="." instance=ExtResource("9_7ycvg")]
 
 [node name="PhysicalShop" parent="." instance=ExtResource("14_42l1d")]
 position = Vector2(5261, 146)
