@@ -86,7 +86,4 @@ position = Vector2(2007, 188)
 
 [node name="ballon_transition" parent="." instance=ExtResource("9_7ycvg")]
 
-[node name="PhysicalShop" parent="." instance=ExtResource("14_42l1d")]
-position = Vector2(5261, 146)
-
 [connection signal="body_entered" from="GetSides" to="GetSides" method="_on_body_entered"]

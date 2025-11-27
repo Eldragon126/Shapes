@@ -70,7 +70,6 @@ _data = {
 
 [node name="ballon_transition" type="StaticBody2D"]
 process_mode = 3
-physics_interpolation_mode = 1F
 position = Vector2(4, 0)
 collision_layer = 16
 collision_mask = 255
