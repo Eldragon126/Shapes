@@ -1,18 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=11 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="2_137k3"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="3_137k3"]
-[ext_resource type="PackedScene" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
+[ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
 [ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="6_d13pl"]
 [ext_resource type="PackedScene" uid="uid://c6dyik6epnkt0" path="res://nodes/ballon_transition.tscn" id="7_iqdfs"]
 [ext_resource type="AudioStream" uid="uid://douojtt6kiabb" path="res://assets/Chill Background (Name Later).mp3" id="8_d13pl"]
-[ext_resource type="PackedScene" path="res://nodes/Enemies/67_enemy.tscn" id="9_3jfbe"]
-[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="10_bse77"]
+[ext_resource type="PackedScene" uid="uid://du1ic7ks3t51o" path="res://nodes/balloon_small.tscn" id="9_3jfbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
-size = Vector2(6902, 112)
+size = Vector2(7464, 119)
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_wpvxr")
@@ -34,17 +33,17 @@ scale = Vector2(54.812504, 1.3515625)
 texture = ExtResource("2_137k3")
 
 [node name="THEPLATFORM2" type="RigidBody2D" parent="."]
-position = Vector2(-8017, 48)
+position = Vector2(3623, -1738)
 collision_layer = 3
 collision_mask = 3
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="THEPLATFORM2"]
-position = Vector2(3681, 46)
+position = Vector2(3400, 49.5)
 shape = SubResource("RectangleShape2D_wkvbf")
 
 [node name="Sprite2D" type="Sprite2D" parent="THEPLATFORM2"]
-position = Vector2(3742.5002, 78.5)
+position = Vector2(3390.0002, 41)
 scale = Vector2(58.476563, 1.3515625)
 texture = ExtResource("2_137k3")
 
@@ -96,20 +95,5 @@ stream = ExtResource("8_d13pl")
 volume_db = -10.0
 autoplay = true
 
-[node name="67Enemy" parent="." instance=ExtResource("9_3jfbe")]
-position = Vector2(7089, -444)
-mass = 0.1
-
-[node name="scene_exit" parent="." instance=ExtResource("10_bse77")]
-position = Vector2(1227, -453)
-connected_room = "res://main_scene.tscn"
-player_pos = Vector2(-213, 1104)
-
-[node name="scene_exit2" parent="." instance=ExtResource("10_bse77")]
-position = Vector2(-648, -97)
-connected_room = "res://nodes/debug_scene.tscn"
-
-[node name="scene_exit3" parent="." instance=ExtResource("10_bse77")]
-position = Vector2(61, 873)
-connected_room = "res://main_scene.tscn"
-player_pos = Vector2(-213, 1104)
+[node name="BalloonSmall" parent="." instance=ExtResource("9_3jfbe")]
+position = Vector2(2741, -198)
