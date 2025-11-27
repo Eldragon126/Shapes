@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://dtom4070tah2l" path="res://scripts/get_sides.gd" id="7_66tet"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="8_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://c6dyik6epnkt0" path="res://nodes/ballon_transition.tscn" id="9_7ycvg"]
-[ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_wr18j"]
-[ext_resource type="PackedScene" uid="uid://rrp2e23hdmel" path="res://nodes/Enemies/67_enemy.tscn" id="11_qwutr"]
+[ext_resource type="PackedScene" path="res://nodes/Enemies/enemy_5.tscn" id="10_wr18j"]
+[ext_resource type="PackedScene" path="res://nodes/Enemies/67_enemy.tscn" id="11_qwutr"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="12_671wp"]
 [ext_resource type="PackedScene" uid="uid://d0bjm8fb2mn6" path="res://nodes/lever.tscn" id="13_mo76n"]
 
