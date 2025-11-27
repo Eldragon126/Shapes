@@ -16,3 +16,23 @@ func _on_quit_pressed() -> void:
 	$AudioStreamPlayer2.stop()
 	$AudioStreamPlayer.stop()
 	queue_free()   # closes the pause menu
+
+
+func _on_max_health_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_shooting_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_movement_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_damage_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_max_healthis_max_health_plus_sides_pressed() -> void:
+	pass # Replace with function body.

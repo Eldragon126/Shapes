@@ -10,6 +10,45 @@
 [ext_resource type="AudioStream" uid="uid://i2a0lp8b3i6g" path="res://assets/Soundtrack/Six Shot Revolver.mp3" id="8_qy4cf"]
 [ext_resource type="AudioStream" uid="uid://crmgi2lh1o3sm" path="res://assets/Soundtrack/Ghost_Town.mp3" id="9_j8cl4"]
 
+[sub_resource type="Animation" id="Animation_j8cl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YouGotThis:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Saying:theme_override_colors/default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.047058824, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Eye:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
 [sub_resource type="Animation" id="Animation_qy4cf"]
 resource_name = "new_animation"
 length = 2.0
@@ -49,45 +88,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.5, 0.01), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.01), Vector2(0.5, 0.5)]
-}
-
-[sub_resource type="Animation" id="Animation_j8cl4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("YouGotThis:theme_override_colors/default_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Saying:theme_override_colors/default_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.047058824, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Eye:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tiryu"]
@@ -183,35 +183,35 @@ offset_bottom = 1299.0
 [node name="BuyThingsVBox" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/BuyThingsVBox"]
+[node name="MaxHealth" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Max Health Increase"
+
+[node name="Shooting" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Faster Shooting"
+
+[node name="Movement" type="Button" parent="CenterContainer/BuyThingsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Faster Movement"
+
+[node name="Damage" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "This Thing"
 
-[node name="Button2" type="Button" parent="CenterContainer/BuyThingsVBox"]
+[node name="MaxHealthisMaxHealthPlusSides" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "This Thing"
+text = "Max Health is OG Max Plus Sides"
 
-[node name="Button3" type="Button" parent="CenterContainer/BuyThingsVBox"]
+[node name="Light" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "This Thing"
-
-[node name="Button4" type="Button" parent="CenterContainer/BuyThingsVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "This Thing"
-
-[node name="Button5" type="Button" parent="CenterContainer/BuyThingsVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "This Thing"
-
-[node name="Button6" type="Button" parent="CenterContainer/BuyThingsVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "This Thing"
+text = "Permanent Light Source"
 
 [node name="Button7" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
@@ -265,5 +265,14 @@ stream = ExtResource("8_qy4cf")
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_j8cl4")
 
+[node name="CannotBuy" type="AudioStreamPlayer" parent="."]
+
+[node name="CanBuy" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="CenterContainer/BuyThingsVBox/MaxHealth" to="." method="_on_max_health_pressed"]
+[connection signal="pressed" from="CenterContainer/BuyThingsVBox/Shooting" to="." method="_on_shooting_pressed"]
+[connection signal="pressed" from="CenterContainer/BuyThingsVBox/Movement" to="." method="_on_movement_pressed"]
+[connection signal="pressed" from="CenterContainer/BuyThingsVBox/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="CenterContainer/BuyThingsVBox/MaxHealthisMaxHealthPlusSides" to="." method="_on_max_healthis_max_health_plus_sides_pressed"]
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/Quit" to="." method="_on_quit_pressed"]
