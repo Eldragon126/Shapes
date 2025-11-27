@@ -13,16 +13,7 @@
 [ext_resource type="PackedScene" path="res://nodes/Enemies/67_enemy.tscn" id="11_qwutr"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="12_671wp"]
 [ext_resource type="PackedScene" uid="uid://d0bjm8fb2mn6" path="res://nodes/lever.tscn" id="13_mo76n"]
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-[ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="14_42l1d"]
->>>>>>> e0a49e19cd2fa747f57ada790a2c1f892f243000
-=======
-[ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="14_42l1d"]
-=======
->>>>>>> 110b100b9aadbf3bd583d8ec71cd90f1fe252dee
->>>>>>> cf774d12085a38d844031bd53fba0d384347d1a3
+[ext_resource type="PackedScene" path="res://nodes/physical_shop.tscn" id="14_42l1d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr18j"]
 radius = 62.514
@@ -39,18 +30,7 @@ position = Vector2(49, 829)
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
 z_index = 0
-<<<<<<< HEAD
-<<<<<<< HEAD
 position = Vector2(754, 103)
-=======
-position = Vector2(4755, -104)
->>>>>>> e0a49e19cd2fa747f57ada790a2c1f892f243000
-=======
-position = Vector2(4755, -104)
-=======
-position = Vector2(754, 103)
->>>>>>> 110b100b9aadbf3bd583d8ec71cd90f1fe252dee
->>>>>>> cf774d12085a38d844031bd53fba0d384347d1a3
 
 [node name="enemy_triangle2" parent="." instance=ExtResource("1_gyfs4")]
 position = Vector2(44, 715)
