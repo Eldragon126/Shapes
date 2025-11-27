@@ -1,9 +1,11 @@
 extends Node2D
 var player: Node2D
+var is_player_in_tomb: bool = false
 
 
 func _on_player_entered_transformer_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		is_player_in_tomb = true
 		$CircleShapes.visible = true
 		$PlayerEnter.play("Stone")
 		$PlayerExited.play("RESET")
@@ -79,18 +81,29 @@ func _on_player_entered_transformer_body_entered(body: Node2D) -> void:
 
 func _on_player_entered_transformer_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		is_player_in_tomb = true
 		$PlayerExited.play("Stone")
 		$PlayerEnter.play("RESET")
 		$PlayerEnter.pause()
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.pause()
 		$AudioStreamPlayer2D.stop()
+		is_player_in_tomb = false
 	else:
 		pass
 	
 	#$CircleShapes.visible = false
 	
-	
+func _process(delta: float) -> void:
+	if is_player_in_tomb == true:
+		pass
+	else:
+		$CircleShapes/Triangle.disabled = true
+		$CircleShapes/Square.disabled = true
+		$CircleShapes/Pentagon.disabled = true
+		$CircleShapes/Hexagon.disabled = true
+		$CircleShapes/Circle.disabled = true
+		
 
 
 func _on_triangle_pressed() -> void:
