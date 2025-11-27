@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqndh7c57b4by"]
+[gd_scene load_steps=20 format=4 uid="uid://cqndh7c57b4by"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_2c62f"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_d5x1h"]
 [ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="1_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_gyfs4"]
+[ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="3_2jcla"]
 [ext_resource type="PackedScene" uid="uid://d2dv7w1x3qsk0" path="res://nodes/Enemies/turret.tscn" id="5_8mm7a"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="6_hq1ik"]
 [ext_resource type="Script" uid="uid://dtom4070tah2l" path="res://scripts/get_sides.gd" id="7_66tet"]
@@ -14,6 +15,44 @@
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="12_671wp"]
 [ext_resource type="PackedScene" uid="uid://d0bjm8fb2mn6" path="res://nodes/lever.tscn" id="13_mo76n"]
 [ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="14_42l1d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]
+texture = ExtResource("3_2jcla")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, -40.158005, 64, -40.15759, -40.244095, 64, -40.04492, 64, -64, -64, -64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, -64, 40.158005, 40.244095, 40.15759, 40.04492, -64, 64, -64, 64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 64, 40.158005, 64, 40.15759, -40.244095, -64, -40.04492, -64, -64, 64, -64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, -40.158005, -64, -40.15759, 40.244095, 64, 40.04492, 64, 64, -64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(40.28969, 64, 40.04492, -64, 64, -64, 64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 40.28969, -64, 40.04492, -64, 64, 64, 64)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -40.28969, -64, -40.04492, -64, -64, 64, -64)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40.28969, -64, -40.04492, 64, -64, 64, -64, -64)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(40.115967, 39.950195, 64, 40.04492, 64, 64, 39.973877, 64)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-39.950195, -40.115967, -40.04492, -64, -64, -64, -64, -39.973877)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(39.950195, -40.115967, 40.04492, -64, 64, -64, 64, -39.973877)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-39.950195, 40.115967, -40.04492, 64, -64, 64, -64, 39.973877)
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ty3yj"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 5
+sources/2 = SubResource("TileSetAtlasSource_rg2c2")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr18j"]
 radius = 62.514
@@ -26,11 +65,26 @@ script = ExtResource("1_d5x1h")
 
 [node name="map_creator" parent="." instance=ExtResource("1_2c62f")]
 z_index = -100
-position = Vector2(49, 829)
+position = Vector2(-227, 886)
+
+[node name="Layer0" type="TileMapLayer" parent="map_creator"]
+use_parent_material = true
+position = Vector2(0, 23)
+tile_map_data = PackedByteArray("AAABAAEAAgAAAAMAAAABAAIAAgAAAAMAAAACAAIAAgAAAAMAAAAAAAIAAgAAAAMAAAAAAAEAAgAAAAMAAAABAAAAAgAAAAMAAAACAAAAAgAAAAMAAAACAAEAAgAAAAMAAAD//wIAAgAAAAMAAAD//wEAAgAAAAMAAAAAAAAAAgAAAAMAAAD//wAAAgAAAAMAAAADAAAAAgAAAAMAAAADAAEAAgAAAAMAAAADAAIAAgAAAAMAAAAEAAIAAgAAAAMAAAD/////AgAAAAMAAAD///7/AgAAAAMAAAAAAP7/AgAAAAMAAAABAP7/AgAAAAMAAAABAP//AgAAAAMAAAAAAP//AgAAAAMAAAD///3/AgAAAAMAAAAAAP3/AgAAAAMAAAABAP3/AgAAAAMAAAACAP3/AgAAAAMAAAADAP3/AgAAAAMAAAAEAP3/AgAAAAMAAAAFAP3/AgAAAAMAAAAGAP3/AgAAAAMAAAAHAP3/AgAAAAMAAAAHAPz/AgAAAAMAAAAGAPz/AgAAAAMAAAAFAPz/AgAAAAMAAAAEAPz/AgAAAAMAAAADAPz/AgAAAAMAAAACAPz/AgAAAAMAAAABAPz/AgAAAAMAAAAAAPz/AgAAAAMAAAD///z/AgAAAAMAAAAHAP7/AgAAAAMAAAAGAP7/AgAAAAMAAAAFAP7/AgAAAAMAAAAEAP7/AgAAAAMAAAADAP7/AgAAAAMAAAACAP7/AgAAAAMAAAACAP//AgAAAAMAAAADAP//AgAAAAMAAAAEAP//AgAAAAMAAAAFAP//AgAAAAMAAAAGAP//AgAAAAMAAAAHAP//AgAAAAMAAAAHAAAAAgAAAAMAAAAHAAEAAgAAAAMAAAAGAAEAAgAAAAMAAAAFAAAAAgAAAAMAAAAEAAAAAgAAAAMAAAAGAAAAAgAAAAMAAAAGAAIAAgAAAAMAAAAFAAIAAgAAAAMAAAAEAAEAAgAAAAMAAAAFAAEAAgAAAAMAAAAHAAIAAgAAAAMAAAA=")
+tile_set = SubResource("TileSet_ty3yj")
+rendering_quadrant_size = 128
+
+[node name="Layer1" type="TileMapLayer" parent="map_creator"]
+z_index = 3
+use_parent_material = true
+position = Vector2(0, 23)
+tile_map_data = PackedByteArray("AAABAAEAAgAAAAMAAAABAAIAAgABAAEAAAACAAIAAgABAAEAAAAAAAIAAgABAAEAAAAAAAEAAgAAAAMAAAABAAAAAgABAAEAAAACAAAAAgABAAEAAAACAAEAAgAAAAMAAAD//wIAAgADAAAAAAD//wEAAgADAAEAAAAAAAAAAgAAAAMAAAD//wAAAgADAAEAAAADAAAAAgAAAAMAAAADAAEAAgAAAAMAAAADAAIAAgABAAEAAAAEAAIAAgABAAEAAAD/////AgADAAEAAAD///7/AgADAAEAAAAAAP7/AgAAAAMAAAABAP7/AgAAAAMAAAABAP//AgAAAAMAAAAAAP//AgAAAAMAAAD///3/AgADAAEAAAAAAP3/AgAAAAMAAAABAP3/AgAAAAMAAAACAP3/AgAAAAMAAAADAP3/AgAAAAMAAAAEAP3/AgAAAAMAAAAFAP3/AgAAAAMAAAAGAP3/AgAAAAMAAAAHAP3/AgAAAAEAAAAHAPz/AgACAAAAAAAGAPz/AgACAAEAAAAFAPz/AgACAAEAAAAEAPz/AgACAAEAAAADAPz/AgACAAEAAAACAPz/AgACAAEAAAABAPz/AgACAAEAAAAAAPz/AgACAAEAAAD///z/AgAAAAAAAAAHAP7/AgAAAAEAAAAGAP7/AgAAAAMAAAAFAP7/AgABAAEAAAAEAP7/AgABAAEAAAADAP7/AgAAAAMAAAACAP7/AgAAAAMAAAACAP//AgAAAAMAAAADAP//AgAAAAMAAAAEAP//AgAAAAMAAAAFAP//AgAAAAMAAAAGAP//AgAAAAMAAAAHAP//AgAAAAEAAAAHAAAAAgAAAAEAAAAHAAEAAgAAAAEAAAAGAAEAAgAAAAMAAAAFAAAAAgAAAAMAAAAEAAAAAgAAAAMAAAAGAAAAAgAAAAMAAAAGAAIAAgABAAEAAAAFAAIAAgABAAEAAAAEAAEAAgAAAAMAAAAFAAEAAgAAAAMAAAAHAAIAAgABAAAAAAA=")
+tile_set = SubResource("TileSet_ty3yj")
+rendering_quadrant_size = 128
 
 [node name="player" parent="." instance=ExtResource("2_gyfs4")]
 z_index = 0
-position = Vector2(2435, 183)
+position = Vector2(95, 1116)
 
 [node name="enemy_triangle2" parent="." instance=ExtResource("1_gyfs4")]
 position = Vector2(44, 715)

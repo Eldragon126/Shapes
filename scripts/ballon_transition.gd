@@ -30,7 +30,7 @@ func _on_floor_3_pressed() -> void:
 		ballon_down.tween_property($Sprite2D, "scale", Vector2(2, 2), 2.0)
 		ballon_down.parallel().tween_property(self, "position:y", self.position.y + 800, 6.0)
 		player_down.parallel().tween_property(player, "position:y", player.position.y + 800, 6.0)
-		ballon_down.parallel().tween_property($player_cam, "position:y", player.position.y + 800, 6.0)
+		#ballon_down.parallel().tween_property($player_cam, "position:y", player.position.y + 800, 6.0)
 	else:
 		print("already on that floor")
 
@@ -45,17 +45,17 @@ func _on_floor_2_pressed() -> void:
 		ballon_down.tween_property($Sprite2D, "scale", Vector2(2, 2), 2.0)
 		ballon_down.parallel().tween_property(self, "position:y", self.position.y + 800, 6.0)
 		player_down.parallel().tween_property(player, "position:y", player.position.y + 800, 6.0)
-		ballon_down.parallel().tween_property($player_cam, "position:y", player.position.y + 800, 6.0)
+		#ballon_down.parallel().tween_property($player_cam, "position:y", player.position.y + 800, 6.0)
 	elif current_floor == 3:
 		var ballon_up = get_tree().create_tween()
 		var player_up = get_tree().create_tween()
 		ballon_up.set_ignore_time_scale(true)
 		player_up.set_ignore_time_scale(true)
 		#player.get_node("./player_cam").enabled = false
-		ballon_up.tween_property($Sprite2D, "scale", Vector2(2, 2), 2.0)
+		ballon_up.tween_property($Sprite2D, "scale", Vector2(4.5, 4.5), 2.0)
 		ballon_up.parallel().tween_property(self, "position:y", self.position.y - 800, 6.0)
 		player_up.parallel().tween_property(player, "position:y", player.position.y - 800, 6.0)
-		ballon_up.parallel().tween_property($player_cam, "position:y", player.position.y - 800, 6.0)
+		#ballon_up.parallel().tween_property($player_cam, "position:y", player.position.y - 800, 6.0)
 	else:
 		pass
 
@@ -67,7 +67,7 @@ func _on_floor_1_pressed() -> void:
 		ballon_up.set_ignore_time_scale(true)
 		player_up.set_ignore_time_scale(true)
 		#player.get_node("./player_cam").enabled = false
-		ballon_up.tween_property($Sprite2D, "scale", Vector2(2, 2), 2.0)
+		ballon_up.tween_property($Sprite2D, "scale", Vector2(4.5, 4.5), 2.0)
 		ballon_up.parallel().tween_property(self, "position:y", self.position.y - 800, 6.0)
 		player_up.parallel().tween_property(player, "position:y", player.position.y - 800, 6.0)
-		ballon_up.parallel().tween_property($player_cam, "position:y", player.position.y - 800, 6.0)
+		#ballon_up.parallel().tween_property($player_cam, "position:y", player.position.y - 800, 6.0)

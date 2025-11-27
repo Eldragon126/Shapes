@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6dyik6epnkt0"]
+[gd_scene load_steps=9 format=3 uid="uid://c6dyik6epnkt0"]
 
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_a6050"]
 [ext_resource type="Script" uid="uid://tqd11lmjw3l2" path="res://scripts/ballon_transition.gd" id="1_j6q8f"]
 [ext_resource type="Texture2D" uid="uid://c1cicq1yoi212" path="res://assets/elevator_UI.png (1).png" id="3_7lrrq"]
+[ext_resource type="FontFile" uid="uid://cye53no5kwfb5" path="res://assets/Fonts/Fragile Bombers Down.otf" id="4_6ln5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6050"]
 size = Vector2(284, 84)
@@ -98,6 +99,10 @@ layout_mode = 0
 offset_left = 192.0
 offset_right = 336.0
 offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.2556082, 0.99999994, 0.9076157, 1)
+theme_override_fonts/font = ExtResource("4_6ln5i")
+theme_override_font_sizes/font_size = 100
+text = "1"
 metadata/_edit_use_anchors_ = true
 
 [node name="floor2" type="Button" parent="TextureButton"]
