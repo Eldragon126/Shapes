@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=11 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="2_137k3"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="3_137k3"]
-[ext_resource type="PackedScene" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
+[ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
 [ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="6_d13pl"]
 [ext_resource type="PackedScene" uid="uid://c6dyik6epnkt0" path="res://nodes/ballon_transition.tscn" id="7_iqdfs"]
+[ext_resource type="AudioStream" uid="uid://douojtt6kiabb" path="res://assets/Chill Background (Name Later).mp3" id="8_d13pl"]
+[ext_resource type="PackedScene" uid="uid://rrp2e23hdmel" path="res://nodes/Enemies/67_enemy.tscn" id="9_3jfbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
 size = Vector2(7382, 112)
@@ -80,9 +82,18 @@ texture = ExtResource("2_137k3")
 position = Vector2(1043, -369)
 
 [node name="PhysicalShop" parent="." instance=ExtResource("4_wpvxr")]
-position = Vector2(3274, -131)
+position = Vector2(851, -221)
 
 [node name="enemy_triangle" parent="." instance=ExtResource("6_d13pl")]
 position = Vector2(2340, -142)
 
 [node name="ballon_transition" parent="." instance=ExtResource("7_iqdfs")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_d13pl")
+volume_db = -10.0
+autoplay = true
+
+[node name="67Enemy" parent="." instance=ExtResource("9_3jfbe")]
+position = Vector2(7089, -444)
+mass = 0.1

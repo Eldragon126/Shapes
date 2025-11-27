@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbi2d1aoe4v3h"]
+[gd_scene load_steps=13 format=3 uid="uid://bbi2d1aoe4v3h"]
 
 [ext_resource type="Script" uid="uid://bl25h8bk4t15f" path="res://scripts/shop.gd" id="1_kjls5"]
 [ext_resource type="FontFile" uid="uid://cye53no5kwfb5" path="res://assets/Fonts/Fragile Bombers Down.otf" id="1_kvjff"]
@@ -7,6 +7,94 @@
 [ext_resource type="Texture2D" uid="uid://thwp3iatqkq1" path="res://assets/MustacheTriangle.png" id="4_wldo4"]
 [ext_resource type="FontFile" uid="uid://ye10sod4od46" path="res://assets/Fonts/LOT.otf" id="5_fxcnm"]
 [ext_resource type="Texture2D" uid="uid://bvcncq2uittnn" path="res://assets/CuteEye.png" id="7_7muav"]
+[ext_resource type="AudioStream" uid="uid://i2a0lp8b3i6g" path="res://assets/Soundtrack/Six Shot Revolver.mp3" id="8_qy4cf"]
+[ext_resource type="AudioStream" uid="uid://crmgi2lh1o3sm" path="res://assets/Soundtrack/Ghost_Town.mp3" id="9_j8cl4"]
+
+[sub_resource type="Animation" id="Animation_qy4cf"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YouGotThis:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Saying:theme_override_colors/default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.047058824, 1, 1, 1), Color(0.047058824, 0.5372549, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Eye:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9, 1.0333333, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.01), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.5, 0.01), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_j8cl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YouGotThis:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Saying:theme_override_colors/default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.047058824, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Eye:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tiryu"]
+_data = {
+&"RESET": SubResource("Animation_j8cl4"),
+&"new_animation": SubResource("Animation_qy4cf")
+}
 
 [node name="Shop" type="Control"]
 process_mode = 3
@@ -65,6 +153,10 @@ offset_bottom = 1417.0
 color = Color(0, 0.32941177, 0.24705882, 1)
 
 [node name="ShopAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tiryu")
+}
+autoplay = "new_animation"
 
 [node name="OldMan" type="Sprite2D" parent="."]
 position = Vector2(777, 128)
@@ -147,6 +239,7 @@ offset_left = 401.0
 offset_top = 678.0
 offset_right = 772.0
 offset_bottom = 756.0
+theme_override_colors/default_color = Color(1, 0, 1, 1)
 theme_override_fonts/normal_font = ExtResource("5_fxcnm")
 theme_override_font_sizes/normal_font_size = 70
 text = "For Poly"
@@ -165,6 +258,12 @@ text = "(:"
 position = Vector2(237, 1193)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_7muav")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qy4cf")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_j8cl4")
 
 [connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/Quit" to="." method="_on_quit_pressed"]

@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 			alreadyinteracted = true
 			var shop = load("res://nodes/shop.tscn").instantiate()
 			$CanvasLayer.add_child(shop)
-		$Label.show()
+		if alreadyinteracted == false:
+			$Label.show()
 	else:
 		$Label.hide()
 		alreadyinteracted = false

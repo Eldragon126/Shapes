@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://behwq3g55v4da"
+path="res://.godot/imported/Challenge Accepted.mp3-feb677baa840454889720f21b4b54c80.mp3str"
+
+[deps]
+
+source_file="res://assets/Soundtrack/Challenge Accepted.mp3"
+dest_files=["res://.godot/imported/Challenge Accepted.mp3-feb677baa840454889720f21b4b54c80.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

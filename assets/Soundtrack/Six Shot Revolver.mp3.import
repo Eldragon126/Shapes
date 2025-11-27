@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://i2a0lp8b3i6g"
+path="res://.godot/imported/Six Shot Revolver.mp3-69b882fad5d006064496e0a81cfdb6e6.mp3str"
+
+[deps]
+
+source_file="res://assets/Soundtrack/Six Shot Revolver.mp3"
+dest_files=["res://.godot/imported/Six Shot Revolver.mp3-69b882fad5d006064496e0a81cfdb6e6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
