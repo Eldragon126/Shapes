@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://du1ic7ks3t51o"]
+
+[ext_resource type="Texture2D" uid="uid://ba06lucb5tqa8" path="res://assets/SmallBalloon.png" id="1_wlsrn"]
+[ext_resource type="Texture2D" uid="uid://bojqr2je8scoh" path="res://assets/BallonRegularBase.png" id="2_q35qg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8iqy2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rs4vr"]
+radius = 125.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_imcvn"]
+
+[node name="BalloonSmall" type="Node2D"]
+
+[node name="Balloon" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_8iqy2")
+gravity_scale = -1.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="Balloon"]
+position = Vector2(0, -300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_wlsrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Balloon"]
+position = Vector2(1, -299)
+shape = SubResource("CircleShape2D_rs4vr")
+
+[node name="Platform" type="RigidBody2D" parent="."]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_imcvn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+position = Vector2(0, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_q35qg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+polygon = PackedVector2Array(131, 44, 131, 141, -131, 141, -131, 43, -157, 44, -157, 157, 157, 156, 157, 44)
