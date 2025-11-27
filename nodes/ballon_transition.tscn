@@ -123,4 +123,6 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="TextureButton/floor1" to="." method="_on_floor_1_pressed"]
+[connection signal="pressed" from="TextureButton/floor2" to="." method="_on_floor_2_pressed"]
 [connection signal="pressed" from="TextureButton/floor3" to="." method="_on_floor_3_pressed"]

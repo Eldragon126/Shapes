@@ -89,7 +89,7 @@ position = Vector2(2340, -142)
 
 [node name="ballon_transition" parent="." instance=ExtResource("7_iqdfs")]
 position = Vector2(47, -29)
-current_floor = 2
+current_floor = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_d13pl")
