@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://2gygj2no2awp"]
+[gd_scene load_steps=5 format=4 uid="uid://byfbqjwix2q6t"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_y4p3v"]
 [ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="2_j63sr"]

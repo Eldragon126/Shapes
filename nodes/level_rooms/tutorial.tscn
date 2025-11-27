@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bct0qoac8ni24"]
+[gd_scene load_steps=6 format=4 uid="uid://cce8woj0kh83q"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_abmjj"]
 [ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="2_81tvw"]
 [ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="3_ts7yx"]
-[ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="4_q85pv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]
 texture = ExtResource("2_81tvw")
@@ -64,7 +63,3 @@ rendering_quadrant_size = 128
 [node name="scene_exit" parent="." instance=ExtResource("3_ts7yx")]
 position = Vector2(1703, -514)
 scale = Vector2(2, 2)
-
-[node name="player" parent="." instance=ExtResource("4_q85pv")]
-z_index = 4
-position = Vector2(-264, -603)
