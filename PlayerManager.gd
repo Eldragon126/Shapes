@@ -4,6 +4,10 @@ var sides_player: int = 0
 var player: Node2D = null
 var currency: int = 0
 var game_paused = false
+
+var room_activate = false
+var player_pos: Vector2
+var playerjumponenter: bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

@@ -18,6 +18,11 @@ var max_speed = 1000
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.player = self
+	if PlayerManager.room_activate:
+		global_position = PlayerManager.player_pos
+		if PlayerManager.playerjumponenter:
+			velocity.y = jump_speed
+		PlayerManager.room_activate = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
