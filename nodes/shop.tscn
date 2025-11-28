@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbi2d1aoe4v3h"]
+[gd_scene load_steps=15 format=3 uid="uid://bbi2d1aoe4v3h"]
 
 [ext_resource type="Script" uid="uid://bl25h8bk4t15f" path="res://scripts/shop.gd" id="1_kjls5"]
 [ext_resource type="FontFile" uid="uid://cye53no5kwfb5" path="res://assets/Fonts/Fragile Bombers Down.otf" id="1_kvjff"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bvcncq2uittnn" path="res://assets/CuteEye.png" id="7_7muav"]
 [ext_resource type="AudioStream" uid="uid://i2a0lp8b3i6g" path="res://assets/Soundtrack/Six Shot Revolver.mp3" id="8_qy4cf"]
 [ext_resource type="AudioStream" uid="uid://crmgi2lh1o3sm" path="res://assets/Soundtrack/Ghost_Town.mp3" id="9_j8cl4"]
+[ext_resource type="AudioStream" uid="uid://cw3lmhumg6ixd" path="res://assets/Soundtrack/SoundEffects/CannotBuy.mp3" id="10_tiryu"]
+[ext_resource type="AudioStream" uid="uid://cvhuqwmlb1jic" path="res://assets/Soundtrack/SoundEffects/Kaching.mp3" id="11_6utwp"]
 
 [sub_resource type="Animation" id="Animation_j8cl4"]
 length = 0.001
@@ -201,7 +203,7 @@ text = "Faster Movement"
 [node name="Damage" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "This Thing"
+text = "Increased Damage"
 
 [node name="MaxHealthisMaxHealthPlusSides" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
@@ -266,8 +268,10 @@ stream = ExtResource("8_qy4cf")
 stream = ExtResource("9_j8cl4")
 
 [node name="CannotBuy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tiryu")
 
 [node name="CanBuy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_6utwp")
 
 [connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/MaxHealth" to="." method="_on_max_health_pressed"]
