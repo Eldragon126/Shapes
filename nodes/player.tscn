@@ -112,7 +112,6 @@ autostart = true
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("7_46y3y")
-max_health = 10
 health = 10
 metadata/_custom_type_script = "uid://dmc7bossv8q17"
 

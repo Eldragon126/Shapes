@@ -1,10 +1,10 @@
 extends CharacterBody2D
 var max_sides: int = PlayerManager.max_sides_player
 var current_sides: int = PlayerManager.sides_player
-@export var speed = 400
-@export var acceleration = 1000
-@export var slow_acceleration = 80
-@export var jump_speed = -speed*2
+var speed = PlayerManager.player_speed
+var acceleration = PlayerManager.player_acceleration
+var slow_acceleration = PlayerManager.player_acceleration_slow
+var jump_speed = -speed*2
 @export var gravity = speed * 5
 @export var max_grav_speed = 100
 @export var extra_jump = true
@@ -12,7 +12,8 @@ var current_sides: int = PlayerManager.sides_player
 @export var projectile_speed: float = 1000
 var dash_speed = 1000
 var can_dash = true
-var max_speed = 1000
+var max_speed = PlayerManager.player_max_speed
+var alreadyaddedlight = false
 @onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +29,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
+	$Health.set_max_health(PlayerManager.player_max_health)
 	$TemporaryHealthBar.value = $Health.health
 	if PlayerManager.max_sides_player > 7:
 		PlayerManager.max_sides_player = 7
@@ -36,7 +38,18 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 	if PlayerManager.sides_player != 7:
 		$UI/Sides.text = "Your sides: " + str(PlayerManager.sides_player)
 	else: $UI/Sides.text = "Your sides: are infinite!"
-		
+	if PlayerManager.does_player_emit_light == true && alreadyaddedlight == false:
+		var light = preload("res://nodes/lobber_projectile.tscn")
+		var lighted = light.instantiate()
+		add_child(lighted)
+		print("Created a light for the player")
+		alreadyaddedlight = true
+	else:
+		var is_there_light = get_tree().get_nodes_in_group("Light")
+		if is_there_light != null:
+			pass
+		else:
+			alreadyaddedlight = false
 	if PlayerManager.sides_player == 3 && PlayerManager.max_sides_player >= 3:
 		$AnimatedSprite2D.animation = "Triangle"
 		$TriangleMask.disabled = false

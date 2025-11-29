@@ -3,7 +3,6 @@ var player = load("res://nodes/player.tscn")
 var player_triangle = player.instantiate()
 var projectile_speed = 700
 var player_ref: Node2D
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var x = Input.get_axis("ui_left", "ui_right")
@@ -53,7 +52,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$HitBox.damage = PlayerManager.lobber_damage
 	
 func _physics_process(delta: float) -> void:
 	pass

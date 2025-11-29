@@ -215,16 +215,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Permanent Light Source"
 
-[node name="Button7" type="Button" parent="CenterContainer/BuyThingsVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "This Thing"
-
-[node name="Button8" type="Button" parent="CenterContainer/BuyThingsVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "This Thing"
-
 [node name="Quit" type="Button" parent="CenterContainer/BuyThingsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
@@ -279,4 +269,5 @@ stream = ExtResource("11_6utwp")
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/Movement" to="." method="_on_movement_pressed"]
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/Damage" to="." method="_on_damage_pressed"]
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/MaxHealthisMaxHealthPlusSides" to="." method="_on_max_healthis_max_health_plus_sides_pressed"]
+[connection signal="pressed" from="CenterContainer/BuyThingsVBox/Light" to="." method="_on_light_pressed"]
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/Quit" to="." method="_on_quit_pressed"]

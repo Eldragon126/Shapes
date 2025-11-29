@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://buffavbg5v1lq"]
+
+[ext_resource type="Texture2D" uid="uid://dvwutjnt5cwpr" path="res://assets/LightSource.png" id="1_ocrln"]
+[ext_resource type="Script" uid="uid://dhg4cviou61sr" path="res://nodes/player_light.gd" id="1_xgtap"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pfm4i"]
+
+[sub_resource type="Gradient" id="Gradient_xgtap"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pfm4i"]
+gradient = SubResource("Gradient_xgtap")
+width = 1000
+height = 1000
+fill = 1
+fill_from = Vector2(0.50282484, 0.5141243)
+fill_to = Vector2(0.8418079, 0.16384181)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tngbr"]
+radius = 40.012497
+
+[node name="PlayerLight" type="RigidBody2D" groups=["Light"]]
+physics_material_override = SubResource("PhysicsMaterial_pfm4i")
+gravity_scale = 0.0
+script = ExtResource("1_xgtap")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_pfm4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ocrln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tngbr")
