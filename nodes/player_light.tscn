@@ -20,6 +20,8 @@ fill_to = Vector2(0.8418079, 0.16384181)
 radius = 40.012497
 
 [node name="PlayerLight" type="RigidBody2D" groups=["Light"]]
+collision_layer = 0
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_pfm4i")
 gravity_scale = 0.0
 script = ExtResource("1_xgtap")
