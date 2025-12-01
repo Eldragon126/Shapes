@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=11 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c6dyik6epnkt0" path="res://nodes/ballon_transition.tscn" id="7_iqdfs"]
 [ext_resource type="AudioStream" uid="uid://douojtt6kiabb" path="res://assets/Chill Background (Name Later).mp3" id="8_d13pl"]
 [ext_resource type="PackedScene" uid="uid://du1ic7ks3t51o" path="res://nodes/balloon_small.tscn" id="9_3jfbe"]
-[ext_resource type="PackedScene" uid="uid://2vkyn0wcrbwh" path="res://nodes/lantern.tscn" id="10_bse77"]
-[ext_resource type="PackedScene" uid="uid://buffavbg5v1lq" path="res://nodes/player_light.tscn" id="11_3xv7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
 size = Vector2(7464, 119)
@@ -103,12 +101,6 @@ position = Vector2(2739, -181)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(31, 723)
 blend_mode = 1
-
-[node name="Lantern" parent="." instance=ExtResource("10_bse77")]
-position = Vector2(2183, -93)
-
-[node name="PlayerLight" parent="." instance=ExtResource("11_3xv7w")]
-position = Vector2(1186, -334)
 
 [node name="THEPLATFORM5" type="StaticBody2D" parent="."]
 position = Vector2(3000, 3000)

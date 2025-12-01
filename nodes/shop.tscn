@@ -262,6 +262,7 @@ stream = ExtResource("10_tiryu")
 
 [node name="CanBuy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_6utwp")
+volume_db = 10.0
 
 [connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="CenterContainer/BuyThingsVBox/MaxHealth" to="." method="_on_max_health_pressed"]

@@ -14,7 +14,7 @@ var dash_speed = 1000
 var can_dash = true
 var max_speed = PlayerManager.player_max_speed
 var alreadyaddedlight = false
-@onready var lobber_projectile = preload("res://nodes/lobber_projectile.tscn")
+@onready var lobber_projectile = load("res://nodes/lobber_projectile.tscn")
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,9 +39,10 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		$UI/Sides.text = "Your sides: " + str(PlayerManager.sides_player)
 	else: $UI/Sides.text = "Your sides: are infinite!"
 	if PlayerManager.does_player_emit_light == true && alreadyaddedlight == false:
-		var light = preload("res://nodes/lobber_projectile.tscn")
+		var light = preload("res://nodes/player_light.tscn")
 		var lighted = light.instantiate()
-		add_child(lighted)
+		get_parent().add_child(lighted)
+		lighted.position = $".".position
 		print("Created a light for the player")
 		alreadyaddedlight = true
 	else:

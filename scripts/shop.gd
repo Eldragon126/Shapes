@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		$CenterContainer/BuyThingsVBox/Light.show()
 	else:
 		$CenterContainer/BuyThingsVBox/Light.hide()
-	
+
 
 func _on_buy_pressed() -> void:
 	$".".position = Vector2(0, -648)
@@ -71,4 +71,8 @@ func _on_max_healthis_max_health_plus_sides_pressed() -> void:
 
 
 func _on_light_pressed() -> void:
-	pass # Replace with function body.
+	if PlayerManager.currency >= 15 && PlayerManager.does_player_emit_light == false:
+		PlayerManager.does_player_emit_light = true
+		$CanBuy.play()
+	else:
+		$CannotBuy.play()
