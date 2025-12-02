@@ -29,7 +29,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
-	$Health.set_max_health(PlayerManager.player_max_health)
+	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
+	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
 	$TemporaryHealthBar.value = $Health.health
 	if PlayerManager.max_sides_player > 7:
 		PlayerManager.max_sides_player = 7
