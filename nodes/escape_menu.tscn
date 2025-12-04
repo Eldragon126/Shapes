@@ -2,6 +2,21 @@
 
 [ext_resource type="AudioStream" uid="uid://bexv1qhqlgku2" path="res://assets/Soundtrack/Christmas Town - Memories.wav" id="1_0u0e2"]
 
+[sub_resource type="Animation" id="Animation_0u0e2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_okbas"]
 resource_name = "new_animation"
 length = 5.0
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(7.219613e-08, 0.21920863, 0.21920872, 1), Color(0, 0.19518769, 0.34092748, 1), Color(0.15449423, 0.00024296403, 0.26422456, 1), Color(0.2753818, 1.1431053e-07, 0.12756583, 1), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_0u0e2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_furkl"]
@@ -71,3 +71,4 @@ autoplay = "new_animation"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0u0e2")
+autoplay = true
