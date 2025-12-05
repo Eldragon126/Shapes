@@ -15,10 +15,11 @@ var playerjumponenter: bool
 var lobber_damage: int = 1
 var max_health_sides_addition: bool = false
 var does_player_emit_light: bool = false
+var can_I_open_a_menu: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	can_I_open_a_menu = true
+	print("you can open a menu because the PlayerManager script was just loaded")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

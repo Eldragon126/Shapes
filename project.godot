@@ -13,6 +13,7 @@ config_version=5
 config/name="Shapes Metroidvania Game Jam Entry"
 run/main_scene="uid://bptb2bnr0r4t8"
 config/features=PackedStringArray("4.5", "Forward Plus")
+run/max_fps=120
 boot_splash/bg_color=Color(1.0107458e-06, 0.49314523, 0.5454243, 1)
 boot_splash/image="uid://0ntbq0imtogl"
 config/icon="res://icon.svg"
@@ -31,6 +32,7 @@ mouse_cursor/custom_image="uid://ra1vqg04b8ax"
 
 Player=""
 Light=""
+ShopGroup=""
 
 [gui]
 

@@ -118,6 +118,14 @@ max_value = 10.0
 step = 1.0
 show_percentage = false
 
+[node name="FPSDEBUG" type="Label" parent="UI"]
+offset_left = 878.0
+offset_top = 613.0
+offset_right = 1144.0
+offset_bottom = 643.0
+text = "MY FRAMES PER SECOND"
+horizontal_alignment = 2
+
 [node name="dash_downtime" type="Timer" parent="."]
 wait_time = 0.4
 autostart = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cut8uhqnbh0o4"]
+[gd_scene load_steps=9 format=3 uid="uid://cut8uhqnbh0o4"]
 
 [ext_resource type="Script" uid="uid://d3feu8xvwd0ba" path="res://scripts/physical_shop.gd" id="1_gp4tu"]
 [ext_resource type="Texture2D" uid="uid://thwp3iatqkq1" path="res://assets/MustacheTriangle.png" id="1_j1qb6"]
@@ -66,6 +66,9 @@ _data = {
 &"WholeAnimation": SubResource("Animation_8v76l")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gp4tu"]
+radius = 534.1582
+
 [node name="PhysicalShop" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_gp4tu")
@@ -100,3 +103,8 @@ theme_override_font_sizes/font_size = 50
 text = "Press e"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["ShopGroup"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gp4tu")

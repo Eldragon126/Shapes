@@ -50,6 +50,8 @@ func _on_buy_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
+	PlayerManager.can_I_open_a_menu = true
+	print("quitting the escape menu so the can I open a menu variable is now true.")
 	$AudioStreamPlayer2.stop()
 	$AudioStreamPlayer.stop()
 	queue_free()   # closes the pause menu

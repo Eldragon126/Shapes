@@ -265,26 +265,6 @@ pivot_offset = Vector2(274.06863, 11.137695)
 theme_override_font_sizes/normal_font_size = 30
 text = "frames Per Second"
 
-[node name="AddVolume2" type="Button" parent="Option Menu"]
-layout_mode = 0
-offset_left = 495.0
-offset_top = 297.0
-offset_right = 575.0
-offset_bottom = 363.0
-theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
-theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
-theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
-theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
-theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
-theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 45
-text = "+"
-
 [node name="AddFPS" type="Button" parent="Option Menu"]
 layout_mode = 0
 offset_left = 495.0
@@ -338,10 +318,16 @@ offset_right = 899.0
 offset_bottom = 373.0
 rotation = -0.3228859
 pivot_offset = Vector2(111, 14)
-show_percentage = false
+max_value = 120.0
 
 [node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="VFlowContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VFlowContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="VFlowContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Option Menu/Cool Button" to="." method="_on_cool_button_pressed"]
+[connection signal="pressed" from="Option Menu/AddVolume" to="." method="_on_add_volume_pressed"]
+[connection signal="pressed" from="Option Menu/SubtractVolume" to="." method="_on_subtract_volume_pressed"]
+[connection signal="pressed" from="Option Menu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Option Menu/AddFPS" to="." method="_on_add_fps_pressed"]
+[connection signal="pressed" from="Option Menu/SubtractFPS" to="." method="_on_subtract_fps_pressed"]
