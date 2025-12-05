@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dagcttbgic483"]
+[gd_scene load_steps=7 format=3 uid="uid://dagcttbgic483"]
 
 [ext_resource type="AudioStream" uid="uid://bexv1qhqlgku2" path="res://assets/Soundtrack/Christmas Town - Memories.wav" id="1_0u0e2"]
+[ext_resource type="Script" uid="uid://xodc23lgafu7" path="res://scripts/escape_menu.gd" id="1_furkl"]
+[ext_resource type="Texture2D" uid="uid://by7lfua2gevc5" path="res://assets/Kermit.png" id="3_qeewr"]
 
 [sub_resource type="Animation" id="Animation_0u0e2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("CenterContainer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,14 +26,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("CenterContainer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.02, 2.01, 2.99, 4.01, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(7.219613e-08, 0.21920863, 0.21920872, 1), Color(0, 0.19518769, 0.34092748, 1), Color(0.15449423, 0.00024296403, 0.26422456, 1), Color(0.2753818, 1.1431053e-07, 0.12756583, 1), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 1), Color(7.219613e-08, 0.21920863, 0.21920872, 1), Color(0, 0.19518769, 0.34092748, 1), Color(0.15449423, 0.00024296403, 0.26422456, 1), Color(0, 0.13333334, 0.28627452, 0.3764706), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_furkl"]
@@ -47,21 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Hello" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 227.0
-offset_top = 82.0
-offset_right = 815.0
-offset_bottom = 122.0
-text = "This is the escape Menu"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
+script = ExtResource("1_furkl")
 
 [node name="BGcolorChanger" type="AnimationPlayer" parent="."]
 libraries = {
@@ -72,3 +60,288 @@ autoplay = "new_animation"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0u0e2")
 autoplay = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1080, 640)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+z_index = -1
+custom_minimum_size = Vector2(880, 480)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CenterContainer"]
+z_index = -2
+custom_minimum_size = Vector2(900, 500)
+layout_mode = 2
+color = Color(0, 0, 0, 0.65882355)
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 0
+offset_left = 366.0
+offset_top = 145.0
+offset_right = 713.0
+offset_bottom = 495.0
+
+[node name="Options" type="Button" parent="VFlowContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Options"
+
+[node name="Quit" type="Button" parent="VFlowContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Quit"
+
+[node name="Menu" type="Button" parent="VFlowContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Menu"
+
+[node name="Hello" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(480, 40)
+layout_mode = 0
+offset_left = 104.0
+offset_top = 85.0
+offset_right = 584.0
+offset_bottom = 125.0
+text = "Remember us pleaseee"
+
+[node name="Hello2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(480, 20)
+layout_mode = 0
+offset_left = 78.0
+offset_top = 528.0
+offset_right = 963.0
+offset_bottom = 548.0
+text = "Always Watching."
+horizontal_alignment = 2
+
+[node name="Option Menu" type="Control" parent="."]
+custom_minimum_size = Vector2(1080, 680)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Volume" type="RichTextLabel" parent="Option Menu"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 115.712204
+offset_top = 160.05728
+offset_right = 645.7122
+offset_bottom = 260.0573
+rotation = -0.1605703
+pivot_offset = Vector2(221.2879, 20.397278)
+theme_override_font_sizes/normal_font_size = 50
+text = "Volume Control"
+
+[node name="Cool Button" type="Button" parent="Option Menu"]
+custom_minimum_size = Vector2(350, 60)
+layout_mode = 0
+offset_left = 362.0
+offset_top = 476.0
+offset_right = 712.0
+offset_bottom = 536.0
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "Cool Button"
+
+[node name="AddVolume" type="Button" parent="Option Menu"]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 96.0
+offset_right = 705.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "+"
+
+[node name="SubtractVolume" type="Button" parent="Option Menu"]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 177.0
+offset_right = 628.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "-"
+
+[node name="VolumePercent" type="ProgressBar" parent="Option Menu"]
+layout_mode = 0
+offset_left = 730.7534
+offset_top = 333.87268
+offset_right = 927.7534
+offset_bottom = 360.87268
+rotation = 0.3228859
+pivot_offset = Vector2(620.7922, -91.599915)
+
+[node name="Back" type="Button" parent="Option Menu"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 496.0
+offset_right = 235.0
+offset_bottom = 548.0
+text = "Back"
+
+[node name="FPS" type="RichTextLabel" parent="Option Menu"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 124.0
+offset_top = 350.0
+offset_right = 492.33112
+offset_bottom = 450.0
+rotation = 0.14486232
+pivot_offset = Vector2(274.06863, 11.137695)
+theme_override_font_sizes/normal_font_size = 30
+text = "frames Per Second"
+
+[node name="AddVolume2" type="Button" parent="Option Menu"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 297.0
+offset_right = 575.0
+offset_bottom = 363.0
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "+"
+
+[node name="AddFPS" type="Button" parent="Option Menu"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 297.0
+offset_right = 575.0
+offset_bottom = 363.0
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "+"
+
+[node name="SubtractFPS" type="Button" parent="Option Menu"]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 384.0
+offset_right = 642.0
+offset_bottom = 450.0
+theme_override_colors/font_color = Color(0.05193147, 0.99999994, 0.97398514, 1)
+theme_override_colors/font_focus_color = Color(3.128499e-07, 0.3392049, 0.33029765, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_hover_color = Color(0.078431375, 0.7411765, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.3372549, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.22352941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "-"
+
+[node name="Sprite2D" type="Sprite2D" parent="Option Menu"]
+position = Vector2(753.99994, 468.99997)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_qeewr")
+
+[node name="FramesPerSecond" type="ProgressBar" parent="Option Menu"]
+layout_mode = 0
+offset_left = 667.0
+offset_top = 346.0
+offset_right = 899.0
+offset_bottom = 373.0
+rotation = -0.3228859
+pivot_offset = Vector2(111, 14)
+show_percentage = false
+
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="VFlowContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VFlowContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VFlowContainer/Menu" to="." method="_on_menu_pressed"]

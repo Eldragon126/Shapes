@@ -13,7 +13,7 @@ var jump_speed = -speed*2
 var dash_speed = 1000
 var can_dash = true
 var max_speed = PlayerManager.player_max_speed
-var alreadyaddedlight = false
+var alreadyaddedlight: bool = false
 @onready var lobber_projectile = load("res://nodes/lobber_projectile.tscn")
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +31,7 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
-	$TemporaryHealthBar.value = $Health.health
+	$UI/TemporaryHealthBar.value = $Health.health
 	if PlayerManager.max_sides_player > 7:
 		PlayerManager.max_sides_player = 7
 	if PlayerManager.max_sides_player < 3:

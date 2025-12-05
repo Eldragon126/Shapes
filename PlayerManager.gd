@@ -23,3 +23,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func save() -> void:
+	pass
+	var did_the_game_save_successfully: bool = true

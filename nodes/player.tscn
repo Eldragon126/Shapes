@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://hfedesmkpl6q"]
+[gd_scene load_steps=14 format=3 uid="uid://hfedesmkpl6q"]
 
 [ext_resource type="Script" uid="uid://bqyul54cf5fhe" path="res://scripts/player.gd" id="1_2wrp4"]
 [ext_resource type="Texture2D" uid="uid://dq14utau70tll" path="res://assets/Player/Sphere.png" id="2_46y3y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://iasj3sn4lm3h" path="res://assets/Player/Square.png" id="5_hg0js"]
 [ext_resource type="Texture2D" uid="uid://bbljlgvam47q" path="res://assets/Player/Triangle.png" id="6_4n5g4"]
 [ext_resource type="Script" uid="uid://dmc7bossv8q17" path="res://scripts/Health.gd" id="7_46y3y"]
+[ext_resource type="Script" uid="uid://dvfjxdlly5pmk" path="res://scripts/ui.gd" id="7_hg0js"]
 [ext_resource type="Script" uid="uid://cv0kocsb7np4x" path="res://scripts/hurtbox.gd" id="8_ejohg"]
 [ext_resource type="AudioStream" uid="uid://cpl0fquigtjel" path="res://assets/Soundtrack/SoundEffects/HurtPlayerTemp.wav" id="9_qbdof"]
 
@@ -93,18 +94,29 @@ sprite_frames = SubResource("SpriteFrames_gleio")
 animation = &"Triangle"
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 0
+process_mode = 3
+script = ExtResource("7_hg0js")
 
 [node name="Sides" type="Label" parent="UI"]
 z_index = -1
-offset_left = 11.0
+anchors_preset = -1
+offset_left = 9.0
 offset_top = 8.0
-offset_right = 971.0
-offset_bottom = 84.0
+offset_right = 1079.0
+offset_bottom = 59.0
 theme_override_colors/font_color = Color(1.2032688e-06, 0, 0.47234696, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
 text = "Your Current Sides"
 metadata/_edit_use_anchors_ = true
+
+[node name="TemporaryHealthBar" type="ProgressBar" parent="UI"]
+offset_left = 10.0
+offset_top = 32.0
+offset_right = 154.0
+offset_bottom = 59.0
+max_value = 10.0
+step = 1.0
+show_percentage = false
 
 [node name="dash_downtime" type="Timer" parent="."]
 wait_time = 0.4
@@ -141,15 +153,6 @@ disabled = true
 [node name="CircleMask" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_2wrp4")
 disabled = true
-
-[node name="TemporaryHealthBar" type="ProgressBar" parent="."]
-offset_left = -72.0
-offset_top = -108.0
-offset_right = 72.0
-offset_bottom = -81.0
-max_value = 10.0
-step = 1.0
-show_percentage = false
 
 [node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_qbdof")
