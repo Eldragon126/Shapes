@@ -16,7 +16,7 @@ func _on_area_entered(hitbox: HitBox) -> void:
 			recieved_damage.emit(hitbox.damage)
 			health.set_temporary_immortality(immortality_time)
 			recieved_damage.emit(hitbox.damage)
-		if health.health == 0:
+		if health.health <= 0:
 			health.health_depleted.emit()
 			print("Emitted health depleated")
 		else:
