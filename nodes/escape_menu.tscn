@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dagcttbgic483"]
+[gd_scene load_steps=8 format=3 uid="uid://dagcttbgic483"]
 
-[ext_resource type="AudioStream" uid="uid://bexv1qhqlgku2" path="res://assets/Soundtrack/Christmas Town - Memories.wav" id="1_0u0e2"]
 [ext_resource type="Script" uid="uid://xodc23lgafu7" path="res://scripts/escape_menu.gd" id="1_furkl"]
+[ext_resource type="AudioStream" uid="uid://cksvtw3ysoki4" path="res://assets/Soundtrack/Escape Menu.mp3" id="2_qeewr"]
 [ext_resource type="Texture2D" uid="uid://by7lfua2gevc5" path="res://assets/Kermit.png" id="3_qeewr"]
+[ext_resource type="Script" uid="uid://citu0k3q5ybg0" path="res://scripts/audio_stream_escape_menu.gd" id="3_vugn6"]
 
 [sub_resource type="Animation" id="Animation_0u0e2"]
 length = 0.001
@@ -58,8 +59,10 @@ libraries = {
 autoplay = "new_animation"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_0u0e2")
+stream = ExtResource("2_qeewr")
 autoplay = true
+parameters/looping = true
+script = ExtResource("3_vugn6")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(1080, 640)

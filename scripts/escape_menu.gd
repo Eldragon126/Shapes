@@ -1,5 +1,5 @@
 extends Control
-
+const  BPMRate: float = 60/130
 func _ready() -> void:
 	$"Option Menu".hide()
 	print("The Escape menu exists and is lively")

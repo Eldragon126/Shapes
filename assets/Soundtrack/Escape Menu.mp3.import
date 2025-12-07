@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cksvtw3ysoki4"
+path="res://.godot/imported/Escape Menu.mp3-f6477d27c851e8e90238cf93cbf22fdc.mp3str"
+
+[deps]
+
+source_file="res://assets/Soundtrack/Escape Menu.mp3"
+dest_files=["res://.godot/imported/Escape Menu.mp3-f6477d27c851e8e90238cf93cbf22fdc.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=33.333
+bpm=130.0
+beat_count=0
+bar_beats=4
