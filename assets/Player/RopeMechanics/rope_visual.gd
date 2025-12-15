@@ -1,7 +1,8 @@
 class_name RopeVisual
+
 extends Node
 
-@export var player: Player
+@export var player: ShapePlayer
 @export var segment_count: int = 5
 
 var segments: Array[RigidBody2D]

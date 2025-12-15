@@ -1,4 +1,4 @@
-class_name Player
+class_name ShapePlayer
 extends CharacterBody2D
 
 var max_sides: int = PlayerManager.max_sides_player
@@ -115,6 +115,10 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
 	$UI/TemporaryHealthBar.value = $Health.health
+	if PlayerManager.max_health_sides_addition == false:
+		$UI/TemporaryHealthBar.max_value = PlayerManager.player_max_health
+	else:
+		$UI/TemporaryHealthBar.max_value = PlayerManager.player_max_health + PlayerManager.sides_player
 	if PlayerManager.max_sides_player > 7:
 		PlayerManager.max_sides_player = 7
 	if PlayerManager.max_sides_player < 3:
