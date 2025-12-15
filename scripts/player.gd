@@ -179,11 +179,11 @@ func handle_input(delta: float) -> void:
 		velocity.x = 0
 		velocity.y = 0
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-			velocity.x = 10 * (direction * dash_speed)
-			velocity.x -= 10 * (direction * dash_speed * delta)
+			velocity.x = 25 * (direction * dash_speed)
+			velocity.x -= 25 * (direction * dash_speed * delta)
 		if Input.is_action_pressed("ui_up"):
-			velocity.y = direction_y * dash_speed
-			velocity.y -= direction_y * dash_speed * delta
+			velocity.y = direction_y * dash_speed * 0.75
+			velocity.y -= direction_y * dash_speed * delta * 0.75
 		if Input.is_action_pressed("ui_down"):
 			velocity.y = direction_y * dash_speed
 			velocity.y -= direction_y * dash_speed * delta

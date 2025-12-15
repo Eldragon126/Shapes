@@ -27,6 +27,7 @@ func _on_floor_3_pressed() -> void:
 	#$AnimationPlayer.play("ballon_ui")
 	if current_floor != 3 and floor_selected == false:
 		floor_selected = true
+		$ElevatorButtons.hide()
 		var ballon_down = get_tree().create_tween()
 		var player_down = get_tree().create_tween()
 		ballon_down.set_ignore_time_scale(true)
