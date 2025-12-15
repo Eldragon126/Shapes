@@ -5,7 +5,5 @@ func _ready() -> void:
 	scale = Vector2(rand,rand)
 	player = PlayerManager.player
 func _process(delta: float) -> void:
-	if player.global_position < Vector2(400 * rand,4000 * rand):
+	if player.global_position < Vector2(4000 * rand,40000 * rand):
 		freeze = false
-	else:
-		freeze = true

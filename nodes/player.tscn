@@ -213,7 +213,7 @@ segment_count = 10
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_k5sjp")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Dash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ea43s")

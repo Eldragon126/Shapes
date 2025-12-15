@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=15 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="2_137k3"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="3_137k3"]
 [ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
+[ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="6_d13pl"]
 [ext_resource type="PackedScene" uid="uid://c6dyik6epnkt0" path="res://nodes/ballon_transition.tscn" id="7_iqdfs"]
 [ext_resource type="AudioStream" uid="uid://douojtt6kiabb" path="res://assets/Chill Background (Name Later).mp3" id="8_d13pl"]
 [ext_resource type="PackedScene" uid="uid://du1ic7ks3t51o" path="res://nodes/balloon_small.tscn" id="9_3jfbe"]
-[ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="9_bse77"]
+[ext_resource type="PackedScene" uid="uid://02xevtnd5i8l" path="res://nodes/big_bouncy_ball.tscn" id="9_3xv7w"]
+[ext_resource type="PackedScene" uid="uid://c43t1wpcrekyf" path="res://nodes/decaying_platform.tscn" id="10_bse77"]
+[ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_3xv7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
 size = Vector2(7464, 119)
@@ -99,6 +102,7 @@ autoplay = true
 position = Vector2(1811, -126)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 position = Vector2(31, 723)
 blend_mode = 1
 
@@ -124,5 +128,15 @@ collision_mask = 64
 position = Vector2(3426, -823)
 shape = SubResource("RectangleShape2D_3jfbe")
 
-[node name="Enemy5" parent="." instance=ExtResource("9_bse77")]
-position = Vector2(1615, -193)
+[node name="BigBouncyBall" parent="StaticBody2D" instance=ExtResource("9_3xv7w")]
+position = Vector2(2780, -753)
+freeze = true
+
+[node name="DecayingPlatform" parent="." instance=ExtResource("10_bse77")]
+position = Vector2(2379, -184)
+
+[node name="HeartEnemy" parent="." instance=ExtResource("11_3xv7w")]
+position = Vector2(900, -497)
+
+[node name="enemy_triangle" parent="." instance=ExtResource("6_d13pl")]
+position = Vector2(9288, -215)
