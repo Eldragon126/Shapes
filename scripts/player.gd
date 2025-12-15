@@ -259,6 +259,7 @@ func handle_input(delta: float) -> void:
 		dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
+		$Jump.volume_db = -30.0
 		$Jump.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)

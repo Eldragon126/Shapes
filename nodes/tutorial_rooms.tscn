@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://jw4ea85xjyh5"]
+[gd_scene load_steps=14 format=4 uid="uid://jw4ea85xjyh5"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_cdtnb"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_pa367"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0bjm8fb2mn6" path="res://nodes/lever.tscn" id="5_pa367"]
 [ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="8_6qb3g"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="8_hynay"]
+[ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="9_hynay"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]
 texture = ExtResource("2_ref71")
@@ -120,3 +121,12 @@ player_pos = Vector2(2125, 1952)
 
 [node name="TransformationTomb" parent="." instance=ExtResource("8_hynay")]
 position = Vector2(-3351, 165)
+
+[node name="Collectable" parent="." instance=ExtResource("9_hynay")]
+position = Vector2(-428, -1723)
+
+[node name="Collectable2" parent="." instance=ExtResource("9_hynay")]
+position = Vector2(1914, -2546)
+
+[node name="Collectable3" parent="." instance=ExtResource("9_hynay")]
+position = Vector2(-644, -3761)

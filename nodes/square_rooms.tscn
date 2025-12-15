@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://j6p7l8sx8fem"]
+[gd_scene load_steps=6 format=3 uid="uid://j6p7l8sx8fem"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_rxyy8"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_k7ydd"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_he3fy"]
 [ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="4_he3fy"]
+[ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="5_qxn16"]
 
 [node name="square_rooms" type="Node2D"]
 
@@ -36,3 +37,9 @@ position = Vector2(1984, 1934)
 scale = Vector2(1, 2)
 connected_room = "res://nodes/tutorial_rooms.tscn"
 player_pos = Vector2(3258, -964)
+
+[node name="Collectable" parent="." instance=ExtResource("5_qxn16")]
+position = Vector2(-1236, -1166)
+
+[node name="Collectable2" parent="." instance=ExtResource("5_qxn16")]
+position = Vector2(5102, -2250)
