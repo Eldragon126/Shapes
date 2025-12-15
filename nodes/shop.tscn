@@ -98,7 +98,7 @@ _data = {
 &"new_animation": SubResource("Animation_qy4cf")
 }
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" groups=["Persist"]]
 process_mode = 3
 z_index = 20
 layout_mode = 3
@@ -191,6 +191,7 @@ theme_override_font_sizes/font_size = 40
 text = "Max Health Increase"
 
 [node name="Shooting" type="Button" parent="CenterContainer/BuyThingsVBox"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Faster Shooting"

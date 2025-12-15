@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dagcttbgic483"]
+[gd_scene load_steps=9 format=3 uid="uid://dagcttbgic483"]
 
 [ext_resource type="Script" uid="uid://xodc23lgafu7" path="res://scripts/escape_menu.gd" id="1_furkl"]
 [ext_resource type="AudioStream" uid="uid://cksvtw3ysoki4" path="res://assets/Soundtrack/Escape Menu.mp3" id="2_qeewr"]
 [ext_resource type="Texture2D" uid="uid://by7lfua2gevc5" path="res://assets/Kermit.png" id="3_qeewr"]
 [ext_resource type="Script" uid="uid://citu0k3q5ybg0" path="res://scripts/audio_stream_escape_menu.gd" id="3_vugn6"]
+[ext_resource type="AudioStream" uid="uid://fd0yj40o011k" path="res://assets/Soundtrack/SoundEffects/click.wav" id="5_r7gmv"]
 
 [sub_resource type="Animation" id="Animation_0u0e2"]
 length = 0.001
@@ -197,7 +198,7 @@ theme_override_colors/icon_pressed_color = Color(1, 0, 1, 1)
 theme_override_colors/icon_hover_color = Color(1, 0, 1, 1)
 theme_override_colors/icon_hover_pressed_color = Color(1, 0, 1, 1)
 theme_override_font_sizes/font_size = 45
-text = "Cool Button"
+text = "Save Game"
 
 [node name="AddVolume" type="Button" parent="Option Menu"]
 layout_mode = 0
@@ -324,6 +325,7 @@ pivot_offset = Vector2(111, 14)
 max_value = 120.0
 
 [node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r7gmv")
 
 [connection signal="pressed" from="VFlowContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VFlowContainer/Quit" to="." method="_on_quit_pressed"]

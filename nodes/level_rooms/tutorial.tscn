@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_abmjj"]
 [ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="2_81tvw"]
-[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="3_ts7yx"]
+[ext_resource type="PackedScene" path="res://nodes/scene_exit.tscn" id="3_ts7yx"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="4_odbto"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]

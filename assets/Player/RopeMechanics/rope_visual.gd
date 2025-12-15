@@ -19,7 +19,7 @@ func create_segment(pos: Vector2):
 	cs.shape = circle
 	add_child(rb)
 	rb.add_child(cs)
-	rb.mass = .1
+	rb.mass = .5
 	rb.collision_layer = 0
 	rb.collision_mask = 0
 	rb.global_position = pos

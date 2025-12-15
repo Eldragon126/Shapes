@@ -15,11 +15,14 @@ func _process(delta: float) -> void:
 func _on_options_pressed() -> void:
 	$VFlowContainer.hide()
 	$"Option Menu".show()
+	$ButtonPressSound.play()
+	PlayerManager.save_game()
 
 func _on_quit_pressed() -> void:
 	PlayerManager.can_I_open_a_menu = true
+	PlayerManager.save_game()
+	$ButtonPressSound.play()
 	print("Leaving escape menu to leave game, can I open a menu is true")
-	PlayerManager.save()
 	get_tree().paused = false
 	get_tree().quit()
 
@@ -27,30 +30,34 @@ func _on_quit_pressed() -> void:
 func _on_menu_pressed() -> void:
 	PlayerManager.can_I_open_a_menu = true
 	print("Leaving escape menu to go to start menu, can I open a menu is true")
+	$ButtonPressSound.play()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://nodes/level_rooms/title_screen.tscn")
 
 
 func _on_cool_button_pressed() -> void:
-	pass # Replace with function body.
+	PlayerManager.save_game()
+	$ButtonPressSound.play()
+	
 
 
 func _on_add_volume_pressed() -> void:
 	if AudioServer.get_bus_volume_db(0) < 0: AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) + 1)
 	else: pass
-
+	$ButtonPressSound.play()
 
 func _on_subtract_volume_pressed() -> void:
 	AudioServer.set_bus_volume_db(0, AudioServer.get_bus_volume_db(0) - 1)
-
+	$ButtonPressSound.play()
 func _on_back_pressed() -> void:
 	$VFlowContainer.show()
 	$"Option Menu".hide()
-
+	$ButtonPressSound.play()
 
 func _on_add_fps_pressed() -> void:
 	if Engine.max_fps < 120: Engine.max_fps = Engine.max_fps + 12
-
+	$ButtonPressSound.play()
 
 func _on_subtract_fps_pressed() -> void:
 	if Engine.max_fps > 12: Engine.max_fps = Engine.max_fps - 12
+	$ButtonPressSound.play()

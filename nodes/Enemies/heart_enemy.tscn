@@ -1,0 +1,121 @@
+[gd_scene load_steps=11 format=3 uid="uid://cdmnj44b6k1l0"]
+
+[ext_resource type="Texture2D" uid="uid://bty6g2846h7ay" path="res://assets/CuteSmileyFace.png" id="1_i3l5p"]
+[ext_resource type="Script" uid="uid://b3l7ql71h3v5b" path="res://scripts/enemy_triangle.gd" id="2_ftp4g"]
+[ext_resource type="Script" uid="uid://cv0kocsb7np4x" path="res://scripts/hurtbox.gd" id="3_s48j5"]
+[ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="4_0bvob"]
+[ext_resource type="Texture2D" uid="uid://cdja0naqv5lug" path="res://assets/LargeCuteEye.png" id="5_xts4g"]
+[ext_resource type="Script" uid="uid://dmc7bossv8q17" path="res://scripts/Health.gd" id="6_0bvob"]
+[ext_resource type="Texture2D" uid="uid://fy78w3ukuhy2" path="res://assets/SmallCuteEye.png" id="6_vr3ut"]
+[ext_resource type="AudioStream" uid="uid://be5kjx25smt87" path="res://assets/Soundtrack/SoundEffects/blipSelect.wav" id="8_xts4g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_udmcx"]
+radius = 41.04875
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nn5h2"]
+radius = 69.02898
+
+[node name="HeartEnemy" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_ftp4g")
+speed = 300
+distance_to_player = 1000
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_i3l5p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(-333, -104, -276, -235, -186, -284, -70, -273, 1, -217, 75, -272, 177, -285, 249, -254, 307, -191, 330, -97, 306, -21, 57, 232, 7, 284, -296, -5)
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D"]
+offset_left = -52.0
+offset_top = -97.0
+offset_right = 52.0
+offset_bottom = -70.0
+max_value = 7.0
+step = 1.0
+show_percentage = false
+
+[node name="collision_detection" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D/collision_detection"]
+polygon = PackedVector2Array(-333, -104, -276, -235, -186, -284, -70, -273, 1, -217, 75, -272, 177, -285, 249, -254, 307, -191, 330, -97, 306, -21, 57, 232, 7, 284, -296, -5)
+
+[node name="HurtBox" type="Area2D" parent="CharacterBody2D" node_paths=PackedStringArray("sound", "health")]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_s48j5")
+sound = NodePath("../AudioStreamPlayer")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://cv0kocsb7np4x"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D/HurtBox"]
+polygon = PackedVector2Array(-333, -104, -276, -235, -186, -284, -70, -273, 1, -217, 75, -272, 177, -285, 249, -254, 307, -191, 330, -97, 306, -21, 57, 232, 7, 284, -296, -5)
+
+[node name="Health" type="Node" parent="CharacterBody2D" node_paths=PackedStringArray("sound")]
+script = ExtResource("6_0bvob")
+max_health = 10
+sound = NodePath("../AudioStreamPlayer")
+health = 7
+metadata/_custom_type_script = "uid://dmc7bossv8q17"
+
+[node name="HitBox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("4_0bvob")
+damage = 2
+metadata/_custom_type_script = "uid://bdy16u4km4bt6"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D/HitBox"]
+polygon = PackedVector2Array(-333, -104, -276, -235, -186, -284, -70, -273, 1, -217, 75, -272, 177, -285, 249, -254, 307, -191, 330, -97, 306, -21, 57, 232, 7, 284, -296, -5)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("8_xts4g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="CharacterBody2D/StaticBody2D"]
+z_index = 30
+z_as_relative = false
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(111, -43, 145, -39, 169, -57, 190, -91, 186, -129, 170, -152, 135, -165, 100, -156, 79, -138, 66, -107, 67, -77, 114, -34, 107, -25, 54, -69, 48, -116, 62, -152, 100, -182, 156, -185, 187, -165, 217, -117, 212, -71, 188, -41, 127, -16, 98, -28)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="CharacterBody2D/StaticBody2D"]
+z_index = 30
+z_as_relative = false
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(1, -1, -81, -28, -42, -61, -33, -102, -40, -141, -63, -167, -91, -183, -141, -185, -176, -163, -199, -121, -197, -74, -179, -44, -147, -22, -102, -18, -60, -37, -100, 2, -219, -31, -210, -178, -74, -222, -10, -109, -43, -30)
+
+[node name="Eye1" type="RigidBody2D" parent="."]
+disable_mode = 2
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eye1"]
+position = Vector2(130, -99)
+shape = SubResource("CircleShape2D_udmcx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Eye1"]
+position = Vector2(130, -100)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_xts4g")
+
+[node name="Eye2" type="RigidBody2D" parent="."]
+disable_mode = 2
+collision_layer = 32
+collision_mask = 32
+
+[node name="Sprite2D" type="Sprite2D" parent="Eye2"]
+position = Vector2(-114, -104)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_vr3ut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eye2"]
+position = Vector2(-114, -105)
+shape = SubResource("CircleShape2D_nn5h2")

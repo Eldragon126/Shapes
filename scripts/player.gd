@@ -10,7 +10,7 @@ var jump_speed = -speed*2
 @export var gravity = speed * 5
 @export var max_grav_speed = 100
 @export var extra_jump = true
-@export var jump_count = 0
+@export var jump_count: int = 0
 @export var projectile_speed: float = 1000
 var dash_speed = 1000
 var can_dash = true
@@ -26,16 +26,16 @@ var is_hanging: bool
 var tracking: PackedVector2Array
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var release_timer: Timer = $ReleaseTimer
-@onready var rope_visual: RopeVisual
+@onready var rope_visual: RopeVisual = $RopeVisual
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_buffer: Timer = $JumpBuffer
-@export var max_speed_rope_player: float = 5000
+@export var max_speed_rope_player: float = 100
 @export var accel: float = 1
 @export var accel_curve: Curve
 @export var friction: float = 4
 @export_group("Rope", "rope_")
-@export var rope_stiffnes: float = 500
-@export var rope_friction: float = 1
+@export var rope_stiffnes: float = 1000
+@export var rope_friction: float = 3
 const SPEED = 1
 const JUMP_VELOCITY = 1
 
@@ -49,9 +49,6 @@ func _ready() -> void:
 		if PlayerManager.playerjumponenter:
 			velocity.y = jump_speed
 		PlayerManager.room_activate = false
-	rope_visual = RopeVisual.new()
-	get_parent().add_child(rope_visual)
-	rope_visual.player = self
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,44 +57,38 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_movement(delta)
 	if PlayerManager.sides_player == 5:
-				# reset coyote timer
 		if is_on_floor():
 			coyote_timer.start()
 		# rotate raycast to mouse
 		ray_cast_2d.rotation = get_local_mouse_position().angle()
 		# Add the gravity.
-		if velocity.y < 0 or is_hanging:
-			velocity += get_gravity() * delta
-		else:
-			velocity += get_gravity() * delta * 2
+		#if velocity.y < 0 or is_hanging:
+			#velocity += get_gravity() * delta
+		#else:
+			#velocity += get_gravity() * delta * 2
 		
-		# start jump buffer
-		if Input.is_action_just_pressed("up"):
-			jump_buffer.start()
-		# Handle jump
-		if (not jump_buffer.is_stopped()) and (not coyote_timer.is_stopped() or not release_timer.is_stopped()):
-			velocity.y = JUMP_VELOCITY
-			jump_buffer.stop()
-			coyote_timer.stop()
-		if Input.is_action_just_released("up") and velocity.y < 0:
-			velocity.y = 0
+		#if (not jump_buffer.is_stopped()) and (not coyote_timer.is_stopped() or not release_timer.is_stopped()):
+			#velocity.y = JUMP_VELOCITY
+			#jump_buffer.stop()
+			#coyote_timer.stop()
+#		if Input.is_action_just_released("up") and velocity.y < 0:
+#			velocity.y = 0
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
-		var direction := Input.get_axis("left", "right")
+		var direction := Input.get_axis("ui_left", "ui_right")
 		var norm_speed = abs(velocity.x) / max_speed_rope_player
 		if is_on_floor():
 			# Accel when on floor
-			velocity.x += accel * max_speed * direction * delta * accel_curve.sample(norm_speed)
-			velocity.x -= friction * max_speed * delta * norm_speed * sign(velocity.x)
+			velocity.x += accel * max_speed_rope_player * direction * delta * accel_curve.sample(norm_speed)
+			velocity.x -= friction * max_speed_rope_player * delta * norm_speed * sign(velocity.x)
 		else:
+			pass
 			# Accel less when on air
-			velocity.x += accel * max_speed * direction * delta * accel_curve.sample(norm_speed) * .5
+			velocity.x += accel * max_speed_rope_player * direction * delta * accel_curve.sample(norm_speed) * .5
 		update_hanging(delta)
 		update_tracking()
 		queue_redraw()
 		move_and_slide()
-		if is_hanging:
-			rope_visual.queue_redraw()
 
 func update_hanging(delta):
 	if not is_hanging: return
@@ -119,7 +110,8 @@ func update_tracking():
 		
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
-	
+	PlayerManager.scene = get_tree().current_scene.scene_file_path
+	print("The new scene is:" + str(PlayerManager.scene))
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
 	$UI/TemporaryHealthBar.value = $Health.health
@@ -222,7 +214,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and PlayerManager.sides_player == 5:
 		# Debug jump to position
 		if event.button_index == 2 and event.pressed:
-			global_position = get_global_mouse_position()
+			#global_position = get_global_mouse_position()
+			pass
 		if event.button_index == 1:
 			# Release
 			if is_hanging and not event.pressed:
@@ -233,7 +226,7 @@ func _input(event: InputEvent) -> void:
 			is_hanging = event.pressed and can_hang
 			# Hang
 			if is_hanging:
-				extra_jump = true
+				#extra_jump = true
 				hang_point = ray_cast_2d.get_collision_point()
 				hang_lenght = ray_cast_2d.global_position.distance_to(hang_point)
 				hang_lenght = max(60, hang_lenght)
@@ -242,18 +235,21 @@ func _input(event: InputEvent) -> void:
 
 func _draw() -> void:
 	# draw tracking
-	if tracking:
-		draw_polyline(global_transform.affine_inverse() * tracking, Color(0.352, 0.807, 0.867, 1.0), 2)
+	#if tracking:
+		#draw_polyline(global_transform.affine_inverse() * tracking, Color(0.352, 0.807, 0.867, 1.0), 2)
 	# drawing hanging point
-	if is_hanging:
-		draw_circle(to_local(hang_point), 8, Color(1.0, 0.0, 0.0, 1.0))
-	# drawing rope
-	var line: Array[Vector2]
-	if rope_visual.segments: for seg in rope_visual.segments:
-		line.append(to_local(seg.global_position))
-	line.append(to_local(hang_point))
-	if line:
-		draw_polyline(line, Color(0.496, 0.496, 0.496, 1.0), 3)
+	if PlayerManager.sides_player == 5:
+		if is_hanging:
+			draw_circle(to_local(hang_point), 8, Color(1.0, 0.0, 0.0, 1.0))
+		# drawing rope
+		var line: PackedVector2Array
+		if rope_visual.segments: for seg in rope_visual.segments:
+			line.append(to_local(seg.global_position))
+		line.append(to_local(hang_point))
+		if is_hanging:
+			line.append(to_local(hang_point))
+		if line.size() >= 2:
+			draw_polyline(line, Color(0.496, 0.496, 0.496, 1.0), 3)
 
 func handle_input(delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -263,6 +259,7 @@ func handle_input(delta: float) -> void:
 		dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
+		$Jump.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
 		print("I'm jumping??")
@@ -341,6 +338,7 @@ func wall_climb() -> void:
 	#	gravity = 0
 	if is_on_wall():
 		if Input.is_action_pressed("jump"):
+			$Jump.play()
 			velocity.y = -300
 		else:
 			velocity.y = 100

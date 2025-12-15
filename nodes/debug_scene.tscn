@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=17 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://c6dyik6epnkt0" path="res://nodes/ballon_transition.tscn" id="7_iqdfs"]
 [ext_resource type="AudioStream" uid="uid://douojtt6kiabb" path="res://assets/Chill Background (Name Later).mp3" id="8_d13pl"]
 [ext_resource type="PackedScene" uid="uid://du1ic7ks3t51o" path="res://nodes/balloon_small.tscn" id="9_3jfbe"]
+[ext_resource type="PackedScene" uid="uid://02xevtnd5i8l" path="res://nodes/big_bouncy_ball.tscn" id="9_3xv7w"]
+[ext_resource type="PackedScene" uid="uid://c43t1wpcrekyf" path="res://nodes/decaying_platform.tscn" id="10_bse77"]
+[ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_3xv7w"]
+[ext_resource type="PackedScene" uid="uid://3xyyx02mqd2b" path="res://nodes/chomper.tscn" id="13_nfwau"]
+[ext_resource type="PackedScene" uid="uid://ckgk816h5jmur" path="res://nodes/creature.tscn" id="14_py1y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
 size = Vector2(7464, 119)
@@ -84,10 +89,7 @@ texture = ExtResource("2_137k3")
 position = Vector2(1198, -121)
 
 [node name="PhysicalShop" parent="." instance=ExtResource("4_wpvxr")]
-position = Vector2(1589, -206)
-
-[node name="enemy_triangle" parent="." instance=ExtResource("6_d13pl")]
-position = Vector2(2340, -142)
+position = Vector2(4985, -362)
 
 [node name="ballon_transition" parent="." instance=ExtResource("7_iqdfs")]
 position = Vector2(51, -52)
@@ -99,9 +101,10 @@ volume_db = -10.0
 autoplay = true
 
 [node name="BalloonSmall" parent="." instance=ExtResource("9_3jfbe")]
-position = Vector2(2739, -181)
+position = Vector2(1811, -126)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 position = Vector2(31, 723)
 blend_mode = 1
 
@@ -120,9 +123,28 @@ scale = Vector2(54.812504, 1.3515625)
 texture = ExtResource("2_137k3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 64
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3426, -823)
 shape = SubResource("RectangleShape2D_3jfbe")
+
+[node name="BigBouncyBall" parent="StaticBody2D" instance=ExtResource("9_3xv7w")]
+position = Vector2(2780, -753)
+freeze = true
+
+[node name="DecayingPlatform" parent="." instance=ExtResource("10_bse77")]
+position = Vector2(2379, -184)
+
+[node name="HeartEnemy" parent="." instance=ExtResource("11_3xv7w")]
+position = Vector2(900, -497)
+
+[node name="enemy_triangle" parent="." instance=ExtResource("6_d13pl")]
+position = Vector2(9288, -215)
+
+[node name="Chomper" parent="." instance=ExtResource("13_nfwau")]
+position = Vector2(6061, -76)
+
+[node name="creature" parent="." instance=ExtResource("14_py1y5")]
+position = Vector2(7420, -150)

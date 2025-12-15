@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://btjk1oouhmgtg"]
+
+[ext_resource type="Texture2D" uid="uid://by7lfua2gevc5" path="res://assets/Kermit.png" id="1_7vnru"]
+
+[node name="Kermit" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7vnru")
