@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://02xevtnd5i8l"]
+
+[ext_resource type="Script" uid="uid://444mjbywe4vw" path="res://scripts/big_bouncy_ball.gd" id="1_2f7tv"]
+[ext_resource type="Texture2D" uid="uid://bl8jita1t4bs1" path="res://assets/BouncyBall.png" id="2_qa5ap"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2f7tv"]
+friction = 0.45
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qa5ap"]
+radius = 223.0
+
+[node name="BigBouncyBall" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_2f7tv")
+script = ExtResource("1_2f7tv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qa5ap")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qa5ap")
