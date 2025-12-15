@@ -92,6 +92,7 @@ polygon = PackedVector2Array(61, -36, 61, 35, 0, 71, -61, 35, -61, -36, 0, -72)
 disabled = true
 
 [node name="SquareMask" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_m8srp")
 disabled = true
 
@@ -165,6 +166,7 @@ polygon = PackedVector2Array(61, -36, 61, 35, 0, 71, -61, 35, -61, -36, 0, -72)
 disabled = true
 
 [node name="SquareMask" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_m8srp")
 disabled = true
 
