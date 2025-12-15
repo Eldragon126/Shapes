@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://cnqwkv7glh5dd"]
+[gd_scene load_steps=10 format=4 uid="uid://cnqwkv7glh5dd"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_p67so"]
 [ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="2_8c75q"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_121le"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_8c75q"]
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="4_18wsc"]
+[ext_resource type="Script" uid="uid://bqyul54cf5fhe" path="res://scripts/player.gd" id="4_sentu"]
+[ext_resource type="PackedScene" path="res://nodes/disable_everything_of_player.tscn" id="7_q0cwh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18wsc"]
 texture = ExtResource("2_8c75q")
@@ -56,6 +58,7 @@ rendering_quadrant_size = 128
 
 [node name="player" parent="." instance=ExtResource("2_121le")]
 position = Vector2(-536, 2698)
+script = ExtResource("4_sentu")
 
 [node name="TransformationTomb" parent="." instance=ExtResource("3_8c75q")]
 position = Vector2(-1366, -249)
@@ -74,3 +77,6 @@ position = Vector2(-3670, 1507)
 
 [node name="TransformationTomb3" parent="." instance=ExtResource("3_8c75q")]
 position = Vector2(-1530, 2595)
+
+[node name="DisableEverythingOfPlayer" parent="." instance=ExtResource("7_q0cwh")]
+position = Vector2(128, 2489)
