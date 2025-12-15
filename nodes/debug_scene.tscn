@@ -142,7 +142,7 @@ freeze = true
 position = Vector2(1528, -46)
 
 [node name="DisableEverythingOfPlayer" parent="StaticBody2D" instance=ExtResource("11_kodk5")]
-position = Vector2(4105, -355)
+position = Vector2(4109, -334)
 
 [node name="DecayingPlatform" parent="." instance=ExtResource("10_bse77")]
 position = Vector2(2379, -184)

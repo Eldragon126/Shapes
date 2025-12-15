@@ -19,6 +19,7 @@
 script/source = "class_name Player
 extends CharacterBody2D
 var disabled_everything: bool = false
+#This disables everything
 var max_sides: int = PlayerManager.max_sides_player
 var current_sides: int = PlayerManager.sides_player
 var speed = PlayerManager.player_speed
