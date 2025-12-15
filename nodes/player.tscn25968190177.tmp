@@ -18,7 +18,7 @@
 [sub_resource type="GDScript" id="GDScript_k5sjp"]
 script/source = "class_name Player
 extends CharacterBody2D
-var disabled_everything: bool = false
+var disabled_everything: bool = true
 var max_sides: int = PlayerManager.max_sides_player
 var current_sides: int = PlayerManager.sides_player
 var speed = PlayerManager.player_speed
@@ -128,12 +128,7 @@ func update_tracking():
 		
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
-	
 	PlayerManager.scene = get_tree().current_scene.scene_file_path
-	if disabled_everything == true:
-		modulate = \"2a00ee\"
-	else:
-		modulate = \"ffffff\"
 	print(\"The new scene is:\" + str(PlayerManager.scene))
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
@@ -301,12 +296,12 @@ func handle_input(delta: float) -> void:
 	if direction == 0:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
-		if PlayerManager.sides_player != 7:
+		if PlayerManager.sides_player != 7 and disabled_everything == false:
 			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
 			print(\"it should be another shape other than circle\")
 			print(\"velocity is \" + str(velocity.x))
 			print(\"velocity is moving toward \" + str(speed * direction + 1000))
-		elif disabled_everything == false:
+		else:
 			velocity.x = move_toward(velocity.x, speed * direction * 10, acceleration)
 			if velocity.length() > 100:
 				rotation += direction *0.2
@@ -315,11 +310,6 @@ func handle_input(delta: float) -> void:
 			print(\"velocity is \" + str(velocity.x))
 			print(\"velocity is moving toward \" + str(speed * direction * 10))
 			print(\"It should be a circle\")
-		else:
-			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
-			print(\"EVERYTHING IS DISABLED\")
-			print(\"velocity is \" + str(velocity.x))
-			print(\"velocity is moving toward \" + str(speed * direction + 1000))
 	if is_on_floor():
 		if PlayerManager.sides_player == 3 and disabled_everything == false: extra_jump = true
 		else: pass

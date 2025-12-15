@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://xpxaeitqhjtm"]
+
+[ext_resource type="Script" uid="uid://bbsblgxm1ae0m" path="res://scripts/disable_everything_of_player.gd" id="1_jm3qg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52m0v"]
+size = Vector2(979, 735.5)
+
+[node name="DisableEverythingOfPlayer" type="Area2D"]
+script = ExtResource("1_jm3qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_52m0v")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0.5010376, 0)
+scale = Vector2(1.0010225, 1)
+color = Color(0, 0, 1, 0.27058825)
+polygon = PackedVector2Array(-490.00003, -368, 488.00003, -368, 488, 368, -490, 368)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
