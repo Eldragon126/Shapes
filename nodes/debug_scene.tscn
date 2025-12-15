@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=21 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c43t1wpcrekyf" path="res://nodes/decaying_platform.tscn" id="10_bse77"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="10_jorak"]
 [ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_3xv7w"]
+[ext_resource type="PackedScene" uid="uid://xpxaeitqhjtm" path="res://nodes/disable_everything_of_player.tscn" id="11_kodk5"]
 [ext_resource type="PackedScene" uid="uid://3xyyx02mqd2b" path="res://nodes/chomper.tscn" id="13_nfwau"]
 [ext_resource type="PackedScene" uid="uid://ckgk816h5jmur" path="res://nodes/creature.tscn" id="14_py1y5"]
 [ext_resource type="PackedScene" uid="uid://f2gd744mwdln" path="res://nodes/coin.tscn" id="15_c756x"]
@@ -139,6 +140,9 @@ freeze = true
 
 [node name="Spike" parent="StaticBody2D" instance=ExtResource("10_jorak")]
 position = Vector2(1528, -46)
+
+[node name="DisableEverythingOfPlayer" parent="StaticBody2D" instance=ExtResource("11_kodk5")]
+position = Vector2(4105, -355)
 
 [node name="DecayingPlatform" parent="." instance=ExtResource("10_bse77")]
 position = Vector2(2379, -184)

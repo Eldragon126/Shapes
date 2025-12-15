@@ -71,8 +71,8 @@ func load_game():
 	var save_file = FileAccess.open("res://ShapesMetroidvania.save", FileAccess.READ)
 	var global_data = save_file.get_var()
 	if global_data == null:
-		return
 		print("global_data was null")
+		return
 	max_sides_player = global_data["max_sides_player"]
 	sides_player = global_data["sides_player"]
 	player_speed =global_data["player_speed"]

@@ -16,6 +16,7 @@ position = Vector2(0.5010376, 0)
 scale = Vector2(1.0010225, 1)
 color = Color(0, 0, 1, 0.27058825)
 polygon = PackedVector2Array(-490.00003, -368, 488.00003, -368, 488, 368, -490, 368)
+uv = PackedVector2Array(-490.00003, -368, 488.00003, -368, 488, 368, -490, 368)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
