@@ -1,3 +1,4 @@
+class_name GlobalPlayerManager
 extends Node
 var max_sides_player: int = 7
 var sides_player: int = 0
@@ -31,15 +32,12 @@ func _process(delta: float) -> void:
 
 func save():
 	var save_dict = {
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
 		"max_sides_player" : max_sides_player,
 		"sides_player" : sides_player,
 		"player_speed" : player_speed,
 		"player_acceleration" : player_acceleration,
 		"player_acceleration_slow" : player_acceleration_slow,
 		"player_max_speed" : player_max_speed,
-		"player" : player,
 		"currency" : currency,
 		"game_paused" : game_paused,
 		"player_max_health" : player_max_health,
@@ -60,71 +58,37 @@ func save():
 # Go through everything in the persist category and ask them to return a
 # dict of relevant variables.
 func save_game():
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for node in save_nodes:
-		# Check the node is an instanced scene so it can be instanced again during load.
-		if node.scene_file_path.is_empty():
-			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
-			continue
-
-		# Check the node has a save function.
-		if !node.has_method("save"):
-			print("persistent node '%s' is missing a save() function, skipped" % node.name)
-			continue
-
-		# Call the node's save function.
-		var node_data = node.call("save")
-
-		# JSON provides a static method to serialized JSON string.
-		var json_string = JSON.stringify(node_data)
-
-		# Store the save dictionary as a new line in the save file.
-		save_file.store_line(json_string)
-
-# Note: This can be called from anywhere inside the tree. This function
-# is path independent.
+	var save_file = FileAccess.open("res://ShapesMetroidvania.save", FileAccess.WRITE)
+	var global_data = save()
+	save_file.store_var(global_data)
+	
 func load_game():
-	if not FileAccess.file_exists("user://savegame.save"):
+	if not FileAccess.file_exists("res://ShapesMetroidvania.save"):
 		print("We didn't have to save or load this time.")
 		load_game_check = false
 		return # Error! We don't have a save to load.
-		
 
-	# We need to revert the game state so we're not cloning objects
-	# during loading. This will vary wildly depending on the needs of a
-	# project, so take care with this step.
-	# For our example, we will accomplish this by deleting saveable objects.
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for i in save_nodes:
-		i.queue_free()
-
-	# Load the file line by line and process that dictionary to restore
-	# the object it represents.
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
-	while save_file.get_position() < save_file.get_length():
-		var json_string = save_file.get_line()
-
-		# Creates the helper class to interact with JSON.
-		var json = JSON.new()
-
-		# Check if there is any error while parsing the JSON string, skip in case of failure.
-		var parse_result = json.parse(json_string)
-		if not parse_result == OK:
-			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-			continue
-
-		# Get the data from the JSON object.
-		var node_data = json.data
-
-		# Firstly, we need to create the object and add it to the tree and set its position.
-		var new_object = load(node_data["filename"]).instantiate()
-		get_node(node_data["parent"]).add_child(new_object)
-		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
-
-		# Now we set the remaining variables.
-		for i in node_data.keys():
-			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-				continue
-			new_object.set(i, node_data[i])
-		load_game_check = true
+	var save_file = FileAccess.open("res://ShapesMetroidvania.save", FileAccess.READ)
+	var global_data = save_file.get_var()
+	if global_data == null:
+		return
+		print("global_data was null")
+	max_sides_player = global_data["max_sides_player"]
+	sides_player = global_data["sides_player"]
+	player_speed =global_data["player_speed"]
+	player_acceleration =global_data["player_acceleration"]
+	player_acceleration_slow =global_data["player_acceleration_slow"]
+	player_max_speed =global_data["player_max_speed"]
+	currency =global_data["currency"]
+	game_paused =global_data["game_paused"]
+	player_max_health =global_data["player_max_health"]
+	room_activate =global_data["room_activate"]
+	player_pos =global_data["player_pos"]
+	playerjumponenter =global_data["playerjumponenter"]
+	lobber_damage =global_data["lobber_damage"]
+	max_health_sides_addition =global_data["max_health_sides_addition"]
+	does_player_emit_light =global_data["does_player_emit_light"]
+	can_I_open_a_menu =global_data["can_I_open_a_menu"]
+	collectable_count =global_data["collectable_count"]
+	scene =global_data["scene"]
+	load_game_check = true

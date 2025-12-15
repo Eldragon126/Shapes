@@ -23,7 +23,6 @@ func _on_quit_pressed() -> void:
 	PlayerManager.save_game()
 	$ButtonPressSound.play()
 	print("Leaving escape menu to leave game, can I open a menu is true")
-	PlayerManager.save()
 	get_tree().paused = false
 	get_tree().quit()
 

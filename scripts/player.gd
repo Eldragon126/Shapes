@@ -111,6 +111,7 @@ func update_tracking():
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
 	PlayerManager.scene = get_tree().current_scene.scene_file_path
+	print("The new scene is:" + str(PlayerManager.scene))
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
 	$UI/TemporaryHealthBar.value = $Health.health
@@ -258,6 +259,7 @@ func handle_input(delta: float) -> void:
 		dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
+		$Jump.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
 		print("I'm jumping??")
@@ -336,6 +338,7 @@ func wall_climb() -> void:
 	#	gravity = 0
 	if is_on_wall():
 		if Input.is_action_pressed("jump"):
+			$Jump.play()
 			velocity.y = -300
 		else:
 			velocity.y = 100
