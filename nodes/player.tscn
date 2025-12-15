@@ -206,8 +206,9 @@ position = Vector2(0, -65)
 shape = SubResource("CircleShape2D_k5sjp")
 one_way_collision = true
 
-[node name="RopeVisual" type="Node" parent="."]
+[node name="RopeVisual" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("12_gggum")
+player = NodePath("..")
 metadata/_custom_type_script = "uid://b7pfdeyrcy5rd"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
