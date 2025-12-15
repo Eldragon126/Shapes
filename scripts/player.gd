@@ -43,7 +43,7 @@ const JUMP_VELOCITY = 1
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PlayerManager.player = self
+	#PlayerManager.player = self
 	if PlayerManager.room_activate:
 		global_position = PlayerManager.player_pos
 		if PlayerManager.playerjumponenter:
