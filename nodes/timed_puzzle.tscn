@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://w2pfss7m0hl6"]
+
+[node name="TimedPuzzle" type="Node2D"]
