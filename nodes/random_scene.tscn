@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6m0esk6aydsm"]
+
+[ext_resource type="PackedScene" uid="uid://5qpkqxeg3qdo" path="res://assets/Player/RopeMechanics/player.tscn" id="1_jjdun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fx4m"]
+size = Vector2(1182, 50)
+
+[node name="RandomScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjdun")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(212, 253)
+shape = SubResource("RectangleShape2D_5fx4m")
+debug_color = Color(0, 0.54901963, 0.6431373, 1)

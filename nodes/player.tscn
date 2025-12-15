@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://hfedesmkpl6q"]
+[gd_scene load_steps=19 format=3 uid="uid://hfedesmkpl6q"]
 
 [ext_resource type="Script" uid="uid://bqyul54cf5fhe" path="res://scripts/player.gd" id="1_2wrp4"]
 [ext_resource type="Texture2D" uid="uid://dq14utau70tll" path="res://assets/Player/Sphere.png" id="2_46y3y"]
+[ext_resource type="Curve" uid="uid://bnns4uisdppei" path="res://assets/Player/RopeMechanics/curve.tres" id="2_gggum"]
 [ext_resource type="Texture2D" uid="uid://dqh0ngk68weq5" path="res://assets/Player/Hexagon.png" id="3_ejohg"]
 [ext_resource type="Texture2D" uid="uid://bcabanvt1t2h" path="res://assets/Player/Pentagon.png" id="4_qbdof"]
 [ext_resource type="Texture2D" uid="uid://iasj3sn4lm3h" path="res://assets/Player/Square.png" id="5_hg0js"]
@@ -10,6 +11,8 @@
 [ext_resource type="Script" uid="uid://dvfjxdlly5pmk" path="res://scripts/ui.gd" id="7_hg0js"]
 [ext_resource type="Script" uid="uid://cv0kocsb7np4x" path="res://scripts/hurtbox.gd" id="8_ejohg"]
 [ext_resource type="AudioStream" uid="uid://cpl0fquigtjel" path="res://assets/Soundtrack/SoundEffects/HurtPlayerTemp.wav" id="9_qbdof"]
+[ext_resource type="Script" uid="uid://u71dke3qy8gg" path="res://assets/Player/RopeMechanics/ray_cast_2d.gd" id="11_5m3aa"]
+[ext_resource type="Script" uid="uid://b7pfdeyrcy5rd" path="res://assets/Player/RopeMechanics/rope_visual.gd" id="12_gggum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8srp"]
 size = Vector2(144, 144)
@@ -60,10 +63,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5sjp"]
+radius = 8.5440035
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ea43s"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 3
 collision_mask = 18
 script = ExtResource("1_2wrp4")
+accel_curve = ExtResource("2_gggum")
 
 [node name="player_cam" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -99,7 +110,6 @@ script = ExtResource("7_hg0js")
 
 [node name="Sides" type="Label" parent="UI"]
 z_index = -1
-anchors_preset = -1
 offset_left = 9.0
 offset_top = 8.0
 offset_right = 1079.0
@@ -165,6 +175,45 @@ disabled = true
 [node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_qbdof")
 volume_db = -1.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(574, 1)
+script = ExtResource("11_5m3aa")
+
+[node name="ReleaseTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -65)
+shape = SubResource("CircleShape2D_k5sjp")
+one_way_collision = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ea43s")
+
+[node name="RopeVisual" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("12_gggum")
+player = NodePath("..")
+segment_count = 10
 
 [connection signal="timeout" from="dash_downtime" to="." method="_on_dash_downtime_timeout"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

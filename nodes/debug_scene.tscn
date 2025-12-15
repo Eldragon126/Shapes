@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=12 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
@@ -12,6 +12,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
 size = Vector2(7464, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jfbe"]
+size = Vector2(317, 1880)
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_wpvxr")
@@ -115,3 +118,11 @@ shape = SubResource("RectangleShape2D_wkvbf")
 position = Vector2(3977, 78.5)
 scale = Vector2(54.812504, 1.3515625)
 texture = ExtResource("2_137k3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3426, -823)
+shape = SubResource("RectangleShape2D_3jfbe")
