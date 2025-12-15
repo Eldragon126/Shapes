@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4ly64h7mmaa2"]
 
-[ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_8x05p"]
 [ext_resource type="Script" uid="uid://gkobx3oxpsg4" path="res://scripts/lobber_projectile.gd" id="1_wr4q7"]
+[ext_resource type="Texture2D" uid="uid://busri3vhw1tit" path="res://assets/TransformationTombPart.png" id="2_p4cdx"]
 [ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="3_p4cdx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wr4q7"]
@@ -17,10 +17,9 @@ physics_material_override = SubResource("PhysicsMaterial_wr4q7")
 script = ExtResource("1_wr4q7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(1.1920929e-07, 5.9604645e-08)
 scale = Vector2(0.17382821, 0.17382821)
-texture = ExtResource("1_8x05p")
+texture = ExtResource("2_p4cdx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wr4q7")
