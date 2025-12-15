@@ -33,6 +33,7 @@ mouse_cursor/custom_image="uid://ra1vqg04b8ax"
 Player=""
 Light=""
 ShopGroup=""
+Persist=""
 
 [gui]
 

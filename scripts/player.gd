@@ -10,7 +10,7 @@ var jump_speed = -speed*2
 @export var gravity = speed * 5
 @export var max_grav_speed = 100
 @export var extra_jump = true
-@export var jump_count = 0
+@export var jump_count: int = 0
 @export var projectile_speed: float = 1000
 var dash_speed = 1000
 var can_dash = true
@@ -29,13 +29,13 @@ var tracking: PackedVector2Array
 @onready var rope_visual: RopeVisual = $RopeVisual
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_buffer: Timer = $JumpBuffer
-@export var max_speed_rope_player: float = 5000
+@export var max_speed_rope_player: float = 100
 @export var accel: float = 1
 @export var accel_curve: Curve
 @export var friction: float = 4
 @export_group("Rope", "rope_")
-@export var rope_stiffnes: float = 2000
-@export var rope_friction: float = 0
+@export var rope_stiffnes: float = 1000
+@export var rope_friction: float = 3
 const SPEED = 1
 const JUMP_VELOCITY = 1
 
@@ -76,15 +76,15 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("ui_left", "ui_right")
-		var norm_speed = abs(velocity.x) / max_speed
+		var norm_speed = abs(velocity.x) / max_speed_rope_player
 		if is_on_floor():
 			# Accel when on floor
-			velocity.x += accel * max_speed * direction * delta * accel_curve.sample(norm_speed)
-			velocity.x -= friction * max_speed * delta * norm_speed * sign(velocity.x)
+			velocity.x += accel * max_speed_rope_player * direction * delta * accel_curve.sample(norm_speed)
+			velocity.x -= friction * max_speed_rope_player * delta * norm_speed * sign(velocity.x)
 		else:
 			pass
 			# Accel less when on air
-			velocity.x += accel * max_speed * direction * delta * accel_curve.sample(norm_speed) * .5
+			velocity.x += accel * max_speed_rope_player * direction * delta * accel_curve.sample(norm_speed) * .5
 		update_hanging(delta)
 		update_tracking()
 		queue_redraw()
@@ -110,7 +110,7 @@ func update_tracking():
 		
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
-	
+	PlayerManager.scene = get_tree().current_scene.scene_file_path
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
 	$UI/TemporaryHealthBar.value = $Health.health
