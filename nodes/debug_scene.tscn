@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=17 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://02xevtnd5i8l" path="res://nodes/big_bouncy_ball.tscn" id="9_3xv7w"]
 [ext_resource type="PackedScene" uid="uid://c43t1wpcrekyf" path="res://nodes/decaying_platform.tscn" id="10_bse77"]
 [ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_3xv7w"]
+[ext_resource type="PackedScene" uid="uid://3xyyx02mqd2b" path="res://nodes/chomper.tscn" id="13_nfwau"]
+[ext_resource type="PackedScene" uid="uid://ckgk816h5jmur" path="res://nodes/creature.tscn" id="14_py1y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkvbf"]
 size = Vector2(7464, 119)
@@ -140,3 +142,9 @@ position = Vector2(900, -497)
 
 [node name="enemy_triangle" parent="." instance=ExtResource("6_d13pl")]
 position = Vector2(9288, -215)
+
+[node name="Chomper" parent="." instance=ExtResource("13_nfwau")]
+position = Vector2(6061, -76)
+
+[node name="creature" parent="." instance=ExtResource("14_py1y5")]
+position = Vector2(7420, -150)
