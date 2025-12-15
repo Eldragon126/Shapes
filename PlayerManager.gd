@@ -16,6 +16,7 @@ var lobber_damage: int = 1
 var max_health_sides_addition: bool = false
 var does_player_emit_light: bool = false
 var can_I_open_a_menu: bool = true
+var collectable_count: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	can_I_open_a_menu = true

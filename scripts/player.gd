@@ -26,7 +26,7 @@ var is_hanging: bool
 var tracking: PackedVector2Array
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var release_timer: Timer = $ReleaseTimer
-@onready var rope_visual: RopeVisual = $RopeVisual
+@onready var rope_visual: RopeVisual
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_buffer: Timer = $JumpBuffer
 @export var max_speed_rope_player: float = 5000
@@ -49,7 +49,10 @@ func _ready() -> void:
 		if PlayerManager.playerjumponenter:
 			velocity.y = jump_speed
 		PlayerManager.room_activate = false
-
+	rope_visual = RopeVisual.new()
+	get_parent().add_child(rope_visual)
+	rope_visual.player = self
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -93,6 +96,8 @@ func _physics_process(delta: float) -> void:
 		update_tracking()
 		queue_redraw()
 		move_and_slide()
+		if is_hanging:
+			rope_visual.queue_redraw()
 
 func update_hanging(delta):
 	if not is_hanging: return
@@ -238,7 +243,7 @@ func _input(event: InputEvent) -> void:
 func _draw() -> void:
 	# draw tracking
 	if tracking:
-		draw_polyline(global_transform.affine_inverse()*tracking, Color(0.352, 0.807, 0.867, 1.0), 2)
+		draw_polyline(global_transform.affine_inverse() * tracking, Color(0.352, 0.807, 0.867, 1.0), 2)
 	# drawing hanging point
 	if is_hanging:
 		draw_circle(to_local(hang_point), 8, Color(1.0, 0.0, 0.0, 1.0))
@@ -299,11 +304,11 @@ func handle_input(delta: float) -> void:
 		velocity.x = 0
 		velocity.y = 0
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-			velocity.x = 25 * (direction * dash_speed)
-			velocity.x -= 25 * (direction * dash_speed * delta)
+			velocity.x = 10 * (direction * dash_speed)
+			velocity.x -= 10 * (direction * dash_speed * delta)
 		if Input.is_action_pressed("ui_up"):
-			velocity.y = direction_y * dash_speed * 0.75
-			velocity.y -= direction_y * dash_speed * delta * 0.75
+			velocity.y = direction_y * dash_speed
+			velocity.y -= direction_y * dash_speed * delta
 		if Input.is_action_pressed("ui_down"):
 			velocity.y = direction_y * dash_speed
 			velocity.y -= direction_y * dash_speed * delta
