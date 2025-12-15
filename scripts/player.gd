@@ -1,6 +1,7 @@
-class_name ShapePlayer
+class_name Player
 extends CharacterBody2D
-
+var disabled_everything: bool = false
+#This disables everything
 var max_sides: int = PlayerManager.max_sides_player
 var current_sides: int = PlayerManager.sides_player
 var speed = PlayerManager.player_speed
@@ -43,7 +44,7 @@ const JUMP_VELOCITY = 1
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#PlayerManager.player = self
+	PlayerManager.player = self
 	if PlayerManager.room_activate:
 		global_position = PlayerManager.player_pos
 		if PlayerManager.playerjumponenter:
@@ -56,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	handle_input(delta)
 	move_and_slide()
 	update_movement(delta)
-	if PlayerManager.sides_player == 5:
+	if PlayerManager.sides_player == 5 and disabled_everything == false:
 		if is_on_floor():
 			coyote_timer.start()
 		# rotate raycast to mouse
@@ -110,7 +111,12 @@ func update_tracking():
 		
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
+	
 	PlayerManager.scene = get_tree().current_scene.scene_file_path
+	if disabled_everything == true:
+		modulate = "2a00ee"
+	else:
+		modulate = "ffffff"
 	print("The new scene is:" + str(PlayerManager.scene))
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
@@ -215,7 +221,7 @@ func update_movement(delta: float) -> void:
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and PlayerManager.sides_player == 5:
+	if event is InputEventMouseButton and PlayerManager.sides_player == 5 and disabled_everything == false:
 		# Debug jump to position
 		if event.button_index == 2 and event.pressed:
 			#global_position = get_global_mouse_position()
@@ -242,7 +248,7 @@ func _draw() -> void:
 	#if tracking:
 		#draw_polyline(global_transform.affine_inverse() * tracking, Color(0.352, 0.807, 0.867, 1.0), 2)
 	# drawing hanging point
-	if PlayerManager.sides_player == 5:
+	if PlayerManager.sides_player == 5 and disabled_everything == false:
 		if is_hanging:
 			draw_circle(to_local(hang_point), 8, Color(1.0, 0.0, 0.0, 1.0))
 		# drawing rope
@@ -263,7 +269,6 @@ func handle_input(delta: float) -> void:
 		dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
-		$Jump.volume_db = -30.0
 		$Jump.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
@@ -284,7 +289,7 @@ func handle_input(delta: float) -> void:
 			print("it should be another shape other than circle")
 			print("velocity is " + str(velocity.x))
 			print("velocity is moving toward " + str(speed * direction + 1000))
-		else:
+		elif disabled_everything == false:
 			velocity.x = move_toward(velocity.x, speed * direction * 10, acceleration)
 			if velocity.length() > 100:
 				rotation += direction *0.2
@@ -293,8 +298,13 @@ func handle_input(delta: float) -> void:
 			print("velocity is " + str(velocity.x))
 			print("velocity is moving toward " + str(speed * direction * 10))
 			print("It should be a circle")
+		else:
+			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
+			print("EVERYTHING IS DISABLED")
+			print("velocity is " + str(velocity.x))
+			print("velocity is moving toward " + str(speed * direction + 1000))
 	if is_on_floor():
-		if PlayerManager.sides_player == 3: extra_jump = true
+		if PlayerManager.sides_player == 3 and disabled_everything == false: extra_jump = true
 		else: pass
 
 
@@ -302,12 +312,12 @@ func handle_input(delta: float) -> void:
 #	if Input.is_action_just_pressed("attack"):
 #		var lobber_projectile_inst = lobber_projectile.instantiate()
 #		add_child(lobber_projectile_inst)
-	if PlayerManager.sides_player == 4 and Input.is_action_just_pressed("ability_activate") and can_dash:
+	if PlayerManager.sides_player == 4 and Input.is_action_just_pressed("ability_activate") and can_dash and disabled_everything == false:
 		velocity.x = 0
 		velocity.y = 0
 		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
-			velocity.x = 25 * (direction * dash_speed)
-			velocity.x -= 25 * (direction * dash_speed * delta)
+			velocity.x = 10 * (direction * dash_speed)
+			velocity.x -= 10 * (direction * dash_speed * delta)
 		if Input.is_action_pressed("ui_up"):
 			velocity.y = direction_y * dash_speed
 			velocity.y -= direction_y * dash_speed * delta
