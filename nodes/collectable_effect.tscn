@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6y6t6jedalqv"]
+
+[ext_resource type="AudioStream" uid="uid://c6ugtwbolfcl6" path="res://assets/Soundtrack/SoundEffects/powerUp.wav" id="1_rx35l"]
+[ext_resource type="Script" uid="uid://c1m34cyvq530q" path="res://scripts/coin_effect.gd" id="2_4u8xm"]
+
+[node name="CoinEffect" type="AudioStreamPlayer"]
+stream = ExtResource("1_rx35l")
+autoplay = true
+script = ExtResource("2_4u8xm")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

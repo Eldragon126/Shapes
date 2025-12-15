@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3iefiagycfgt"]
+
+[ext_resource type="Script" uid="uid://cucvn56kfjbs7" path="res://scripts/get_more_sides.gd" id="1_jaeb7"]
+[ext_resource type="Texture2D" uid="uid://cb5px3fqengeu" path="res://assets/GetMoreSides.png" id="2_jaeb7"]
+[ext_resource type="AudioStream" uid="uid://c6ugtwbolfcl6" path="res://assets/Soundtrack/SoundEffects/powerUp.wav" id="3_t7db3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58oaq"]
+radius = 110.0727
+
+[node name="GetMoreSides" type="Area2D"]
+script = ExtResource("1_jaeb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jaeb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_58oaq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_t7db3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
