@@ -3,12 +3,10 @@ extends CharacterBody2D
 var disabled_everything: bool = false
 #This disables everything
 var max_sides: int = PlayerManager.max_sides_player
-var current_sides: int = PlayerManager.sides_player
-var speed = PlayerManager.player_speed
 var acceleration = PlayerManager.player_acceleration
 var slow_acceleration = PlayerManager.player_acceleration_slow
-var jump_speed = -speed*2
-@export var gravity = speed * 5
+var jump_speed = -PlayerManager.player_speed*2
+@export var gravity = PlayerManager.player_speed * 5
 @export var max_grav_speed = 100
 @export var extra_jump = true
 @export var jump_count: int = 0
@@ -44,6 +42,7 @@ const JUMP_VELOCITY = 1
 #lobber is so cool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	velocity = Vector2.ZERO
 	PlayerManager.player = self
 	if PlayerManager.room_activate:
 		global_position = PlayerManager.player_pos
@@ -111,7 +110,7 @@ func update_tracking():
 		
 func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
 	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
-	
+	refresh_stats()
 	PlayerManager.scene = get_tree().current_scene.scene_file_path
 	if disabled_everything == true:
 		modulate = "2a00ee"
@@ -218,7 +217,7 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 
 func update_movement(delta: float) -> void:
 	velocity.y += gravity * delta
-	velocity.x = clamp(velocity.x, -max_speed, max_speed)
+	velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and PlayerManager.sides_player == 5 and disabled_everything == false:
@@ -277,32 +276,35 @@ func handle_input(delta: float) -> void:
 		if jump_count > 1:
 			extra_jump = false
 			jump_count = 0
-	if current_sides == 7:
-		max_speed = 10000
+	if PlayerManager.sides_player == 7:
+		PlayerManager.player_max_speed = 1500
 	else:
-		max_speed = 400
+		PlayerManager.player_max_speed = 400
 	if direction == 0:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
 		if PlayerManager.sides_player != 7:
-			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
+			velocity.x = move_toward(velocity.x,PlayerManager.player_speed * direction, acceleration)
 			print("it should be another shape other than circle")
 			print("velocity is " + str(velocity.x))
-			print("velocity is moving toward " + str(speed * direction + 1000))
+			print("velocity is moving toward " + str(PlayerManager.player_speed * direction + 1000))
+			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
 		elif disabled_everything == false:
-			velocity.x = move_toward(velocity.x, speed * direction * 10, acceleration)
+			velocity.x = move_toward(velocity.x, PlayerManager.player_max_speed * direction, acceleration)
+			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
 			if velocity.length() > 100:
 				rotation += direction *0.2
 			elif velocity.length() > 300:
 				rotation += direction * 2
 			print("velocity is " + str(velocity.x))
-			print("velocity is moving toward " + str(speed * direction * 10))
+			print("velocity is moving toward " + str(PlayerManager.player_max_speed * direction))
 			print("It should be a circle")
 		else:
-			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
+			velocity.x = move_toward(velocity.x,PlayerManager.player_speed * direction, acceleration)
+			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
 			print("EVERYTHING IS DISABLED")
 			print("velocity is " + str(velocity.x))
-			print("velocity is moving toward " + str(speed * direction + 1000))
+			print("velocity is moving toward " + str(PlayerManager.player_speed * direction + 1000))
 	if is_on_floor():
 		if PlayerManager.sides_player == 3 and disabled_everything == false: extra_jump = true
 		else: pass
@@ -343,6 +345,8 @@ func _on_health_health_depleted() -> void:
 	print("The timer timed-out and is now changing the scene to the title screen.")
 
 func _go_to_title() -> void:
+	PlayerManager.player_max_speed = 400
+	velocity = Vector2.ZERO
 	get_tree().change_scene_to_file("res://nodes/level_rooms/title_screen.tscn")
 
 func wall_climb() -> void:
@@ -363,4 +367,6 @@ func wall_climb() -> void:
 func spidey_webs() -> void:
 	print("Spidey webssss")
 	
-		
+func refresh_stats():
+	jump_speed = -PlayerManager.player_speed * 2
+	gravity = PlayerManager.player_speed * 5
