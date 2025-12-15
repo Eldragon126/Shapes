@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtkld6sdexyiu"]
 
-[ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="1_8ehgg"]
 [ext_resource type="Script" uid="uid://b3l7ql71h3v5b" path="res://scripts/enemy_triangle.gd" id="1_xykmb"]
+[ext_resource type="Texture2D" uid="uid://duy6u3fqoj11l" path="res://assets/TriangleEnemy.png" id="2_c32mt"]
 [ext_resource type="Script" uid="uid://cv0kocsb7np4x" path="res://scripts/hurtbox.gd" id="3_15rya"]
 [ext_resource type="Script" uid="uid://dmc7bossv8q17" path="res://scripts/Health.gd" id="4_c32mt"]
 [ext_resource type="Script" uid="uid://bdy16u4km4bt6" path="res://scripts/hitbox.gd" id="5_c32mt"]
@@ -13,7 +13,8 @@ collision_mask = 2
 script = ExtResource("1_xykmb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8ehgg")
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_c32mt")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-65, 63, 0, -64, 63, 63)
@@ -56,7 +57,7 @@ script = ExtResource("5_c32mt")
 metadata/_custom_type_script = "uid://bdy16u4km4bt6"
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitBox"]
-polygon = PackedVector2Array(-65, 63, 0, -64, 63, 63)
+polygon = PackedVector2Array(-77, 67, 0, -65, 76, 67)
 
 [connection signal="body_entered" from="collision_detection" to="." method="_on_collision_detection_body_entered"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

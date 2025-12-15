@@ -4,10 +4,12 @@ extends Area2D
 @export var sound: AudioStreamPlayer = null
 @export var immortality_time = 1
 signal recieved_damage(damage: int)
+var overlapping_hitboxes: Array[HitBox] = []
 
 @export var health: Health
 func _ready():
 	connect("area_entered", _on_area_entered)
+	connect("area_exited", _on_area_exited)
 
 func _on_area_entered(hitbox: HitBox) -> void:
 	if hitbox != null:
@@ -26,7 +28,8 @@ func _on_area_entered(hitbox: HitBox) -> void:
 		print("This thing doesn't have a hitbox or is currently immortal.")
 		print("The immortality for this object is, " + str(health.get_immortality()))
 
-
+func _on_area_exited(hitbox: HitBox) -> void:
+	overlapping_hitboxes.erase(hitbox)
 
 func _on_recieved_damage(damage: int) -> void:
 	if sound != null:

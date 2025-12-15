@@ -7,7 +7,7 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("attack") and PlayerManager.game_paused == false:
+	if Input.is_action_just_pressed("attack") and PlayerManager.game_paused == false and PlayerManager.sides_player != 5:
 		var lobber_projectile_inst = lobber_projectile.instantiate()
 		lobber_projectile_inst.player_ref = player_ref
 		add_child(lobber_projectile_inst)
