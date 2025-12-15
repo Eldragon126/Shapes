@@ -4,8 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://pmgenl5vexj8" path="res://assets/SpikesSmall.png" id="2_oninr"]
 
 [node name="Spike" type="StaticBody2D"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16
