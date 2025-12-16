@@ -6,6 +6,7 @@ func _ready() -> void:
 	$VFlowContainer.show()
 	$"Option Menu".hide()
 func _process(delta: float) -> void:
+	$Hello2.text = "You have " + str(PlayerManager.collectable_count) + " out of 14 collectables."
 	if Input.is_action_just_pressed("escape_interact"):
 		queue_free()
 	else:
