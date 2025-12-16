@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://gampxe8c8u14"]
+[gd_scene load_steps=11 format=3 uid="uid://gampxe8c8u14"]
 
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="1_5qlkd"]
-[ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_wpvxr"]
 [ext_resource type="Texture2D" uid="uid://js4tpq8uy8bp" path="res://icon.svg" id="2_137k3"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="3_137k3"]
 [ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="4_wpvxr"]
@@ -15,7 +14,6 @@
 size = Vector2(7464, 119)
 
 [node name="DebugScene" type="Node2D"]
-script = ExtResource("1_wpvxr")
 
 [node name="TransformationTomb" parent="." instance=ExtResource("1_5qlkd")]
 position = Vector2(836, -233)

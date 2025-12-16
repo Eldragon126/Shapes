@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_121le"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_8c75q"]
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="4_18wsc"]
-[ext_resource type="PackedScene" uid="uid://xpxaeitqhjtm" path="res://nodes/disable_everything_of_player.tscn" id="7_q0cwh"]
+[ext_resource type="PackedScene" uid="uid://xpxaeitqhjtm" path="res://nodes/disable_everything_of_player.tscn" id="7_18wsc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18wsc"]
 texture = ExtResource("2_8c75q")
