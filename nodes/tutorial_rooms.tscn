@@ -30,7 +30,7 @@ texture_region_size = Vector2i(128, 128)
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, -40.158005, -64, -40.15759, 40.244095, 64, 40.04492, 64, 64, -64, 64)
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(40.28969, 64, 40.04492, -64, 64, -64, 64, 64)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(40.03561, 64, 40.05387, -64, 64, -64, 64, 64)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 40.28969, -64, 40.04492, -64, 64, 64, 64)
 2:1/0 = 0
@@ -104,7 +104,7 @@ rendering_quadrant_size = 89
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -20
-position = Vector2(1684.8711, 273.12982)
+position = Vector2(791, 215.00003)
 scale = Vector2(1.8067355, 1.2427882)
 color = Color(1, 0.62352943, 0.59607846, 1)
 polygon = PackedVector2Array(-4879, -5967, -336, -7019, 3889, -6082, 4206, 1474, -4576, 1474)

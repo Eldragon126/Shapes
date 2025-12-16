@@ -271,7 +271,7 @@ func handle_input(delta: float) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
 		jump_count += 1
-		if jump_count > 1:
+		if jump_count >= 1:
 			extra_jump = false
 			jump_count = 0
 	if direction == 0:

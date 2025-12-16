@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://j6p7l8sx8fem"]
+[gd_scene load_steps=11 format=3 uid="uid://j6p7l8sx8fem"]
 
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_ee2lf"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_rxyy8"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b3iefiagycfgt" path="res://nodes/get_more_sides.tscn" id="7_116pv"]
 [ext_resource type="AudioStream" uid="uid://dmi8eh3lrnjw7" path="res://assets/Soundtrack/4 Sides.mp3" id="8_st6vl"]
 [ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_ly72c"]
-[ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_r1vxu"]
 
 [node name="square_rooms" type="Node2D"]
 script = ExtResource("1_ee2lf")
@@ -110,7 +109,3 @@ position = Vector2(-765, -890.00006)
 
 [node name="Enemy6" parent="." instance=ExtResource("10_ly72c")]
 position = Vector2(4435, -1918)
-
-[node name="HeartEnemy" parent="." instance=ExtResource("11_r1vxu")]
-position = Vector2(1942, -982)
-scale = Vector2(0.5, 0.5)
