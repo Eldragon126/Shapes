@@ -130,6 +130,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.25, 1.25)
 script = ExtResource("1_k2p5a")
 
 [node name="Start" type="Button" parent="."]
@@ -160,9 +161,9 @@ texture = ExtResource("2_yykhi")
 offset = Vector2(8, -68)
 
 [node name="Story" type="RichTextLabel" parent="AnimationPlayer"]
-offset_left = 281.0
+offset_left = 391.0
 offset_top = 334.0
-offset_right = 871.0
+offset_right = 981.0
 offset_bottom = 406.0
 theme_override_colors/default_color = Color(0, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("2_0ewjg")
@@ -172,10 +173,10 @@ text = "FIND POLY THE BELOVED POLYGON!"
 [node name="Title" type="Node2D" parent="AnimationPlayer"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AnimationPlayer/Title"]
-offset_left = 39.188732
-offset_top = 89.163635
-offset_right = 1133.1887
-offset_bottom = 335.16367
+offset_left = 169.189
+offset_top = 89.164
+offset_right = 1263.189
+offset_bottom = 335.16403
 pivot_offset = Vector2(512.12213, 146.18576)
 theme_override_colors/default_color = Color(0, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("1_ej4rx")
@@ -183,9 +184,9 @@ theme_override_font_sizes/normal_font_size = 180
 text = "POLY-GONE"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="AnimationPlayer/Title"]
-offset_left = 39.0
+offset_left = 169.0
 offset_top = 90.0
-offset_right = 1257.0
+offset_right = 1387.0
 offset_bottom = 368.0
 pivot_offset = Vector2(512, 144)
 theme_override_colors/default_color = Color(0, 0.1764706, 0.5294118, 1)
@@ -211,10 +212,10 @@ texture = ExtResource("7_4kdia")
 
 [node name="Collectables" type="Label" parent="."]
 layout_mode = 0
-offset_left = 892.0
-offset_top = 9.0
-offset_right = 1142.0
-offset_bottom = 22.0
+offset_left = 808.0
+offset_top = 4.0
+offset_right = 1058.0
+offset_bottom = 17.0
 text = "0 out of 14 collectables"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

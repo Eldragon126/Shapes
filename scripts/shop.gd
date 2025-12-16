@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	else:
 		$CenterContainer/BuyThingsVBox/MaxHealthisMaxHealthPlusSides.hide()
 func _on_buy_pressed() -> void:
-	$".".position = Vector2(0, -648)
+	$".".position = Vector2(0, -810)
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
