@@ -92,9 +92,6 @@ autoplay = true
 max_distance = 30000.0
 parameters/looping = true
 
-[node name="Enemy5" parent="." instance=ExtResource("10_a4u22")]
-position = Vector2(2664, 2423)
-
 [node name="Enemy6" parent="." instance=ExtResource("10_a4u22")]
 position = Vector2(4899, 1795)
 

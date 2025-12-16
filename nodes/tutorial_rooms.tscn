@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://jw4ea85xjyh5"]
+[gd_scene load_steps=22 format=4 uid="uid://jw4ea85xjyh5"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_cdtnb"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_twkew"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://f2gd744mwdln" path="res://nodes/coin.tscn" id="15_8i6cd"]
 [ext_resource type="PackedScene" uid="uid://ckgk816h5jmur" path="res://nodes/creature.tscn" id="16_8qg6g"]
 [ext_resource type="PackedScene" uid="uid://b5eynow3q8574" path="res://nodes/wall_swing.tscn" id="17_ag2j8"]
-[ext_resource type="PackedScene" uid="uid://1rixc6jg46cb" path="res://nodes/shape_upgrade.tscn" id="18_o75ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]
 texture = ExtResource("2_ref71")
@@ -171,7 +170,7 @@ position = Vector2(-4431, 453)
 scale = Vector2(0.5, 0.5)
 
 [node name="player" parent="." instance=ExtResource("2_pa367")]
-position = Vector2(356, -4473)
+position = Vector2(-501, 246)
 accel_curve = null
 
 [node name="left_exit" parent="." instance=ExtResource("8_6qb3g")]
@@ -360,10 +359,6 @@ position = Vector2(2682, -4347)
 [node name="wall_swing" parent="." instance=ExtResource("17_ag2j8")]
 position = Vector2(3360, -4899)
 
-[node name="ShapeUpgrade" parent="." instance=ExtResource("18_o75ef")]
-position = Vector2(158, -4452)
-WhichShape = 4
-
 [node name="Label16" type="Label" parent="."]
 offset_left = 170.0
 offset_top = -4365.0
@@ -378,3 +373,6 @@ offset_right = 326.0
 offset_bottom = -4352.0
 rotation = 1.5707964
 text = "Shapes"
+
+[node name="TransformationTomb2" parent="." instance=ExtResource("8_hynay")]
+position = Vector2(2340, -1110)
