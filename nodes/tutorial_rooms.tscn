@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://jw4ea85xjyh5"]
+[gd_scene load_steps=17 format=4 uid="uid://jw4ea85xjyh5"]
 
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_cdtnb"]
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_twkew"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="9_hynay"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="10_cyhyg"]
 [ext_resource type="AudioStream" uid="uid://clhcdhjwdawc2" path="res://assets/Soundtrack/3 Sides.mp3" id="10_twkew"]
+[ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="12_k6p6p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]
 texture = ExtResource("2_ref71")
@@ -98,7 +99,7 @@ rendering_quadrant_size = 89
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -20
-position = Vector2(-742.0029, 719.00006)
+position = Vector2(-10846.999, -352.99988)
 scale = Vector2(1.2828839, 1)
 color = Color(1, 0.62352943, 0.59607846, 1)
 polygon = PackedVector2Array(-4879, -5967, -336, -7019, 3889, -6082, 4206, 1474, -4576, 1474)
@@ -161,7 +162,7 @@ position = Vector2(-4431, 453)
 scale = Vector2(0.5, 0.5)
 
 [node name="player" parent="." instance=ExtResource("2_pa367")]
-position = Vector2(-409, 283)
+position = Vector2(1164, -790)
 accel_curve = null
 
 [node name="left_exit" parent="." instance=ExtResource("8_6qb3g")]
@@ -174,3 +175,37 @@ player_pos = Vector2(0, -113)
 stream = ExtResource("10_twkew")
 autoplay = true
 max_distance = 30000.0
+
+[node name="Spike7" parent="." instance=ExtResource("10_cyhyg")]
+position = Vector2(-444, -441)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike8" parent="." instance=ExtResource("10_cyhyg")]
+position = Vector2(-369, -441)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike9" parent="." instance=ExtResource("10_cyhyg")]
+position = Vector2(-294, -441)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike10" parent="." instance=ExtResource("10_cyhyg")]
+position = Vector2(-219, -441)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike11" parent="." instance=ExtResource("10_cyhyg")]
+position = Vector2(-127.80664, -441)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike12" parent="." instance=ExtResource("10_cyhyg")]
+position = Vector2(-52.80664, -441)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy5" parent="." instance=ExtResource("12_k6p6p")]
+position = Vector2(2360, -994)
+
+[node name="scene_exit" parent="." instance=ExtResource("8_6qb3g")]
+position = Vector2(-3260, -2425)
+scale = Vector2(7, 1)
+connected_room = "res://nodes/square_rooms.tscn"
+player_pos = Vector2(-2016, 685)
+playerjumponenter = true

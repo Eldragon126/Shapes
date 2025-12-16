@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cnqwkv7glh5dd"]
+[gd_scene load_steps=15 format=4 uid="uid://cnqwkv7glh5dd"]
 
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_18wsc"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_p67so"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b5eynow3q8574" path="res://nodes/wall_swing.tscn" id="9_dpqia"]
 [ext_resource type="AudioStream" uid="uid://dq7j4rmqhbluy" path="res://assets/Soundtrack/5 sides.mp3" id="10_dpqia"]
 [ext_resource type="PackedScene" uid="uid://b3iefiagycfgt" path="res://nodes/get_more_sides.tscn" id="11_4ghgk"]
+[ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="12_3ntd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18wsc"]
 texture = ExtResource("2_8c75q")
@@ -219,3 +220,9 @@ max_distance = 30000.0
 
 [node name="GetMoreSides" parent="." instance=ExtResource("11_4ghgk")]
 position = Vector2(-4149, -124)
+
+[node name="Enemy5" parent="." instance=ExtResource("12_3ntd5")]
+position = Vector2(-2586, 2706)
+
+[node name="Enemy6" parent="." instance=ExtResource("12_3ntd5")]
+position = Vector2(-3075, 772)

@@ -67,7 +67,7 @@ position = Vector2(2281, 3630)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -11
-position = Vector2(9149, 3415)
+position = Vector2(23, 675)
 color = Color(0.19607843, 0.78039217, 0.81960785, 1)
 polygon = PackedVector2Array(-4414, 5474, -2439, -4648, 6242, -5141, 8875, 1606, 8340, 6708, 770, 7161)
 
@@ -92,3 +92,6 @@ parameters/looping = true
 
 [node name="Enemy5" parent="." instance=ExtResource("10_a4u22")]
 position = Vector2(2664, 2423)
+
+[node name="Enemy6" parent="." instance=ExtResource("10_a4u22")]
+position = Vector2(4899, 1795)
