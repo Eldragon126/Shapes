@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://1rixc6jg46cb"]
+
+[ext_resource type="Script" uid="uid://dh5fc0frvd65k" path="res://scripts/get_another_shape.gd" id="1_vgkps"]
+[ext_resource type="Texture2D" uid="uid://dq14utau70tll" path="res://assets/Player/Sphere.png" id="2_0nkw4"]
+[ext_resource type="Texture2D" uid="uid://dqh0ngk68weq5" path="res://assets/Player/Hexagon.png" id="3_6b5xb"]
+[ext_resource type="Texture2D" uid="uid://bcabanvt1t2h" path="res://assets/Player/Pentagon.png" id="4_peipj"]
+[ext_resource type="Texture2D" uid="uid://iasj3sn4lm3h" path="res://assets/Player/Square.png" id="5_f8od8"]
+[ext_resource type="Texture2D" uid="uid://bbljlgvam47q" path="res://assets/Player/Triangle.png" id="6_07kmf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbo62"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pddik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0nkw4")
+}],
+"loop": true,
+"name": &"Circle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6b5xb")
+}],
+"loop": true,
+"name": &"Hexagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_peipj")
+}],
+"loop": true,
+"name": &"Pentagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_f8od8")
+}],
+"loop": true,
+"name": &"Square",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_07kmf")
+}],
+"loop": true,
+"name": &"Triangle",
+"speed": 5.0
+}]
+
+[node name="ShapeUpgrade" type="Area2D"]
+script = ExtResource("1_vgkps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jbo62")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.0068040276, 0, 0.2046271, 1)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_pddik")
+animation = &"Pentagon"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
