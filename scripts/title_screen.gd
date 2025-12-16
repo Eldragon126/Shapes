@@ -27,3 +27,5 @@ func _on_start_pressed() -> void:
 		get_tree().change_scene_to_file(PlayerManager.scene)
 	else:
 		get_tree().change_scene_to_file("res://nodes/tutorial_rooms.tscn")
+func _process(delta: float) -> void:
+	$Collectables.text = "You have " + str(PlayerManager.collectable_count) + " out of 14 collectables."

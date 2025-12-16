@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1vgylwqwkuiy"]
 
-[ext_resource type="PackedScene" path="res://nodes/polly.tscn" id="1_tmccv"]
+[ext_resource type="PackedScene" uid="uid://cpeuh5hvns3m7" path="res://nodes/polly.tscn" id="1_tmccv"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="2_pgl1x"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="3_tmccv"]
 

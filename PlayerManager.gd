@@ -20,7 +20,9 @@ var can_I_open_a_menu: bool = true
 var collectable_count: int = 0
 var starting_area = PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT
 var scene
+var player_max_speed_circle: int = 1500
 var load_game_check: bool = false
+var Collectable_array = [false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 func _ready() -> void:
 	can_I_open_a_menu = true
 	print("you can open a menu because the PlayerManager script was just loaded")
@@ -49,7 +51,8 @@ func save():
 		"does_player_emit_light" : does_player_emit_light,
 		"can_I_open_a_menu" : can_I_open_a_menu,
 		"collectable_count" : collectable_count,
-		"scene" : scene
+		"scene" : scene,
+		"Collectable_array" : Collectable_array
 	}
 	return save_dict
 	
@@ -91,4 +94,5 @@ func load_game():
 	can_I_open_a_menu =global_data["can_I_open_a_menu"]
 	collectable_count =global_data["collectable_count"]
 	scene =global_data["scene"]
+	Collectable_array = global_data["Collectable_array"]
 	load_game_check = true

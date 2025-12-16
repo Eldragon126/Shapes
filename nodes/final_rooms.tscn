@@ -67,15 +67,18 @@ position = Vector2(-1366, -249)
 
 [node name="Collectable" parent="." instance=ExtResource("4_18wsc")]
 position = Vector2(-1292, -924)
+collectable_number = 10
 
 [node name="TransformationTomb2" parent="." instance=ExtResource("3_8c75q")]
 position = Vector2(-4136, -95)
 
 [node name="Collectable2" parent="." instance=ExtResource("4_18wsc")]
 position = Vector2(-2820, 121)
+collectable_number = 11
 
 [node name="Collectable3" parent="." instance=ExtResource("4_18wsc")]
 position = Vector2(-2849, 1446)
+collectable_number = 12
 
 [node name="TransformationTomb3" parent="." instance=ExtResource("3_8c75q")]
 position = Vector2(-1530, 2595)
@@ -95,6 +98,7 @@ position = Vector2(1963, 2700)
 
 [node name="Collectable4" parent="." instance=ExtResource("4_18wsc")]
 position = Vector2(1484, 1257)
+collectable_number = 13
 
 [node name="top_right" parent="." instance=ExtResource("7_18wsc")]
 position = Vector2(178, -143)
@@ -209,7 +213,7 @@ scale = Vector2(5, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -7
-position = Vector2(423, -724)
+position = Vector2(1529, -1446)
 color = Color(0.92156863, 0.5568628, 0.88235295, 1)
 polygon = PackedVector2Array(-9793, -753, -4451, -3169, 4026, -1009, 6697, 4310, 1982, 6772, -6541, 5773)
 

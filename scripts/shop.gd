@@ -71,9 +71,10 @@ func _on_shooting_pressed() -> void:
 	#Wait for Eric to make a reload timer for shooting, lower the timer's rate once this is pressed.
 
 func _on_movement_pressed() -> void:
-	if PlayerManager.currency >= 15 && PlayerManager.player_speed <= 500:
+	if PlayerManager.currency >= 15 && PlayerManager.player_speed <= 500 && PlayerManager.player_max_speed <= 500:
 		PlayerManager.currency -= 15
 		PlayerManager.player_speed += 100
+		PlayerManager.player_max_speed += 100
 		$CanBuy.play()
 	else:
 		$CannotBuy.play()
