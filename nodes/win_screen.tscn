@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://1vgylwqwkuiy"]
+[gd_scene load_steps=6 format=3 uid="uid://1vgylwqwkuiy"]
 
 [ext_resource type="PackedScene" uid="uid://cpeuh5hvns3m7" path="res://nodes/polly.tscn" id="1_tmccv"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="2_pgl1x"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="3_tmccv"]
 [ext_resource type="Texture2D" uid="uid://d4meir5bg0qih" path="res://assets/Player/Feelings/PlayerHeartFeelings.png" id="4_pgl1x"]
+[ext_resource type="AudioStream" uid="uid://cdmas2u78vbtn" path="res://assets/Soundtrack/River Song.wav" id="5_h0iua"]
 
 [node name="Win screen" type="Node2D"]
 
@@ -34,5 +35,14 @@ position = Vector2(533, 430)
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
 position = Vector2(-2, -134)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_pgl1x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_h0iua")
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(776, 325)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_pgl1x")
