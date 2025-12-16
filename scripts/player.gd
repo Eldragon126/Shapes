@@ -268,7 +268,9 @@ func handle_input(delta: float) -> void:
 		dir = dir.normalized()
 	if Input.is_action_just_pressed("jump") and (is_on_floor() || extra_jump):
 		velocity.y = jump_speed
-		$Jump.play()
+		if PlayerManager.sides_player != 6:
+			$Jump.play()
+			pass
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
 		print("I'm jumping??")
@@ -357,7 +359,8 @@ func wall_climb() -> void:
 	#	gravity = 0
 	if is_on_wall():
 		if Input.is_action_pressed("jump"):
-			$Jump.play()
+			if PlayerManager.sides_player != 6:
+				$Jump.play()
 			velocity.y = -300
 		else:
 			velocity.y = 100

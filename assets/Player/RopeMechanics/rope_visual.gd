@@ -6,7 +6,9 @@ extends Node
 @export var segment_count: int = 5
 
 var segments: Array[RigidBody2D]
-
+func _ready() -> void:
+	if is_instance_valid(PlayerManager.player): player = PlayerManager.player
+	else: print("Error: Player instance in PlayerManager is invalid or freed.")
 func clear():
 	segments.clear()
 	for i in get_children():
@@ -50,6 +52,7 @@ func create_rope(p1: Vector2, p2: Vector2, length: float):
 		pin.node_a = seg1.get_path()
 		pin.node_b = seg2.get_path()
 	# Player pin
+	player = PlayerManager.player
 	var player_pin = create_pin(player.global_position)
 	player_pin.node_a = player.get_path()
 	player_pin.node_b = segments[0].get_path()
