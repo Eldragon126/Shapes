@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_yxrec"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="4_bpm77"]
 [ext_resource type="PackedScene" uid="uid://xpxaeitqhjtm" path="res://nodes/disable_everything_of_player.tscn" id="5_yxrec"]
-[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="6_bpm77"]
+[ext_resource type="PackedScene" path="res://nodes/scene_exit.tscn" id="6_bpm77"]
 [ext_resource type="PackedScene" uid="uid://b3iefiagycfgt" path="res://nodes/get_more_sides.tscn" id="7_2dx7i"]
-[ext_resource type="PackedScene" uid="uid://cpeuh5hvns3m7" path="res://nodes/polly.tscn" id="8_u6vw7"]
+[ext_resource type="PackedScene" path="res://nodes/polly.tscn" id="8_u6vw7"]
 [ext_resource type="AudioStream" uid="uid://i2a0lp8b3i6g" path="res://assets/Soundtrack/Six Shot Revolver.mp3" id="9_lucfp"]
 [ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_a4u22"]
 
