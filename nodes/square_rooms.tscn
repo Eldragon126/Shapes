@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_rxyy8"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_k7ydd"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_he3fy"]
-[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="4_he3fy"]
+[ext_resource type="PackedScene" path="res://nodes/scene_exit.tscn" id="4_he3fy"]
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="5_qxn16"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="6_o3alt"]
 [ext_resource type="PackedScene" uid="uid://b3iefiagycfgt" path="res://nodes/get_more_sides.tscn" id="7_116pv"]
@@ -44,9 +44,11 @@ player_pos = Vector2(3258, -964)
 
 [node name="Collectable" parent="." instance=ExtResource("5_qxn16")]
 position = Vector2(-1236, -1166)
+collectable_number = 4
 
 [node name="Collectable2" parent="." instance=ExtResource("5_qxn16")]
 position = Vector2(5102, -2250)
+collectable_number = 5
 
 [node name="Spike" parent="." instance=ExtResource("6_o3alt")]
 position = Vector2(-811, 64)
@@ -77,7 +79,7 @@ position = Vector2(552, -2266)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -13
-position = Vector2(-1344, 681)
+position = Vector2(-227, 541)
 color = Color(0.7490196, 0.93333334, 0.64705884, 1)
 polygon = PackedVector2Array(-4564, 2803, -4496, -5358, 6887, -4422, 9820, 4265, 503, 4639)
 

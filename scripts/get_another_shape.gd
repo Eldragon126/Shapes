@@ -3,6 +3,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		$AudioStreamPlayer.play()
 		PlayerManager.max_sides_player += 1
 		if WhichShape == 3:
 			PlayerManager.sides_player = 3
@@ -30,3 +31,8 @@ func _ready() -> void:
 		$AnimatedSprite2D.animation = "Circle"
 	else:
 		$AnimatedSprite2D.animation = "Triangle"
+func _process(delta: float) -> void:
+	if PlayerManager.max_sides_player >= WhichShape:
+		hide()
+		collision_layer = 0
+		collision_mask = 0

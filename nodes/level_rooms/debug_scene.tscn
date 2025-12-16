@@ -80,7 +80,7 @@ texture = ExtResource("2_137k3")
 position = Vector2(1198, -121)
 
 [node name="PhysicalShop" parent="." instance=ExtResource("4_wpvxr")]
-position = Vector2(9156, -299)
+position = Vector2(8734, -150)
 
 [node name="enemy_triangle" parent="." instance=ExtResource("6_d13pl")]
 position = Vector2(2340, -142)

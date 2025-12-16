@@ -8,7 +8,7 @@ var slow_acceleration = PlayerManager.player_acceleration_slow
 var jump_speed = -PlayerManager.player_speed*2
 @export var gravity = PlayerManager.player_speed * 5
 @export var max_grav_speed = 100
-@export var extra_jump = true
+@export var extra_jump = false
 @export var jump_count: int = 0
 @export var projectile_speed: float = 1000
 var dash_speed = 1000
@@ -271,13 +271,9 @@ func handle_input(delta: float) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
 		jump_count += 1
-		if jump_count > 1:
+		if jump_count >= 1:
 			extra_jump = false
 			jump_count = 0
-	if PlayerManager.sides_player == 7:
-		PlayerManager.player_max_speed = 1500
-	else:
-		PlayerManager.player_max_speed = 400
 	if direction == 0:
 		velocity.x = move_toward(velocity.x,0,slow_acceleration)
 	else:
@@ -285,8 +281,8 @@ func handle_input(delta: float) -> void:
 			velocity.x = move_toward(velocity.x,PlayerManager.player_speed * direction, acceleration)
 			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
 		elif disabled_everything == false:
-			velocity.x = move_toward(velocity.x, PlayerManager.player_max_speed * direction, acceleration)
-			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
+			velocity.x = move_toward(velocity.x, PlayerManager.player_max_speed_circle * direction, acceleration)
+			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed_circle, PlayerManager.player_max_speed)
 			if velocity.length() > 100:
 				rotation += direction *0.2
 			elif velocity.length() > 300:

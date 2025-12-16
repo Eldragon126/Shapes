@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="4_bpm77"]
 [ext_resource type="PackedScene" uid="uid://xpxaeitqhjtm" path="res://nodes/disable_everything_of_player.tscn" id="5_yxrec"]
 [ext_resource type="PackedScene" path="res://nodes/scene_exit.tscn" id="6_bpm77"]
-[ext_resource type="PackedScene" uid="uid://b3iefiagycfgt" path="res://nodes/get_more_sides.tscn" id="7_2dx7i"]
-[ext_resource type="PackedScene" path="res://nodes/polly.tscn" id="8_u6vw7"]
+[ext_resource type="PackedScene" uid="uid://cpeuh5hvns3m7" path="res://nodes/polly.tscn" id="8_u6vw7"]
 [ext_resource type="AudioStream" uid="uid://i2a0lp8b3i6g" path="res://assets/Soundtrack/Six Shot Revolver.mp3" id="9_lucfp"]
 [ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_a4u22"]
+[ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_1dsn3"]
 
 [node name="hex_rooms" type="Node2D"]
 script = ExtResource("1_1dsn3")
@@ -20,6 +20,7 @@ layer_0/tile_data = PackedInt32Array(65535, 131074, 1, 0, 131074, 1, 1, 131074, 
 
 [node name="Collectable" parent="." instance=ExtResource("2_ni14o")]
 position = Vector2(150, 1516)
+collectable_number = 6
 
 [node name="TransformationTomb" parent="." instance=ExtResource("3_yxrec")]
 position = Vector2(1675, 2188)
@@ -35,6 +36,7 @@ position = Vector2(3471, 4236)
 
 [node name="Collectable2" parent="." instance=ExtResource("2_ni14o")]
 position = Vector2(4235, 1103)
+collectable_number = 7
 
 [node name="player" parent="." instance=ExtResource("4_bpm77")]
 position = Vector2(2439, 2443)
@@ -42,9 +44,11 @@ accel_curve = null
 
 [node name="Collectable3" parent="." instance=ExtResource("2_ni14o")]
 position = Vector2(2777, 3296)
+collectable_number = 8
 
 [node name="Collectable4" parent="." instance=ExtResource("2_ni14o")]
 position = Vector2(2244, 1265)
+collectable_number = 9
 
 [node name="DisableEverythingOfPlayer" parent="." instance=ExtResource("5_yxrec")]
 position = Vector2(-335, 1921)
@@ -62,12 +66,9 @@ scale = Vector2(1, 2)
 connected_room = "res://nodes/tutorial_rooms.tscn"
 player_pos = Vector2(1909, -351)
 
-[node name="GetMoreSides" parent="." instance=ExtResource("7_2dx7i")]
-position = Vector2(2281, 3630)
-
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -11
-position = Vector2(23, 675)
+position = Vector2(57, 598)
 color = Color(0.19607843, 0.78039217, 0.81960785, 1)
 polygon = PackedVector2Array(-4414, 5474, -2439, -4648, 6242, -5141, 8875, 1606, 8340, 6708, 770, 7161)
 
@@ -95,3 +96,7 @@ position = Vector2(2664, 2423)
 
 [node name="Enemy6" parent="." instance=ExtResource("10_a4u22")]
 position = Vector2(4899, 1795)
+
+[node name="HeartEnemy" parent="." instance=ExtResource("11_1dsn3")]
+position = Vector2(2833, 4313)
+scale = Vector2(0.25, 0.25)
