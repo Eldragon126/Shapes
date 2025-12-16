@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ovkpmpn5n4c"]
+
+[ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_vqsac"]
+
+[node name="hex_rooms" type="Node2D"]
+
+[node name="map_creator" parent="." instance=ExtResource("1_vqsac")]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5eynow3q8574"]
+
+[ext_resource type="Texture2D" uid="uid://bycdl6nckwap5" path="res://assets/wall_swing.png" id="1_yoosj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l37n0"]
+size = Vector2(128, 24)
+
+[node name="wall_swing" type="StaticBody2D"]
+collision_layer = 65
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yoosj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -52)
+shape = SubResource("RectangleShape2D_l37n0")
