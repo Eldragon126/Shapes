@@ -1,6 +1,6 @@
 class_name GlobalPlayerManager
 extends Node
-var max_sides_player: int = 7
+var max_sides_player: int = 3
 var sides_player: int = 0
 var player_speed: int = 400
 var player_acceleration: int = 1000
