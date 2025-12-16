@@ -30,3 +30,6 @@ func _ready() -> void:
 		$AnimatedSprite2D.animation = "Circle"
 	else:
 		$AnimatedSprite2D.animation = "Triangle"
+func _process(delta: float) -> void:
+	if PlayerManager.max_sides_player >= WhichShape:
+		hide()
