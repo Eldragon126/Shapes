@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cnqwkv7glh5dd"]
+[gd_scene load_steps=15 format=4 uid="uid://cnqwkv7glh5dd"]
 
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_18wsc"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_p67so"]
@@ -6,11 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_121le"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_8c75q"]
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="4_18wsc"]
-[ext_resource type="PackedScene" path="res://nodes/scene_exit.tscn" id="7_18wsc"]
+[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="7_18wsc"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="8_q0cwh"]
-[ext_resource type="PackedScene" path="res://nodes/wall_swing.tscn" id="9_dpqia"]
+[ext_resource type="PackedScene" uid="uid://b5eynow3q8574" path="res://nodes/wall_swing.tscn" id="9_dpqia"]
 [ext_resource type="AudioStream" uid="uid://dq7j4rmqhbluy" path="res://assets/Soundtrack/5 sides.mp3" id="10_dpqia"]
 [ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="12_3ntd5"]
+[ext_resource type="PackedScene" uid="uid://1rixc6jg46cb" path="res://nodes/shape_upgrade.tscn" id="12_qlwl7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18wsc"]
 texture = ExtResource("2_8c75q")
@@ -67,9 +68,6 @@ position = Vector2(-1366, -249)
 [node name="Collectable" parent="." instance=ExtResource("4_18wsc")]
 position = Vector2(-1292, -924)
 collectable_number = 10
-
-[node name="TransformationTomb2" parent="." instance=ExtResource("3_8c75q")]
-position = Vector2(-4136, -95)
 
 [node name="Collectable2" parent="." instance=ExtResource("4_18wsc")]
 position = Vector2(-2820, 121)
@@ -212,7 +210,7 @@ scale = Vector2(5, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -7
-position = Vector2(-64, -893)
+position = Vector2(1009, -678)
 color = Color(0.92156863, 0.5568628, 0.88235295, 1)
 polygon = PackedVector2Array(-9793, -753, -4451, -3169, 4026, -1009, 6697, 4310, 1982, 6772, -6541, 5773)
 
@@ -226,3 +224,7 @@ position = Vector2(-2586, 2706)
 
 [node name="Enemy6" parent="." instance=ExtResource("12_3ntd5")]
 position = Vector2(-3075, 772)
+
+[node name="ShapeUpgrade" parent="." instance=ExtResource("12_qlwl7")]
+position = Vector2(-4166, -9)
+WhichShape = 5

@@ -4,19 +4,19 @@
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_twkew"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_pa367"]
 [ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="2_ref71"]
-[ext_resource type="PackedScene" path="res://nodes/backgrounds.tscn" id="3_1fsk0"]
+[ext_resource type="PackedScene" uid="uid://crex84kuucofu" path="res://nodes/backgrounds.tscn" id="3_1fsk0"]
 [ext_resource type="Texture2D" uid="uid://bgfsckka28gs4" path="res://assets/TileMapNotBackground.png" id="4_ref71"]
-[ext_resource type="PackedScene" path="res://nodes/scene_exit.tscn" id="8_6qb3g"]
+[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="8_6qb3g"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="8_hynay"]
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="9_hynay"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="10_cyhyg"]
 [ext_resource type="AudioStream" uid="uid://clhcdhjwdawc2" path="res://assets/Soundtrack/3 Sides.mp3" id="10_twkew"]
 [ext_resource type="PackedScene" uid="uid://cut8uhqnbh0o4" path="res://nodes/physical_shop.tscn" id="13_85tmj"]
 [ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="13_drymy"]
-[ext_resource type="PackedScene" uid="uid://du1ic7ks3t51o" path="res://nodes/balloon_small.tscn" id="14_o75ef"]
+[ext_resource type="PackedScene" path="res://nodes/balloon_small.tscn" id="14_o75ef"]
 [ext_resource type="PackedScene" uid="uid://f2gd744mwdln" path="res://nodes/coin.tscn" id="15_8i6cd"]
 [ext_resource type="PackedScene" uid="uid://ckgk816h5jmur" path="res://nodes/creature.tscn" id="16_8qg6g"]
-[ext_resource type="PackedScene" path="res://nodes/wall_swing.tscn" id="17_ag2j8"]
+[ext_resource type="PackedScene" uid="uid://b5eynow3q8574" path="res://nodes/wall_swing.tscn" id="17_ag2j8"]
 [ext_resource type="PackedScene" uid="uid://1rixc6jg46cb" path="res://nodes/shape_upgrade.tscn" id="18_o75ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]
@@ -171,7 +171,7 @@ position = Vector2(-4431, 453)
 scale = Vector2(0.5, 0.5)
 
 [node name="player" parent="." instance=ExtResource("2_pa367")]
-position = Vector2(-501, 246)
+position = Vector2(356, -4473)
 accel_curve = null
 
 [node name="left_exit" parent="." instance=ExtResource("8_6qb3g")]

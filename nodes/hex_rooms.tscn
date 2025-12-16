@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8ovkpmpn5n4c"]
+[gd_scene load_steps=13 format=3 uid="uid://c8ovkpmpn5n4c"]
 
 [ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_1dsn3"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_vqsac"]
@@ -6,11 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_yxrec"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="4_bpm77"]
 [ext_resource type="PackedScene" uid="uid://xpxaeitqhjtm" path="res://nodes/disable_everything_of_player.tscn" id="5_yxrec"]
-[ext_resource type="PackedScene" path="res://nodes/scene_exit.tscn" id="6_bpm77"]
+[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="6_bpm77"]
 [ext_resource type="PackedScene" uid="uid://cpeuh5hvns3m7" path="res://nodes/polly.tscn" id="8_u6vw7"]
 [ext_resource type="AudioStream" uid="uid://i2a0lp8b3i6g" path="res://assets/Soundtrack/Six Shot Revolver.mp3" id="9_lucfp"]
 [ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_a4u22"]
 [ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_1dsn3"]
+[ext_resource type="PackedScene" uid="uid://1rixc6jg46cb" path="res://nodes/shape_upgrade.tscn" id="12_ecpel"]
 
 [node name="hex_rooms" type="Node2D"]
 script = ExtResource("1_1dsn3")
@@ -100,3 +101,7 @@ position = Vector2(4899, 1795)
 [node name="HeartEnemy" parent="." instance=ExtResource("11_1dsn3")]
 position = Vector2(2833, 4313)
 scale = Vector2(0.25, 0.25)
+
+[node name="ShapeUpgrade" parent="." instance=ExtResource("12_ecpel")]
+position = Vector2(2265, 3649)
+WhichShape = 6
