@@ -276,10 +276,10 @@ offset_bottom = -360.0
 text = "Stay Determined. You must find POLY"
 
 [node name="Label8" type="Label" parent="."]
-offset_left = -2308.4688
-offset_top = 257.99994
-offset_right = -1956.4688
-offset_bottom = 270.99994
+offset_left = -617.0
+offset_top = -1551.0
+offset_right = -265.0
+offset_bottom = -1538.0
 text = "Stay Determined. You must find POLY"
 
 [node name="Label9" type="Label" parent="."]
