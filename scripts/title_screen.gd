@@ -26,4 +26,4 @@ func _on_start_pressed() -> void:
 	if PlayerManager.load_game_check == true:
 		get_tree().change_scene_to_file(PlayerManager.scene)
 	else:
-		get_tree().change_scene_to_file("res://nodes/debug_scene.tscn")
+		get_tree().change_scene_to_file("res://nodes/tutorial_rooms.tscn")

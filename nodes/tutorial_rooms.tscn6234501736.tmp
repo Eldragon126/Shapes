@@ -1,0 +1,510 @@
+[gd_scene load_steps=15 format=4 uid="uid://jw4ea85xjyh5"]
+
+[ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_cdtnb"]
+[ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_pa367"]
+[ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="2_ref71"]
+[ext_resource type="PackedScene" uid="uid://crex84kuucofu" path="res://nodes/backgrounds.tscn" id="3_1fsk0"]
+[ext_resource type="Texture2D" uid="uid://bgfsckka28gs4" path="res://assets/TileMapNotBackground.png" id="4_ref71"]
+[ext_resource type="PackedScene" uid="uid://d0bjm8fb2mn6" path="res://nodes/lever.tscn" id="5_pa367"]
+[ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="8_6qb3g"]
+[ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="8_hynay"]
+[ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="9_hynay"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg2c2"]
+texture = ExtResource("2_ref71")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, -40.158005, 64, -40.15759, -40.244095, 64, -40.04492, 64, -64, -64, -64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, -64, 40.158005, 40.244095, 40.15759, 40.04492, -64, 64, -64, 64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 64, 40.158005, 64, 40.15759, -40.244095, -64, -40.04492, -64, -64, 64, -64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, -40.158005, -64, -40.15759, 40.244095, 64, 40.04492, 64, 64, -64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(40.28969, 64, 40.04492, -64, 64, -64, 64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 40.28969, -64, 40.04492, -64, 64, 64, 64)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -40.28969, -64, -40.04492, -64, -64, 64, -64)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40.28969, -64, -40.04492, 64, -64, 64, -64, -64)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(40.115967, 39.950195, 64, 40.04492, 64, 64, 39.973877, 64)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-39.950195, -40.115967, -40.04492, -64, -64, -64, -64, -39.973877)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(39.950195, -40.115967, 40.04492, -64, 64, -64, 64, -39.973877)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-39.950195, 40.115967, -40.04492, 64, -64, 64, -64, 39.973877)
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ty3yj"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 5
+sources/2 = SubResource("TileSetAtlasSource_rg2c2")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_olw51"]
+texture = ExtResource("4_ref71")
+texture_region_size = Vector2i(89, 89)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kp4qr"]
+sources/0 = SubResource("TileSetAtlasSource_olw51")
+
+[sub_resource type="GDScript" id="GDScript_k5sjp"]
+script/source = "class_name Player
+extends CharacterBody2D
+var disabled_everything: bool = false
+#This disables everything
+var max_sides: int = PlayerManager.max_sides_player
+var current_sides: int = PlayerManager.sides_player
+var speed = PlayerManager.player_speed
+var acceleration = PlayerManager.player_acceleration
+var slow_acceleration = PlayerManager.player_acceleration_slow
+var jump_speed = -speed*2
+@export var gravity = speed * 5
+@export var max_grav_speed = 100
+@export var extra_jump = true
+@export var jump_count: int = 0
+@export var projectile_speed: float = 1000
+var dash_speed = 1000
+var can_dash = true
+var max_speed = PlayerManager.player_max_speed
+var alreadyaddedlight: bool = false
+@onready var lobber_projectile = load(\"res://nodes/lobber_projectile.tscn\")
+
+
+# Variables For the Rope Player
+var hang_point: Vector2
+var hang_lenght: float
+var is_hanging: bool
+var tracking: PackedVector2Array
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var release_timer: Timer = $ReleaseTimer
+@onready var rope_visual: RopeVisual = $RopeVisual
+@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var jump_buffer: Timer = $JumpBuffer
+@export var max_speed_rope_player: float = 100
+@export var accel: float = 1
+@export var accel_curve: Curve
+@export var friction: float = 4
+@export_group(\"Rope\", \"rope_\")
+@export var rope_stiffnes: float = 1000
+@export var rope_friction: float = 3
+const SPEED = 1
+const JUMP_VELOCITY = 1
+
+
+#lobber is so cool
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	PlayerManager.player = self
+	if PlayerManager.room_activate:
+		global_position = PlayerManager.player_pos
+		if PlayerManager.playerjumponenter:
+			velocity.y = jump_speed
+		PlayerManager.room_activate = false
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	handle_input(delta)
+	move_and_slide()
+	update_movement(delta)
+	if PlayerManager.sides_player == 5 and disabled_everything == false:
+		if is_on_floor():
+			coyote_timer.start()
+		# rotate raycast to mouse
+		ray_cast_2d.rotation = get_local_mouse_position().angle()
+		# Add the gravity.
+		#if velocity.y < 0 or is_hanging:
+			#velocity += get_gravity() * delta
+		#else:
+			#velocity += get_gravity() * delta * 2
+		
+		#if (not jump_buffer.is_stopped()) and (not coyote_timer.is_stopped() or not release_timer.is_stopped()):
+			#velocity.y = JUMP_VELOCITY
+			#jump_buffer.stop()
+			#coyote_timer.stop()
+#		if Input.is_action_just_released(\"up\") and velocity.y < 0:
+#			velocity.y = 0
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+		var norm_speed = abs(velocity.x) / max_speed_rope_player
+		if is_on_floor():
+			# Accel when on floor
+			velocity.x += accel * max_speed_rope_player * direction * delta * accel_curve.sample(norm_speed)
+			velocity.x -= friction * max_speed_rope_player * delta * norm_speed * sign(velocity.x)
+		else:
+			pass
+			# Accel less when on air
+			velocity.x += accel * max_speed_rope_player * direction * delta * accel_curve.sample(norm_speed) * .5
+		update_hanging(delta)
+		update_tracking()
+		queue_redraw()
+		move_and_slide()
+
+func update_hanging(delta):
+	if not is_hanging: return
+	var hang_local: Vector2 = to_local(hang_point)
+	ray_cast_2d.rotation = hang_local.angle()
+	var length_ratio = max(0, hang_local.length() - hang_lenght)
+	# Stiffness force of rope
+	velocity += length_ratio * rope_stiffnes * hang_local.normalized() * delta * .9
+	# Damping of the rope
+	velocity -= rope_friction * sign(velocity.dot(hang_local)) * hang_local.normalized() * delta * sign(length_ratio)
+
+func update_tracking():
+	tracking.reverse()
+	tracking.append(global_position)
+	tracking.reverse()
+	if tracking.size() > 100:
+		tracking.resize(100)
+
+		
+func _process(_delta: float) -> void: #Underscored it to stop errors, if you're ever coding in this just undo the underscore.
+	#Changes Animation and collision based on value of current_side ammount, allows for a better level system
+	
+	PlayerManager.scene = get_tree().current_scene.scene_file_path
+	if disabled_everything == true:
+		modulate = \"2a00ee\"
+	else:
+		modulate = \"ffffff\"
+	print(\"The new scene is:\" + str(PlayerManager.scene))
+	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
+	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
+	$UI/TemporaryHealthBar.value = $Health.health
+	if PlayerManager.max_health_sides_addition == false:
+		$UI/TemporaryHealthBar.max_value = PlayerManager.player_max_health
+	else:
+		$UI/TemporaryHealthBar.max_value = PlayerManager.player_max_health + PlayerManager.sides_player
+	if PlayerManager.max_sides_player > 7:
+		PlayerManager.max_sides_player = 7
+	if PlayerManager.max_sides_player < 3:
+		PlayerManager.max_sides_player = 3
+	if PlayerManager.sides_player != 7:
+		$UI/Sides.text = \"Your sides: \" + str(PlayerManager.sides_player)
+	else: $UI/Sides.text = \"Your sides: are infinite!\"
+	if PlayerManager.does_player_emit_light == true && alreadyaddedlight == false:
+		var light = preload(\"res://nodes/player_light.tscn\")
+		var lighted = light.instantiate()
+		get_parent().add_child(lighted)
+		lighted.position = $\".\".position
+		print(\"Created a light for the player\")
+		alreadyaddedlight = true
+	else:
+		var is_there_light = get_tree().get_nodes_in_group(\"Light\")
+		if is_there_light != null:
+			pass
+		else:
+			alreadyaddedlight = false
+	if PlayerManager.sides_player == 3 && PlayerManager.max_sides_player >= 3:
+		$AnimatedSprite2D.animation = \"Triangle\"
+		$TriangleMask.disabled = false
+		$SquareMask.disabled = true
+		$PentagonMask.disabled = true
+		$HexagonMask.disabled = true
+		$CircleMask.disabled = true
+		$HurtBox/TriangleMask.disabled = false
+		$HurtBox/PentagonMask.disabled = true
+		$HurtBox/HexagonMask.disabled = true
+		$HurtBox/SquareMask.disabled = true
+		$HurtBox/CircleMask.disabled =true
+	elif PlayerManager.sides_player == 4 && PlayerManager.max_sides_player >= 4:
+		$AnimatedSprite2D.animation = \"Square\"
+		$SquareMask.disabled = false
+		$PentagonMask.disabled = true
+		$HexagonMask.disabled = true
+		$CircleMask.disabled = true
+		$TriangleMask.disabled = true
+		$HurtBox/TriangleMask.disabled = true
+		$HurtBox/PentagonMask.disabled = true
+		$HurtBox/HexagonMask.disabled = true
+		$HurtBox/SquareMask.disabled = false
+		$HurtBox/CircleMask.disabled = true
+	elif PlayerManager.sides_player == 5 && PlayerManager.max_sides_player >= 5:
+		$AnimatedSprite2D.animation = \"Pentagon\"
+		spidey_webs()
+		$PentagonMask.disabled = false
+		$HexagonMask.disabled = true
+		$CircleMask.disabled = true
+		$TriangleMask.disabled = true
+		$SquareMask.disabled = true
+		$HurtBox/TriangleMask.disabled = true
+		$HurtBox/PentagonMask.disabled = false
+		$HurtBox/HexagonMask.disabled = true
+		$HurtBox/SquareMask.disabled =true
+		$HurtBox/CircleMask.disabled =true
+	elif PlayerManager.sides_player == 6 && PlayerManager.max_sides_player >= 6:
+		$AnimatedSprite2D.animation = \"Hexagon\"
+		wall_climb()
+		$HexagonMask.disabled = false
+		$CircleMask.disabled = true
+		$TriangleMask.disabled = true
+		$SquareMask.disabled = true
+		$PentagonMask.disabled = true
+		$HurtBox/TriangleMask.disabled =true
+		$HurtBox/PentagonMask.disabled =true
+		$HurtBox/HexagonMask.disabled = false
+		$HurtBox/SquareMask.disabled =true
+		$HurtBox/CircleMask.disabled =true
+	elif PlayerManager.sides_player == 7 && PlayerManager.max_sides_player >= 7:
+		$AnimatedSprite2D.animation = \"Circle\"
+		$CircleMask.disabled = false
+		$TriangleMask.disabled = true
+		$SquareMask.disabled = true
+		$PentagonMask.disabled = true
+		$HexagonMask.disabled = true
+		$HurtBox/TriangleMask.disabled =true
+		$HurtBox/PentagonMask.disabled =true
+		$HurtBox/HexagonMask.disabled =true
+		$HurtBox/SquareMask.disabled =true
+		$HurtBox/CircleMask.disabled = false
+	else:
+		if PlayerManager.sides_player < 3:
+			PlayerManager.sides_player = 3
+		elif PlayerManager.sides_player > 7:
+			PlayerManager.sides_player = 7
+		print(\"Error, The side variable is either less than 3 or greater than 7\")
+		$TriangleMask.disabled = false
+
+
+func update_movement(delta: float) -> void:
+	velocity.y += gravity * delta
+	velocity.x = clamp(velocity.x, -max_speed, max_speed)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and PlayerManager.sides_player == 5 and disabled_everything == false:
+		# Debug jump to position
+		if event.button_index == 2 and event.pressed:
+			#global_position = get_global_mouse_position()
+			pass
+		if event.button_index == 1:
+			# Release
+			if is_hanging and not event.pressed:
+				velocity *= 1.1
+				release_timer.start()
+				rope_visual.clear()
+			var can_hang: bool = ray_cast_2d.is_colliding()
+			is_hanging = event.pressed and can_hang
+			# Hang
+			if is_hanging:
+				#extra_jump = true
+				hang_point = ray_cast_2d.get_collision_point()
+				hang_lenght = ray_cast_2d.global_position.distance_to(hang_point)
+				hang_lenght = max(60, hang_lenght)
+				rope_visual.create_rope(global_position, hang_point, hang_lenght)
+			queue_redraw()
+
+func _draw() -> void:
+	# draw tracking
+	#if tracking:
+		#draw_polyline(global_transform.affine_inverse() * tracking, Color(0.352, 0.807, 0.867, 1.0), 2)
+	# drawing hanging point
+	if PlayerManager.sides_player == 5 and disabled_everything == false:
+		if is_hanging:
+			draw_circle(to_local(hang_point), 8, Color(1.0, 0.0, 0.0, 1.0))
+		# drawing rope
+		var line: PackedVector2Array
+		if rope_visual.segments: for seg in rope_visual.segments:
+			line.append(to_local(seg.global_position))
+		line.append(to_local(hang_point))
+		if is_hanging:
+			line.append(to_local(hang_point))
+		if line.size() >= 2:
+			draw_polyline(line, Color(0.496, 0.496, 0.496, 1.0), 3)
+
+func handle_input(delta: float) -> void:
+	var direction = Input.get_axis(\"ui_left\", \"ui_right\")
+	var direction_y = Input.get_axis(\"ui_up\", \"ui_down\")
+	var dir = Vector2(direction, direction_y)
+	if dir.length() > 0:
+		dir = dir.normalized()
+	if Input.is_action_just_pressed(\"jump\") and (is_on_floor() || extra_jump):
+		velocity.y = jump_speed
+		$Jump.play()
+		var tween = get_tree().create_tween()
+		tween.tween_property($\".\", \"rotation_degrees\", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
+		print(\"I'm jumping??\")
+		jump_count += 1
+		if jump_count > 1:
+			extra_jump = false
+			jump_count = 0
+	if current_sides == 7:
+		max_speed = 10000
+	else:
+		max_speed = 400
+	if direction == 0:
+		velocity.x = move_toward(velocity.x,0,slow_acceleration)
+	else:
+		if PlayerManager.sides_player != 7:
+			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
+			print(\"it should be another shape other than circle\")
+			print(\"velocity is \" + str(velocity.x))
+			print(\"velocity is moving toward \" + str(speed * direction + 1000))
+		elif disabled_everything == false:
+			velocity.x = move_toward(velocity.x, speed * direction * 10, acceleration)
+			if velocity.length() > 100:
+				rotation += direction *0.2
+			elif velocity.length() > 300:
+				rotation += direction * 2
+			print(\"velocity is \" + str(velocity.x))
+			print(\"velocity is moving toward \" + str(speed * direction * 10))
+			print(\"It should be a circle\")
+		else:
+			velocity.x = move_toward(velocity.x,speed * direction, acceleration)
+			print(\"EVERYTHING IS DISABLED\")
+			print(\"velocity is \" + str(velocity.x))
+			print(\"velocity is moving toward \" + str(speed * direction + 1000))
+	if is_on_floor():
+		if PlayerManager.sides_player == 3 and disabled_everything == false: extra_jump = true
+		else: pass
+
+
+#func handle_attack():
+#	if Input.is_action_just_pressed(\"attack\"):
+#		var lobber_projectile_inst = lobber_projectile.instantiate()
+#		add_child(lobber_projectile_inst)
+	if PlayerManager.sides_player == 4 and Input.is_action_just_pressed(\"ability_activate\") and can_dash and disabled_everything == false:
+		velocity.x = 0
+		velocity.y = 0
+		if Input.is_action_pressed(\"ui_left\") or Input.is_action_pressed(\"ui_right\"):
+			velocity.x = 25 * (direction * dash_speed)
+			velocity.x -= 25 * (direction * dash_speed * delta)
+		if Input.is_action_pressed(\"ui_up\"):
+			velocity.y = direction_y * dash_speed *.5
+			velocity.y -= direction_y * dash_speed * delta *.5
+		if Input.is_action_pressed(\"ui_down\"):
+			velocity.y = direction_y * dash_speed
+			velocity.y -= direction_y * dash_speed * delta
+		can_dash = false
+		$dash_downtime.start()
+
+
+
+func _on_dash_downtime_timeout() -> void:
+	if is_on_floor():
+		can_dash = true
+	else:
+		$dash_downtime.start()
+	
+
+
+func _on_health_health_depleted() -> void:
+	$\".\".modulate = \"fb003c\"
+	call_deferred(\"_go_to_title\")
+	print(\"The timer timed-out and is now changing the scene to the title screen.\")
+
+func _go_to_title() -> void:
+	get_tree().change_scene_to_file(\"res://nodes/level_rooms/title_screen.tscn\")
+
+func wall_climb() -> void:
+	print(\"Wall climb is the best time\")
+	# This is the cool version
+	#if is_on_wall():
+	#	velocity.y = 100
+	#	gravity = 0
+	if is_on_wall():
+		if Input.is_action_pressed(\"jump\"):
+			$Jump.play()
+			velocity.y = -300
+		else:
+			velocity.y = 100
+	
+	
+
+func spidey_webs() -> void:
+	print(\"Spidey webssss\")
+	
+		
+"
+
+[node name="room_1" type="Node2D"]
+
+[node name="map_creator" parent="." instance=ExtResource("1_cdtnb")]
+
+[node name="Layer1" type="TileMapLayer" parent="map_creator"]
+use_parent_material = true
+position = Vector2(7, 5)
+tile_map_data = PackedByteArray("AAD//wIAAgABAAEAAAAAAAIAAgABAAEAAAABAAIAAgABAAEAAAD+/wIAAgABAAEAAAD9////AgADAAEAAAD9/wIAAgABAAEAAAD8/wIAAgABAAEAAAD7/wIAAgABAAEAAAD6/wIAAgABAAEAAAD5/wIAAgABAAEAAAD4/wIAAgABAAEAAAD3/wIAAgABAAEAAAD0/wIAAgABAAEAAAD1/wIAAgABAAEAAAD2/wIAAgABAAEAAAD7////AgABAAEAAAD8////AgABAAEAAAD5////AgABAAEAAAD6////AgABAAEAAAD4////AgAAAAEAAAD4//7/AgAAAAEAAAD4//3/AgABAAEAAADz/wIAAgAAAAEAAADz//3/AgACAAAAAADz//7/AgAAAAEAAADz////AgAAAAEAAADz/wAAAgAAAAEAAADz/wEAAgAAAAEAAAD0/wEAAgACAAEAAAD2/wAAAgACAAEAAAD0//7/AgACAAEAAAD3//3/AgAAAAEAAADy//3/AgACAAEAAADw//3/AgACAAEAAADx//3/AgACAAEAAADt//3/AgACAAEAAADu//3/AgACAAEAAADs//3/AgAAAAEAAADs//7/AgAAAAEAAADs////AgABAAAAAADr////AgABAAEAAADq////AgABAAEAAADp/wAAAgAAAAEAAADp/wEAAgAAAAEAAADp////AgAAAAIAAADj//v/AgAAAAEAAADj//z/AgAAAAEAAADj//3/AgAAAAEAAADj//r/AgAAAAEAAADj//b/AgAAAAEAAADj//f/AgAAAAEAAADj//j/AgAAAAEAAADj//n/AgAAAAEAAADp//X/AgADAAAAAADq//X/AgABAAEAAADr//X/AgABAAEAAADs//X/AgABAAEAAADt//X/AgABAAEAAADu//X/AgABAAEAAADv//X/AgABAAEAAADw//X/AgABAAEAAADx//X/AgABAAEAAADy//X/AgABAAEAAADz//X/AgABAAEAAADj//X/AgAAAAEAAADv//3/AgACAAEAAADu//z/AgAAAAEAAADu//v/AgAAAAEAAADu//r/AgAAAAEAAADv//r/AgACAAEAAADw//r/AgADAAEAAADw//v/AgADAAAAAADw//z/AgAAAAEAAAD3//v/AgAAAAEAAAD3//z/AgAAAAEAAAD4//r/AgABAAEAAAACAAAAAgAAAAAAAAD9//7/AgAAAAAAAAD+//7/AgACAAEAAAD///7/AgACAAEAAAAAAP7/AgACAAEAAAABAP7/AgACAAEAAAADAAAAAgACAAEAAAACAP7/AgACAAEAAAADAP7/AgACAAEAAAAEAAAAAgACAAEAAAAFAAAAAgACAAEAAAAGAAAAAgACAAEAAAAHAAAAAgACAAEAAAAIAPv/AgADAAEAAAAIAPz/AgADAAEAAAAIAP3/AgADAAEAAAAIAP7/AgADAAEAAAAEAPz/AgADAAEAAAAEAP3/AgADAAAAAAAEAP7/AgABAAIAAAAHAP7/AgABAAEAAAAHAPz/AgABAAEAAAAEAPv/AgADAAEAAAD5//r/AgABAAEAAAD6//r/AgABAAEAAAD7//r/AgABAAEAAAAAAPr/AgABAAEAAAABAPr/AgABAAEAAAACAPr/AgABAAEAAAADAPr/AgABAAEAAAAEAPr/AgADAAIAAAD3//r/AgAAAAIAAAD7//z/AgAAAAEAAAD7//v/AgAAAAEAAAD8//z/AgABAAEAAAD9//z/AgABAAEAAAD+//z/AgABAAEAAAD///z/AgABAAEAAAAAAPv/AgADAAEAAAAAAPz/AgADAAEAAAD0//H/AgADAAEAAAD0//L/AgADAAEAAAD0//P/AgADAAEAAAD0//T/AgADAAEAAAD0//X/AgADAAEAAAD0//D/AgABAAEAAAD1//D/AgABAAEAAAD2//D/AgABAAEAAAD3//D/AgABAAEAAAD4//D/AgABAAEAAAD5//D/AgABAAEAAAD6//D/AgABAAEAAAD7//D/AgABAAEAAAD8//D/AgABAAEAAAD9//D/AgABAAEAAAD+//D/AgABAAEAAAD///D/AgABAAEAAAAAAPD/AgABAAEAAAABAPH/AgADAAEAAAABAPL/AgADAAEAAAABAPP/AgADAAEAAAABAPT/AgADAAEAAAABAPX/AgADAAAAAAABAPD/AgADAAIAAAACAPX/AgABAAEAAAADAPX/AgABAAEAAAAEAPX/AgABAAEAAAAFAPX/AgABAAEAAAAGAPX/AgABAAEAAAAHAPX/AgABAAEAAAAIAPX/AgABAAEAAAAJAPX/AgABAAEAAAAIAPr/AgABAAEAAAAJAPr/AgABAAEAAAD0//b/AgADAAEAAAD0//f/AgADAAAAAAD1//f/AgABAAEAAAD2//f/AgABAAEAAAD4//X/AgABAAEAAAD5//X/AgABAAEAAAD7//P/AgABAAEAAAD8//P/AgABAAEAAAD9//P/AgABAAEAAAAKAPr/AgABAAEAAAALAPr/AgABAAAAAAAZAPn/AgACAAEAAAAVAPL/AgABAAEAAAAKAO//AgADAAEAAAAKAPD/AgADAAAAAAAKAPH/AgADAAEAAAAKAPL/AgADAAEAAAAKAPP/AgADAAEAAAAKAPT/AgADAAEAAAAKAPX/AgADAAAAAAAUAO//AgAAAAEAAAAUAPD/AgAAAAEAAAAUAPH/AgAAAAEAAAAUAPL/AgAAAAEAAAAUAOr/AgAAAAEAAAAUAOv/AgAAAAEAAAAUAOz/AgAAAAEAAAAUAO3/AgAAAAEAAAAUAO7/AgAAAAEAAAAKAOn/AgABAAEAAAALAOn/AgABAAEAAAAMAOn/AgABAAEAAAANAOn/AgABAAEAAAAOAOn/AgABAAEAAAAPAOn/AgABAAEAAAAQAOn/AgABAAEAAAARAOn/AgABAAEAAAASAOn/AgABAAEAAAATAOn/AgABAAEAAAAUAOn/AgABAAEAAAAJAO7/AgABAAEAAAAHAO7/AgABAAEAAAAIAO7/AgABAAEAAAAGAOn/AgABAAAAAAAHAOn/AgABAAEAAAAJAOn/AgABAAEAAAAGAO7/AgABAAEAAAAKAO7/AgADAAIAAAALAPX/AgABAAEAAAAMAPX/AgABAAEAAAALAPn/AgAAAAEAAAAMAPn/AgACAAEAAAANAPn/AgACAAEAAAAOAPn/AgACAAEAAAAPAPn/AgACAAEAAAAQAPn/AgACAAEAAAARAPn/AgACAAEAAAASAPn/AgACAAEAAAATAPn/AgACAAEAAAAUAPn/AgACAAEAAAAVAPn/AgACAAAAAAAYAPn/AgAAAAAAAAAOAPP/AgABAAEAAAAPAPP/AgABAAEAAAAQAPP/AgABAAEAAAALAPD/AgABAAEAAAAMAPD/AgABAAEAAAD//+7/AgABAAEAAAAAAO7/AgABAAEAAAABAO7/AgABAAEAAAACAO7/AgABAAEAAAADAO7/AgABAAEAAAAEAO7/AgABAAEAAAAFAO7/AgABAAEAAAACAOn/AgABAAEAAAADAOn/AgABAAEAAAAEAOn/AgABAAEAAAAFAOn/AgABAAEAAAD+/+r/AgAAAAEAAAD+/+v/AgAAAAEAAAD+/+z/AgAAAAEAAAD+/+3/AgAAAAEAAAD+/+7/AgAAAAEAAAD5/+n/AgAAAAEAAAD6/+n/AgABAAEAAAD7/+n/AgABAAAAAAD8/+n/AgABAAEAAAD9/+n/AgABAAEAAAD+/+n/AgABAAEAAAAGAN3/AgAAAAEAAAAGAN7/AgAAAAEAAAAGAN//AgAAAAEAAAAGAOD/AgACAAAAAAAGAOH/AgAAAAEAAAAGAOP/AgAAAAEAAAAGAOT/AgACAAAAAAAGAOX/AgAAAAEAAAAGAOb/AgAAAAEAAAAGAOf/AgAAAAEAAAAGAOj/AgAAAAEAAAAIAOn/AgABAAEAAAD5/93/AgAAAAEAAAD5/97/AgAAAAEAAAD5/9//AgAAAAEAAAD5/+D/AgAAAAEAAAD5/+H/AgAAAAEAAAD5/+L/AgAAAAEAAAD5/+P/AgAAAAEAAAD5/+T/AgAAAAEAAAD5/+X/AgAAAAEAAAD5/+b/AgAAAAEAAAD5/+f/AgAAAAEAAAD5/+j/AgAAAAEAAAABAO3/AgACAAEAAAACAO3/AgACAAEAAAD//+v/AgACAAEAAAAAAOv/AgACAAEAAAD7/+j/AgAAAAEAAAD7/+f/AgABAAEAAAD6/+f/AgABAAEAAAD//+b/AgABAAAAAAD//+X/AgACAAAAAAD+/+b/AgADAAAAAAD+/+X/AgAAAAAAAAACAOX/AgAAAAAAAAAAAOP/AgAAAAEAAAAAAOH/AgAAAAEAAAAAAOL/AgAAAAEAAAADAOX/AgACAAAAAAACAOb/AgADAAAAAAADAOb/AgABAAAAAAAGAOL/AgACAAAAAAD6/+D/AgABAAEAAAD7/+D/AgABAAEAAAD8/+D/AgABAAEAAAD9/+D/AgABAAEAAAD+/+D/AgABAAEAAAD//+D/AgABAAEAAAAAAOD/AgABAAEAAAABAOD/AgABAAAAAAABAN7/AgAAAAEAAAABAN//AgAAAAEAAAD6/93/AgABAAEAAAD7/93/AgABAAEAAAD8/93/AgABAAEAAAD9/93/AgABAAEAAAD+/93/AgADAAAAAAD//93/AgABAAEAAAAAAN3/AgABAAEAAAABAN3/AgABAAEAAAACAN3/AgABAAEAAAADAN3/AgABAAEAAAAGANr/AgAAAAEAAAAGANv/AgAAAAEAAAAGANz/AgAAAAEAAAD5/9r/AgAAAAEAAAD5/9v/AgAAAAEAAAD5/9z/AgAAAAEAAAAFANn/AgABAAEAAAAGANn/AgABAAEAAAD6/9n/AgABAAEAAAAEANn/AgABAAEAAAD5/9n/AgAAAAIAAAD//9n/AgABAAEAAAAAANn/AgABAAEAAAABANn/AgABAAEAAAACANn/AgABAAEAAAADANn/AgABAAEAAAD9/9n/AgABAAEAAAD+/9n/AgABAAEAAAD9/9z/AgADAAAAAAD+/9z/AgADAAIAAAD9/9v/AgADAAIAAAD7/9n/AgADAAIAAAANAPb/AgADAAAAAAAOAPb/AgABAAEAAAANAPX/AgADAAIAAAAXAPf/AgABAAEAAAAWAPf/AgABAAEAAAAVAPf/AgAAAAEAAAAVAPb/AgAAAAEAAAAVAPX/AgAAAAEAAAAVAPT/AgAAAAEAAAAVAPP/AgAAAAEAAAAYAPf/AgADAAEAAAAYAPb/AgADAAEAAAAYAPX/AgABAAEAAAAZAPX/AgABAAEAAAAaAPb/AgADAAEAAAAaAPX/AgADAAIAAAAaAPn/AgABAAIAAAAaAPf/AgABAAIAAAAWAPr/AgACAAEAAAAXAPr/AgACAAEAAAAYAPr/AgABAAIAAAAVAPr/AgACAAIAAADj//T/AgAAAAEAAADj//P/AgAAAAEAAADj//L/AgAAAAEAAADj//H/AgAAAAEAAADj//D/AgAAAAEAAADj/+//AgAAAAEAAADj/+7/AgAAAAEAAADj/+3/AgAAAAEAAADj/+z/AgAAAAEAAADj/+v/AgAAAAEAAADp//T/AgADAAEAAADp//P/AgADAAEAAADp//L/AgADAAEAAADp//H/AgADAAEAAADp//D/AgADAAEAAADp/+//AgADAAEAAADp/+7/AgADAAEAAADp/+3/AgADAAEAAADp/+z/AgADAAEAAADp/+v/AgADAAEAAADd/wMAAgABAAAAAADc/wMAAgABAAEAAADb/wMAAgADAAAAAADf/wMAAgACAAEAAADe/wMAAgACAAEAAADg/wMAAgACAAEAAADh/wMAAgACAAEAAADi/wMAAgACAAEAAADj/wMAAgACAAEAAADk/wMAAgACAAEAAADl/wMAAgACAAEAAADm/wMAAgACAAEAAADn/wMAAgACAAEAAADo/wMAAgACAAEAAADp/wMAAgACAAEAAADp/wIAAgAAAAEAAADd/wEAAgABAAEAAADc/wEAAgABAAEAAADb/wEAAgABAAEAAADa/wMAAgACAAEAAADe/wEAAgADAAEAAADe/wAAAgADAAEAAADe////AgADAAEAAADe//7/AgAAAAAAAADf//7/AgACAAEAAADg//7/AgACAAEAAADh//7/AgACAAEAAADi//7/AgACAAEAAADj//7/AgACAAEAAADa/wEAAgAAAAEAAADa/wAAAgAAAAEAAADa////AgACAAAAAADZ/wMAAgACAAEAAADY/wMAAgACAAEAAADX/wMAAgACAAEAAADZ////AgACAAEAAADY////AgACAAEAAADX////AgACAAEAAADW////AgAAAAEAAADW/wAAAgAAAAEAAADW/wMAAgACAAIAAAD7/9v/AgADAAAAAAD8/9v/AgABAAEAAAD7/9r/AgADAAEAAAAIAP//AgADAAEAAAAIAAAAAgABAAIAAAACAAIAAgABAAEAAAADAAIAAgABAAEAAAAEAAIAAgABAAEAAAAFAAIAAgABAAEAAAAGAAIAAgABAAEAAAAHAAIAAgABAAEAAAAIAAIAAgABAAEAAAAJAAIAAgABAAEAAAAKAAIAAgABAAEAAAALAAIAAgABAAEAAAAMAAIAAgABAAEAAAANAAIAAgADAAEAAAANAAEAAgADAAEAAAANAAAAAgADAAEAAAANAP//AgADAAEAAAANAP7/AgADAAEAAAANAP3/AgABAAEAAAAOAP3/AgABAAEAAAAPAP3/AgABAAEAAAAPAPr/AgABAAEAAAAOAPr/AgABAAEAAAANAPr/AgABAAEAAAAMAPr/AgABAAEAAAAPAPv/AgAAAAEAAAABAAAAAgABAAEAAADs//n/AgABAAEAAADr//n/AgABAAEAAADq//f/AgABAAEAAADp//f/AgABAAEAAAA=")
+tile_set = SubResource("TileSet_ty3yj")
+rendering_quadrant_size = 128
+
+[node name="TileMapLayer" type="TileMapLayer" parent="map_creator"]
+
+[node name="backgrounds" parent="." instance=ExtResource("3_1fsk0")]
+rendering_quadrant_size = 89
+
+[node name="Layer1" type="TileMapLayer" parent="backgrounds"]
+z_index = -3
+use_parent_material = true
+tile_set = SubResource("TileSet_kp4qr")
+rendering_quadrant_size = 89
+
+[node name="Lever" parent="." instance=ExtResource("5_pa367")]
+position = Vector2(1415, -1390)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -20
+position = Vector2(-16698, 1462)
+scale = Vector2(1.2828839, 1)
+color = Color(1, 0.62352943, 0.59607846, 1)
+polygon = PackedVector2Array(-4879, -5967, -336, -7019, 3889, -6082, 4206, 1474, -4576, 1474)
+
+[node name="top_exit" parent="." instance=ExtResource("8_6qb3g")]
+position = Vector2(-401, -4928)
+scale = Vector2(9, 1)
+connected_room = "res://nodes/square_rooms.tscn"
+playerjumponenter = true
+
+[node name="right_exit" parent="." instance=ExtResource("8_6qb3g")]
+position = Vector2(3401, -1001)
+scale = Vector2(1, 2)
+connected_room = "res://nodes/square_rooms.tscn"
+player_pos = Vector2(2125, 1952)
+
+[node name="TransformationTomb" parent="." instance=ExtResource("8_hynay")]
+position = Vector2(-3351, 165)
+
+[node name="Collectable" parent="." instance=ExtResource("9_hynay")]
+position = Vector2(-428, -1723)
+
+[node name="Collectable2" parent="." instance=ExtResource("9_hynay")]
+position = Vector2(1914, -2546)
+
+[node name="Collectable3" parent="." instance=ExtResource("9_hynay")]
+position = Vector2(-644, -3761)
+
+[node name="player" parent="." instance=ExtResource("2_pa367")]
+position = Vector2(-3244, -2275)
+script = SubResource("GDScript_k5sjp")
+
+[node name="Collectable4" parent="." instance=ExtResource("9_hynay")]
+position = Vector2(-2812, -1159)
+
+[node name="bottom_right_exit" parent="." instance=ExtResource("8_6qb3g")]
+position = Vector2(2102, -386)
+scale = Vector2(1, 2)
+connected_room = "res://nodes/hex_rooms.tscn"
+player_pos = Vector2(2961, -1379)

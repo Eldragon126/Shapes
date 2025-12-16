@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpeuh5hvns3m7"]
+
+[ext_resource type="Script" uid="uid://bq8gxnotiw4lh" path="res://scripts/polly.gd" id="1_8mq0a"]
+[ext_resource type="Texture2D" uid="uid://c7byajltyphor" path="res://assets/Player/POLYTHEPOLYGON.png" id="1_r1est"]
+
+[node name="polly" type="Area2D"]
+collision_layer = 191
+collision_mask = 191
+script = ExtResource("1_8mq0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.006363809, 0.6249991)
+scale = Vector2(0.24214144, 0.24214141)
+texture = ExtResource("1_r1est")
+
+[node name="TriangleMask" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-72, 63, 0, -60, 71, 63)
+disabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

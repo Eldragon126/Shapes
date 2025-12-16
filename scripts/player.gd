@@ -116,7 +116,6 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		modulate = "2a00ee"
 	else:
 		modulate = "ffffff"
-	print("The new scene is:" + str(PlayerManager.scene))
 	if PlayerManager.max_health_sides_addition == false: $Health.set_max_health(PlayerManager.player_max_health)
 	else: $Health.set_max_health(PlayerManager.player_max_health + PlayerManager.sides_player)
 	$UI/TemporaryHealthBar.value = $Health.health
@@ -136,7 +135,6 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 		var lighted = light.instantiate()
 		get_parent().add_child(lighted)
 		lighted.position = $".".position
-		print("Created a light for the player")
 		alreadyaddedlight = true
 	else:
 		var is_there_light = get_tree().get_nodes_in_group("Light")
@@ -211,7 +209,6 @@ func _process(_delta: float) -> void: #Underscored it to stop errors, if you're 
 			PlayerManager.sides_player = 3
 		elif PlayerManager.sides_player > 7:
 			PlayerManager.sides_player = 7
-		print("Error, The side variable is either less than 3 or greater than 7")
 		$TriangleMask.disabled = false
 
 
@@ -273,7 +270,6 @@ func handle_input(delta: float) -> void:
 			pass
 		var tween = get_tree().create_tween()
 		tween.tween_property($".", "rotation_degrees", 360 * direction, 0.6).set_trans(Tween.TRANS_LINEAR)
-		print("I'm jumping??")
 		jump_count += 1
 		if jump_count > 1:
 			extra_jump = false
@@ -287,9 +283,6 @@ func handle_input(delta: float) -> void:
 	else:
 		if PlayerManager.sides_player != 7:
 			velocity.x = move_toward(velocity.x,PlayerManager.player_speed * direction, acceleration)
-			print("it should be another shape other than circle")
-			print("velocity is " + str(velocity.x))
-			print("velocity is moving toward " + str(PlayerManager.player_speed * direction + 1000))
 			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
 		elif disabled_everything == false:
 			velocity.x = move_toward(velocity.x, PlayerManager.player_max_speed * direction, acceleration)
@@ -298,9 +291,6 @@ func handle_input(delta: float) -> void:
 				rotation += direction *0.2
 			elif velocity.length() > 300:
 				rotation += direction * 2
-			print("velocity is " + str(velocity.x))
-			print("velocity is moving toward " + str(PlayerManager.player_max_speed * direction))
-			print("It should be a circle")
 		else:
 			velocity.x = move_toward(velocity.x,PlayerManager.player_speed * direction, acceleration)
 			velocity.x = clamp(velocity.x, -PlayerManager.player_max_speed, PlayerManager.player_max_speed)
@@ -323,8 +313,8 @@ func handle_input(delta: float) -> void:
 			velocity.x = 25 * (direction * dash_speed)
 			velocity.x -= 25 * (direction * dash_speed * delta)
 		if Input.is_action_pressed("ui_up"):
-			velocity.y = direction_y * dash_speed * 0.5
-			velocity.y -= direction_y * dash_speed * delta *0.5
+			velocity.y = direction_y * dash_speed * 0.75
+			velocity.y -= direction_y * dash_speed * delta *0.75
 		if Input.is_action_pressed("ui_down"):
 			velocity.y = direction_y * dash_speed
 			velocity.y -= direction_y * dash_speed * delta
@@ -352,7 +342,6 @@ func _go_to_title() -> void:
 	get_tree().change_scene_to_file("res://nodes/level_rooms/title_screen.tscn")
 
 func wall_climb() -> void:
-	print("Wall climb is the best time")
 	# This is the cool version
 	#if is_on_wall():
 	#	velocity.y = 100
@@ -360,6 +349,7 @@ func wall_climb() -> void:
 	if is_on_wall():
 		if Input.is_action_pressed("jump"):
 			if PlayerManager.sides_player != 6:
+				$jump.volume_db = -100
 				$Jump.play()
 			velocity.y = -300
 		else:
@@ -368,7 +358,7 @@ func wall_climb() -> void:
 	
 
 func spidey_webs() -> void:
-	print("Spidey webssss")
+	pass
 	
 func refresh_stats():
 	jump_speed = -PlayerManager.player_speed * 2

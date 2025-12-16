@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/4 Sides.mp3-f2ab778634eb3ddf10940f08111e59dd.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

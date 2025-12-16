@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://gnrqbe1pmt5g"]
+
+[ext_resource type="PackedScene" uid="uid://cpeuh5hvns3m7" path="res://nodes/polly.tscn" id="1_tmccv"]
+[ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="2_pgl1x"]
+[ext_resource type="PackedScene" uid="uid://cgu5pt0m4rf35" path="res://nodes/player_img.tscn" id="3_h0iua"]
+
+[node name="Win screen" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 319.0
+offset_top = 179.0
+offset_right = 973.0
+offset_bottom = 293.0
+theme_override_font_sizes/font_size = 42
+text = "You Found Polly!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="polly" parent="." instance=ExtResource("1_tmccv")]
+position = Vector2(777, 449)
+
+[node name="map_creator" parent="." instance=ExtResource("2_pgl1x")]
+layer_0/tile_data = PackedInt32Array(262146, 131074, 1, 262147, 131074, 1, 262148, 131074, 1, 262149, 131074, 1, 262150, 131074, 1, 262151, 131074, 1, 262152, 131074, 1, 262153, 131074, 1, 262145, 131074, 1, 262144, 131074, 1, 327679, 131074, 1, 65542, 131074, 0, 5, 131074, 0, 6, 196610, 0, 65543, 196610, 0, 65538, 65538, 0, 3, 65538, 0, 4, 2, 0, 65539, 2, 0, 7, 196610, 2, 65541, 131074, 2, 65540, 65538, 2, 2, 2, 2, 131079, 2, 0, 131074, 131074, 0, 131078, 2, 1, 131075, 196610, 1, 196611, 196610, 1, 196614, 2, 1, 196615, 196610, 1, 196610, 2, 1, -65531, 65538, 1, -65532, 65538, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -4
+position = Vector2(-53, -119)
+color = Color(1, 0.7294118, 1, 1)
+polygon = PackedVector2Array(-286, -316, 1266, -265, 1761, 625, 1119, 1292, -422, 918, -594, 63)
+
+[node name="player_img" parent="." instance=ExtResource("3_h0iua")]
+position = Vector2(538, 449)
