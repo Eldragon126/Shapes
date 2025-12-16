@@ -99,7 +99,7 @@ rendering_quadrant_size = 89
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -20
-position = Vector2(-871.00195, 630.99994)
+position = Vector2(-252.00195, 442)
 scale = Vector2(1.2828839, 1)
 color = Color(1, 0.62352943, 0.59607846, 1)
 polygon = PackedVector2Array(-4879, -5967, -336, -7019, 3889, -6082, 4206, 1474, -4576, 1474)
@@ -162,7 +162,7 @@ position = Vector2(-4431, 453)
 scale = Vector2(0.5, 0.5)
 
 [node name="player" parent="." instance=ExtResource("2_pa367")]
-position = Vector2(1164, -790)
+position = Vector2(-501, 246)
 accel_curve = null
 
 [node name="left_exit" parent="." instance=ExtResource("8_6qb3g")]
