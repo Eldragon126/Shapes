@@ -77,7 +77,7 @@ position = Vector2(552, -2266)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -13
-position = Vector2(-13670, -810)
+position = Vector2(-1344, 681)
 color = Color(0.7490196, 0.93333334, 0.64705884, 1)
 polygon = PackedVector2Array(-4564, 2803, -4496, -5358, 6887, -4422, 9820, 4265, 503, 4639)
 
