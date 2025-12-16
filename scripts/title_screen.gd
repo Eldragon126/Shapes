@@ -22,6 +22,7 @@ func _ready() -> void:
 	")
 	PlayerManager.load_game()
 func _on_start_pressed() -> void:
+	
 	if PlayerManager.load_game_check == true:
 		get_tree().change_scene_to_file(PlayerManager.scene)
 	else:

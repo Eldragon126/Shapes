@@ -1,0 +1,221 @@
+[gd_scene load_steps=19 format=3 uid="uid://hfedesmkpl6q"]
+
+[ext_resource type="Script" uid="uid://bqyul54cf5fhe" path="res://scripts/player.gd" id="1_k5sjp"]
+[ext_resource type="Texture2D" uid="uid://dq14utau70tll" path="res://assets/Player/Sphere.png" id="2_46y3y"]
+[ext_resource type="Texture2D" uid="uid://dqh0ngk68weq5" path="res://assets/Player/Hexagon.png" id="3_ejohg"]
+[ext_resource type="Texture2D" uid="uid://bcabanvt1t2h" path="res://assets/Player/Pentagon.png" id="4_qbdof"]
+[ext_resource type="Texture2D" uid="uid://iasj3sn4lm3h" path="res://assets/Player/Square.png" id="5_hg0js"]
+[ext_resource type="Texture2D" uid="uid://bbljlgvam47q" path="res://assets/Player/Triangle.png" id="6_4n5g4"]
+[ext_resource type="Script" uid="uid://dmc7bossv8q17" path="res://scripts/Health.gd" id="7_46y3y"]
+[ext_resource type="Script" uid="uid://dvfjxdlly5pmk" path="res://scripts/ui.gd" id="7_hg0js"]
+[ext_resource type="Script" uid="uid://cv0kocsb7np4x" path="res://scripts/hurtbox.gd" id="8_ejohg"]
+[ext_resource type="Script" uid="uid://u71dke3qy8gg" path="res://assets/Player/RopeMechanics/ray_cast_2d.gd" id="11_5m3aa"]
+[ext_resource type="AudioStream" uid="uid://dn3eufg6oy31f" path="res://assets/Soundtrack/SoundEffects/hitHurt.wav" id="11_gggum"]
+[ext_resource type="Script" uid="uid://b7pfdeyrcy5rd" path="res://assets/Player/RopeMechanics/rope_visual.gd" id="12_gggum"]
+[ext_resource type="AudioStream" uid="uid://byyxefit65i1x" path="res://assets/Soundtrack/SoundEffects/jump.wav" id="14_k5sjp"]
+[ext_resource type="AudioStream" uid="uid://fd0yj40o011k" path="res://assets/Soundtrack/SoundEffects/click.wav" id="15_ea43s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8srp"]
+size = Vector2(144, 144)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wrp4"]
+radius = 74.00676
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gleio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_46y3y")
+}],
+"loop": true,
+"name": &"Circle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ejohg")
+}],
+"loop": true,
+"name": &"Hexagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qbdof")
+}],
+"loop": true,
+"name": &"Pentagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hg0js")
+}],
+"loop": true,
+"name": &"Square",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4n5g4")
+}],
+"loop": true,
+"name": &"Triangle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5sjp"]
+radius = 8.5440035
+
+[node name="player" type="CharacterBody2D" groups=["Player"]]
+z_index = 3
+collision_mask = 18
+script = ExtResource("1_k5sjp")
+
+[node name="player_cam" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="TriangleMask" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-72, 63, 0, -60, 71, 63)
+disabled = true
+
+[node name="PentagonMask" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-72, -17, 0, -72, 71, -17, 44, 72, -44, 72)
+disabled = true
+
+[node name="HexagonMask" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(61, -36, 61, 35, 0, 71, -61, 35, -61, -36, 0, -72)
+disabled = true
+
+[node name="SquareMask" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_m8srp")
+disabled = true
+
+[node name="CircleMask" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2wrp4")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_gleio")
+animation = &"Circle"
+
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("7_hg0js")
+
+[node name="Sides" type="Label" parent="UI"]
+z_index = -1
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 1079.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(1.2032688e-06, 0, 0.47234696, 1)
+theme_override_font_sizes/font_size = 20
+text = "Your Current Sides"
+metadata/_edit_use_anchors_ = true
+
+[node name="TemporaryHealthBar" type="ProgressBar" parent="UI"]
+offset_left = 10.0
+offset_top = 32.0
+offset_right = 154.0
+offset_bottom = 59.0
+max_value = 10.0
+step = 1.0
+show_percentage = false
+
+[node name="FPSDEBUG" type="Label" parent="UI"]
+offset_left = 878.0
+offset_top = 613.0
+offset_right = 1144.0
+offset_bottom = 643.0
+text = "MY FRAMES PER SECOND"
+horizontal_alignment = 2
+
+[node name="dash_downtime" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("7_46y3y")
+health = 10
+metadata/_custom_type_script = "uid://dmc7bossv8q17"
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("sound", "health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("8_ejohg")
+sound = NodePath("../Hurt")
+health = NodePath("../Health")
+
+[node name="TriangleMask" type="CollisionPolygon2D" parent="HurtBox"]
+polygon = PackedVector2Array(-72, 63, 0, -60, 71, 63)
+disabled = true
+
+[node name="PentagonMask" type="CollisionPolygon2D" parent="HurtBox"]
+polygon = PackedVector2Array(-72, -17, 0, -72, 71, -17, 44, 72, -44, 72)
+disabled = true
+
+[node name="HexagonMask" type="CollisionPolygon2D" parent="HurtBox"]
+polygon = PackedVector2Array(61, -36, 61, 35, 0, 71, -61, 35, -61, -36, 0, -72)
+disabled = true
+
+[node name="SquareMask" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_m8srp")
+disabled = true
+
+[node name="CircleMask" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_2wrp4")
+disabled = true
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_gggum")
+volume_db = -1.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(574, 1)
+collision_mask = 64
+script = ExtResource("11_5m3aa")
+
+[node name="ReleaseTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -65)
+shape = SubResource("CircleShape2D_k5sjp")
+one_way_collision = true
+
+[node name="RopeVisual" type="Node" parent="."]
+script = ExtResource("12_gggum")
+metadata/_custom_type_script = "uid://b7pfdeyrcy5rd"
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_k5sjp")
+volume_db = -10.0
+
+[node name="Dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_ea43s")
+
+[connection signal="timeout" from="dash_downtime" to="." method="_on_dash_downtime_timeout"]
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="recieved_damage" from="HurtBox" to="HurtBox" method="_on_recieved_damage"]
+[connection signal="finished" from="Hurt" to="." method="_on_hurt_finished"]

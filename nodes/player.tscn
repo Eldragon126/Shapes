@@ -1,5 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://hfedesmkpl6q"]
 
+[ext_resource type="Script" uid="uid://bqyul54cf5fhe" path="res://scripts/player.gd" id="1_k5sjp"]
 [ext_resource type="Texture2D" uid="uid://dq14utau70tll" path="res://assets/Player/Sphere.png" id="2_46y3y"]
 [ext_resource type="Curve" uid="uid://bnns4uisdppei" path="res://assets/Player/RopeMechanics/curve.tres" id="2_gggum"]
 [ext_resource type="Texture2D" uid="uid://dqh0ngk68weq5" path="res://assets/Player/Hexagon.png" id="3_ejohg"]
@@ -15,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://byyxefit65i1x" path="res://assets/Soundtrack/SoundEffects/jump.wav" id="14_k5sjp"]
 [ext_resource type="AudioStream" uid="uid://fd0yj40o011k" path="res://assets/Soundtrack/SoundEffects/click.wav" id="15_ea43s"]
 
+<<<<<<< HEAD
 [sub_resource type="GDScript" id="GDScript_k5sjp"]
 script/source = "class_name Player
 extends CharacterBody2D
@@ -384,6 +386,8 @@ func spidey_webs() -> void:
 		
 "
 
+=======
+>>>>>>> d2e110dce7f1fcd772092bf3e722df44d1047b69
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8srp"]
 size = Vector2(144, 144)
 
@@ -439,7 +443,7 @@ radius = 8.5440035
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 3
 collision_mask = 18
-script = SubResource("GDScript_k5sjp")
+script = ExtResource("1_k5sjp")
 accel_curve = ExtResource("2_gggum")
 
 [node name="player_cam" type="Camera2D" parent="."]

@@ -1,11 +1,16 @@
-[gd_scene load_steps=9 format=4 uid="uid://cnqwkv7glh5dd"]
+[gd_scene load_steps=10 format=4 uid="uid://cnqwkv7glh5dd"]
 
+[ext_resource type="Script" uid="uid://brbxev1anibql" path="res://scripts/map.gd" id="1_18wsc"]
 [ext_resource type="PackedScene" uid="uid://vxg7ttsey3xb" path="res://nodes/map_creator.tscn" id="1_p67so"]
 [ext_resource type="Texture2D" uid="uid://c4crbdpjyfhns" path="res://assets/tilemap_test2.png" id="2_8c75q"]
 [ext_resource type="PackedScene" uid="uid://hfedesmkpl6q" path="res://nodes/player.tscn" id="2_121le"]
 [ext_resource type="PackedScene" uid="uid://c46pjj1kuownp" path="res://nodes/transformation_tomb.tscn" id="3_8c75q"]
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="4_18wsc"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://b5eynow3q8574" path="res://nodes/wall_swing.tscn" id="7_18wsc"]
+=======
+[ext_resource type="PackedScene" uid="uid://xpxaeitqhjtm" path="res://nodes/disable_everything_of_player.tscn" id="7_q0cwh"]
+>>>>>>> d2e110dce7f1fcd772092bf3e722df44d1047b69
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18wsc"]
 texture = ExtResource("2_8c75q")
@@ -46,6 +51,7 @@ physics_layer_0/collision_mask = 5
 sources/2 = SubResource("TileSetAtlasSource_18wsc")
 
 [node name="final_rooms" type="Node2D"]
+script = ExtResource("1_18wsc")
 
 [node name="map_creator" parent="." instance=ExtResource("1_p67so")]
 
