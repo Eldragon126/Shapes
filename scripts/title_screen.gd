@@ -21,6 +21,7 @@ func _ready() -> void:
 	SOFTWARE.
 	")
 	PlayerManager.load_game()
+	PlayerManager.can_I_open_a_menu = true
 func _on_start_pressed() -> void:
 	
 	if PlayerManager.load_game_check == true:

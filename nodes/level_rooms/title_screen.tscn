@@ -175,7 +175,7 @@ text = "FIND POLY THE BELOVED POLYGON!"
 [node name="RichTextLabel" type="RichTextLabel" parent="AnimationPlayer/Title"]
 offset_left = 169.189
 offset_top = 89.164
-offset_right = 1263.189
+offset_right = 1574.0
 offset_bottom = 335.16403
 pivot_offset = Vector2(512.12213, 146.18576)
 theme_override_colors/default_color = Color(0, 1, 1, 1)
@@ -186,7 +186,7 @@ text = "POLY-GONE"
 [node name="RichTextLabel2" type="RichTextLabel" parent="AnimationPlayer/Title"]
 offset_left = 169.0
 offset_top = 90.0
-offset_right = 1387.0
+offset_right = 1637.0
 offset_bottom = 368.0
 pivot_offset = Vector2(512, 144)
 theme_override_colors/default_color = Color(0, 0.1764706, 0.5294118, 1)

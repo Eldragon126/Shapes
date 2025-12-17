@@ -15,7 +15,7 @@ run/main_scene="uid://bptb2bnr0r4t8"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=120
 boot_splash/bg_color=Color(1.0107458e-06, 0.49314523, 0.5454243, 1)
-boot_splash/image="uid://0ntbq0imtogl"
+boot_splash/image="uid://thwp3iatqkq1"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -136,4 +136,5 @@ escape_interact={
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0.39029768, 0.2944654, 1)

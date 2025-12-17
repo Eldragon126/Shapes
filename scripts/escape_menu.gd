@@ -1,6 +1,7 @@
 extends Control
 const  BPMRate: float = 60/130
 func _ready() -> void:
+	PlayerManager.can_I_open_a_menu = true
 	$"Option Menu".hide()
 	print("The Escape menu exists and is lively")
 	$VFlowContainer.show()
@@ -37,6 +38,7 @@ func _on_menu_pressed() -> void:
 
 
 func _on_cool_button_pressed() -> void:
+	PlayerManager.can_I_open_a_menu = true
 	PlayerManager.save_game()
 	$ButtonPressSound.play()
 	

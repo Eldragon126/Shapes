@@ -2,6 +2,7 @@ extends Control
 
 func _ready() -> void:
 	pass
+	PlayerManager.can_I_open_a_menu = true
 	var WhichSong = randi_range(1,2)
 	if WhichSong == 1:
 		$AudioStreamPlayer.play()
