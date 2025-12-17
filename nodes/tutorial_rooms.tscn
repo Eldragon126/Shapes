@@ -116,8 +116,8 @@ connected_room = "res://nodes/square_rooms.tscn"
 playerjumponenter = true
 
 [node name="right_exit" parent="." instance=ExtResource("8_6qb3g")]
-position = Vector2(3401, -1001)
-scale = Vector2(1, 2)
+position = Vector2(3532.0002, -1001)
+scale = Vector2(3, 2)
 connected_room = "res://nodes/square_rooms.tscn"
 player_pos = Vector2(2125, 1952)
 
@@ -174,8 +174,8 @@ position = Vector2(-501, 246)
 accel_curve = null
 
 [node name="left_exit" parent="." instance=ExtResource("8_6qb3g")]
-position = Vector2(-5307, 261)
-scale = Vector2(1, 2)
+position = Vector2(-5434, 261)
+scale = Vector2(3, 2)
 connected_room = "res://nodes/final_rooms.tscn"
 player_pos = Vector2(0, -113)
 

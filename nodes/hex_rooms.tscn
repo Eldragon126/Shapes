@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ear8epsstoqg" path="res://nodes/scene_exit.tscn" id="6_bpm77"]
 [ext_resource type="PackedScene" uid="uid://cpeuh5hvns3m7" path="res://nodes/polly.tscn" id="8_u6vw7"]
 [ext_resource type="AudioStream" uid="uid://i2a0lp8b3i6g" path="res://assets/Soundtrack/Six Shot Revolver.mp3" id="9_lucfp"]
-[ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_a4u22"]
 [ext_resource type="PackedScene" uid="uid://cdmnj44b6k1l0" path="res://nodes/Enemies/heart_enemy.tscn" id="11_1dsn3"]
+[ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="12_8alvu"]
 [ext_resource type="PackedScene" uid="uid://1rixc6jg46cb" path="res://nodes/shape_upgrade.tscn" id="12_ecpel"]
 
 [node name="hex_rooms" type="Node2D"]
@@ -56,20 +56,20 @@ position = Vector2(-335, 1921)
 scale = Vector2(0.1, 0.7)
 
 [node name="scene_exit" parent="." instance=ExtResource("6_bpm77")]
-position = Vector2(-171, -110)
-scale = Vector2(1, 2)
+position = Vector2(-301, -117)
+scale = Vector2(3, 2)
 connected_room = "res://nodes/final_rooms.tscn"
 player_pos = Vector2(2668, 2332)
 
 [node name="scene_exit2" parent="." instance=ExtResource("6_bpm77")]
-position = Vector2(2807, -1415)
-scale = Vector2(1, 2)
+position = Vector2(2656, -1420)
+scale = Vector2(3, 2)
 connected_room = "res://nodes/tutorial_rooms.tscn"
 player_pos = Vector2(1909, -351)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -11
-position = Vector2(57, 598)
+position = Vector2(-181, 241)
 color = Color(0.19607843, 0.78039217, 0.81960785, 1)
 polygon = PackedVector2Array(-4414, 5474, -2439, -4648, 6242, -5141, 8875, 1606, 8340, 6708, 770, 7161)
 
@@ -92,9 +92,6 @@ autoplay = true
 max_distance = 30000.0
 parameters/looping = true
 
-[node name="Enemy6" parent="." instance=ExtResource("10_a4u22")]
-position = Vector2(4899, 1795)
-
 [node name="HeartEnemy" parent="." instance=ExtResource("11_1dsn3")]
 position = Vector2(2833, 4313)
 scale = Vector2(0.25, 0.25)
@@ -102,3 +99,6 @@ scale = Vector2(0.25, 0.25)
 [node name="ShapeUpgrade" parent="." instance=ExtResource("12_ecpel")]
 position = Vector2(2265, 3649)
 WhichShape = 6
+
+[node name="enemy_triangle" parent="." instance=ExtResource("12_8alvu")]
+position = Vector2(4790, 1820)
