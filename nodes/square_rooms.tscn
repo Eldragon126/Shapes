@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bhyd2634o5x2m" path="res://nodes/collectable.tscn" id="5_qxn16"]
 [ext_resource type="PackedScene" uid="uid://cxfruhe34d20q" path="res://nodes/Enemies/spike.tscn" id="6_o3alt"]
 [ext_resource type="AudioStream" uid="uid://dmi8eh3lrnjw7" path="res://assets/Soundtrack/4 Sides.mp3" id="8_st6vl"]
-[ext_resource type="PackedScene" uid="uid://b0ettsk5nqf7c" path="res://nodes/Enemies/enemy_5.tscn" id="10_ly72c"]
+[ext_resource type="PackedScene" uid="uid://dtkld6sdexyiu" path="res://nodes/enemy_triangle.tscn" id="10_ly72c"]
 [ext_resource type="PackedScene" uid="uid://1rixc6jg46cb" path="res://nodes/shape_upgrade.tscn" id="10_r1vxu"]
 [ext_resource type="PackedScene" uid="uid://2p4ppvmt4p6i" path="res://nodes/health_addition.tscn" id="11_r1vxu"]
 
@@ -37,8 +37,8 @@ connected_room = "res://nodes/tutorial_rooms.tscn"
 player_pos = Vector2(-490, -4787)
 
 [node name="scene_exit2" parent="." instance=ExtResource("4_he3fy")]
-position = Vector2(1984, 1934)
-scale = Vector2(1, 2)
+position = Vector2(1845.0001, 1918)
+scale = Vector2(3, 2)
 connected_room = "res://nodes/tutorial_rooms.tscn"
 player_pos = Vector2(3258, -964)
 
@@ -72,7 +72,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -13
-position = Vector2(-132, -145)
+position = Vector2(-1275, -423)
 color = Color(0.7490196, 0.93333334, 0.64705884, 1)
 polygon = PackedVector2Array(-4564, 2803, -4496, -5358, 6887, -4422, 9820, 4265, 503, 4639)
 
@@ -96,12 +96,6 @@ scale = Vector2(0.5, 0.5)
 [node name="Spike6" parent="." instance=ExtResource("6_o3alt")]
 position = Vector2(2372, 449)
 scale = Vector2(0.5, 0.5)
-
-[node name="Enemy5" parent="." instance=ExtResource("10_ly72c")]
-position = Vector2(-765, -890.00006)
-
-[node name="Enemy6" parent="." instance=ExtResource("10_ly72c")]
-position = Vector2(4435, -1918)
 
 [node name="ShapeUpgrade" parent="." instance=ExtResource("10_r1vxu")]
 position = Vector2(635, -2254)
